@@ -80,8 +80,8 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.12; let
 .brand { font-family: var(--serif); font-weight: 700; font-size: 22px; letter-spacing: -0.02em; color: var(--ink); }
 .brand .dot { color: var(--accent); }
 .nav-links { display: flex; align-items: center; gap: 26px; }
-.nav-links a { color: var(--ink-soft); font-size: 15px; font-weight: 500; }
-.nav-links a:hover { color: var(--ink); }
+.nav-links a:not(.btn) { color: var(--ink-soft); font-size: 15px; font-weight: 500; }
+.nav-links a:not(.btn):hover { color: var(--ink); }
 
 /* ── buttons ─────────────────────────────────────────── */
 .btn {
