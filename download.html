@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Downloading Amlin</title>
+  <meta name="robots" content="noindex" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .dl-wrap { min-height: 78vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 40px 24px; }
+    .dl-card h1 { font-size: clamp(28px, 5vw, 40px); margin-bottom: 14px; }
+    .dl-card p { font-size: 17px; color: var(--ink-soft); margin: 0 auto 10px; max-width: 460px; }
+    .dl-spin { width: 34px; height: 34px; margin: 0 auto 24px; border: 3px solid var(--accent-tint-2); border-top-color: var(--accent); border-radius: 50%; animation: dl-spin 0.8s linear infinite; }
+    @keyframes dl-spin { to { transform: rotate(360deg); } }
+    .dl-card .muted { font-size: 14px; color: var(--muted); margin-top: 20px; }
+    .dl-card .muted a { color: var(--accent); text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="wrap">
+      <a class="brand" href="index.html" style="text-decoration:none">Amlin<span class="dot">.</span></a>
+      <div class="nav-links">
+        <a href="index.html#features">Features</a>
+        <a href="index.html#pricing">Pricing</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="dl-wrap">
+    <div class="dl-card">
+      <div class="dl-spin" aria-hidden="true"></div>
+      <h1>Starting your download…</h1>
+      <p>Amlin for Mac (Apple silicon, macOS 13+) should begin downloading automatically.</p>
+      <p class="muted">Didn't start? <a id="dl-fallback" href="https://github.com/pangj8624pangj/junola-releases/releases/latest">Download it here</a> &nbsp;·&nbsp; <a href="index.html">Back to home</a></p>
+    </div>
+  </main>
+
+  <script>
+    // Resolve the latest Mac DMG from the GitHub Releases API and redirect to it,
+    // so this link is always current without hard-coding a version. If anything
+    // fails, the fallback link (releases page) is already in place.
+    (function () {
+      var API = 'https://api.github.com/repos/pangj8624pangj/junola-releases/releases/latest';
+      var fb = document.getElementById('dl-fallback');
+      fetch(API, { headers: { Accept: 'application/vnd.github+json' } })
+        .then(function (r) { if (!r.ok) throw new Error('api ' + r.status); return r.json(); })
+        .then(function (data) {
+          var assets = data.assets || [];
+          var dmg =
+            assets.find(function (a) { return /arm64\.dmg$/i.test(a.name); }) ||
+            assets.find(function (a) { return /\.dmg$/i.test(a.name); });
+          if (dmg && dmg.browser_download_url) {
+            fb.href = dmg.browser_download_url;
+            window.location.href = dmg.browser_download_url;
+          }
+        })
+        .catch(function () { /* fallback link already points at the releases page */ });
+    })();
+  </script>
+</body>
+</html>
