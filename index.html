@@ -3,11 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Amlin — The AI meeting notepad for macOS</title>
-  <meta name="description" content="Jot rough notes while you talk. Amlin transcribes the call on your Mac and turns your notes into clean, structured summaries the moment it ends. No bot joins your call; audio is never saved." />
+  <title>Amlin — Meeting notes, dictation & to-dos in one Mac app</title>
+  <meta name="description" content="Jot rough notes while you talk. Amlin transcribes the call on your Mac and turns them into a clean, structured summary the moment it ends — then hands you the action items and lets you dictate into any app. No bot joins your call; audio is never saved." />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Amlin — Meeting notes, dictation & to-dos in one Mac app" />
+  <meta property="og:description" content="Stay in the conversation. Amlin takes the notes — clean summaries the moment a call ends, action items caught automatically, and voice dictation in every app." />
+  <meta property="og:url" content="https://amlin.ai/" />
+  <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23146b62'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='21' fill='%23f4f1e8' text-anchor='middle' font-weight='700'%3EA%3C/text%3E%3C/svg%3E" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -15,7 +21,7 @@
     <div class="wrap">
       <span class="brand">Amlin<span class="dot">.</span></span>
       <div class="nav-links">
-        <a href="#features">Features</a>
+        <a href="#how">How it works</a>
         <a href="#privacy">Privacy</a>
         <a href="#pricing">Pricing</a>
         <a class="btn btn-primary" href="download.html">Download</a>
@@ -25,119 +31,208 @@
 
   <header class="hero">
     <div class="wrap">
-      <span class="eyebrow">AI Meeting Notepad · Voice Dictation in the Flow · To Do List</span>
+      <span class="eyebrow">Notes · Dictation · To-dos — one Mac app</span>
       <h1>Stay in the conversation.<br />Amlin takes the notes.</h1>
-      <p class="sub">Three tools in one Mac app: <strong>AI meeting notes</strong>, <strong>voice dictation</strong> in every app, and a <strong>to-do list that fills itself</strong> from your calls. Jot rough notes while you talk — get a clean, structured summary the moment the meeting ends. No bot in the room; audio is never saved.</p>
+      <p class="sub">Jot rough notes while you talk. Amlin transcribes the call on your Mac and turns them into a clean, structured summary the moment it ends — no bot in the room, your audio never saved.</p>
       <div class="cta-row">
         <a class="btn btn-primary" href="download.html">Download for Mac</a>
-        <a class="btn btn-ghost" href="#features">See how it works</a>
+        <a class="btn btn-ghost" href="#how">See how it works</a>
       </div>
       <p class="micro">Free to start · macOS 13+ · Apple silicon · Sign in with Google</p>
     </div>
   </header>
 
-  <section class="wrap">
-    <div class="pillars">
-      <div class="pillar">
-        <h3>A notepad, not a notetaker</h3>
-        <p>Your notes lead. The AI fills in structure and detail — it never invents what you didn't discuss.</p>
-      </div>
-      <div class="pillar">
-        <h3>No bot joins your call</h3>
-        <p>Capture is OS-level audio only. Nothing shows up in the meeting, and no one is told a bot is present.</p>
-      </div>
-      <div class="pillar">
-        <h3>Audio is never saved</h3>
-        <p>Sound is transcribed live and immediately discarded. Only your notes and the transcript text remain.</p>
+  <!-- Hero visual: rough notes → enhanced summary (synthetic data) -->
+  <div class="hero-shot">
+    <div class="mac">
+      <div class="mac-bar"><i class="tl-r"></i><i class="tl-y"></i><i class="tl-g"></i><b>Amlin</b></div>
+      <div class="mac-body">
+        <aside class="side">
+          <div class="logo">✦ Aml<em>in</em></div>
+          <div class="side-item"><span>⌂ Home</span></div>
+          <div class="side-item on"><span>☑ Action items</span><span class="n">5</span></div>
+          <div class="side-item"><span>▤ All notes</span></div>
+          <div class="side-lbl">Today's meetings</div>
+          <div class="side-meet"><span class="t">2:00</span>Weekly Product Sync</div>
+          <div class="side-meet"><span class="t">4:30</span>Design review</div>
+          <div class="side-lbl">Earlier</div>
+          <div class="side-meet">Priya / Sam · 1:1</div>
+          <div class="side-meet">Roadmap draft</div>
+          <div class="side-meet">Support triage</div>
+        </aside>
+        <div class="main">
+          <div class="app-h1">Weekly Product Sync</div>
+          <div class="app-meta">Today · 6 attendees · 32 min · transcribed on this Mac</div>
+          <div class="cols">
+            <div>
+              <div class="col-lbl">My notes</div>
+              <div class="raw">
+                <p>onboarding drop-off at step 3?</p>
+                <p>Priya — beta ship gate</p>
+                <p>pricing page too wordy, revisit</p>
+                <p>Marcus pulling funnel #s</p>
+              </div>
+            </div>
+            <div class="enh">
+              <div class="col-lbl" style="color:var(--accent)">✶ Enhanced</div>
+              <h4>Summary</h4>
+              <p>Funnel data showed a sharp fall-off at onboarding step 3 (email verification). The team agreed to simplify the step before the beta gate and to tighten the pricing-page copy.</p>
+              <h4>Decisions</h4>
+              <ul>
+                <li>Drop email verification from the onboarding flow</li>
+                <li>Beta ship gate set for next Friday</li>
+              </ul>
+              <h4>Action items</h4>
+              <ul>
+                <li><b>You</b> — send revised pricing copy to design</li>
+                <li><b>Priya</b> — confirm the beta ship gate</li>
+                <li><b>Marcus</b> — pull step-3 funnel numbers</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </section>
+    <div class="strip">
+      <div class="s"><div class="d">◑</div><h4>Me / Them transcript</h4><p>Mic and system audio, split into who said what — labeled live as you talk.</p></div>
+      <div class="s"><div class="d">❋</div><h4>Ask across everything</h4><p>Chat over one meeting or your whole history, with citations back to the source line.</p></div>
+      <div class="s"><div class="d">◔</div><h4>Calendar-aware</h4><p>Your next meeting is one click from capture — Amlin knows when the call starts.</p></div>
+    </div>
+  </div>
 
-  <section class="section" id="all-in-one">
+  <!-- Dictation -->
+  <section class="section" id="how">
     <div class="wrap">
-      <div class="section-head">
-        <h2>Three subscriptions' worth of app — one login, one bill</h2>
-        <p>Amlin folds together the tools you're probably paying for separately, so the value compounds instead of stacking up on your credit card.</p>
+      <div class="frow">
+        <div class="ftext">
+          <div class="kicker">Voice dictation, anywhere</div>
+          <h2>Talk. It comes out written.</h2>
+          <p>Hold a key in any app — Mail, Slack, your editor — and speak. Amlin drops the ums, fixes punctuation and casing, and types the finished text right where your cursor is.</p>
+          <ul>
+            <li>Works system-wide, not just inside Amlin</li>
+            <li>Cleaned up on-device — fast and private</li>
+            <li>Learns the names and jargon you actually use</li>
+          </ul>
+        </div>
+        <div class="dictwrap">
+          <div class="compose">
+            <div class="compose-bar">✉ New Message</div>
+            <div class="compose-row">To: <b>Marcus Lee</b></div>
+            <div class="compose-row">Subject: <b>Onboarding funnel — step 3</b></div>
+            <div class="compose-body">Hi Marcus — following up on today's review. Could you pull the step-3 drop-off numbers before Thursday's sync? I'd like to size the fix before the beta gate. Thanks!<span class="cursor"></span></div>
+          </div>
+          <div class="dpill"><span class="wave"><i style="height:6px"></i><i style="height:12px"></i><i style="height:15px"></i><i style="height:9px"></i><i style="height:13px"></i></span> Dictating <span class="on-device">· on device</span></div>
+        </div>
       </div>
-      <div class="trio">
-        <div class="trio-item">
-          <h3>AI meeting notes</h3>
-          <p>Rough notes during a call become a clean, structured summary seconds after it ends.</p>
-          <span class="trio-alt">instead of a dedicated notetaker</span>
+
+      <!-- To-dos / Open loops -->
+      <div class="frow flip">
+        <div class="ftext">
+          <div class="kicker">A to-do list that fills itself</div>
+          <h2>Every commitment, caught.</h2>
+          <p>Amlin pulls the action items out of your meetings — who owns each one, when it's due — and keeps them in one list across every call. Nothing said out loud slips through the cracks.</p>
+          <ul>
+            <li>Split into yours and what you're waiting on</li>
+            <li>Due dates and reminders, set by voice or a click</li>
+            <li>Jump from any item back to the line that created it</li>
+          </ul>
         </div>
-        <div class="trio-item">
-          <h3>Voice dictation, anywhere</h3>
-          <p>Hold a key and talk in any app — your speech comes out as clean, finished writing.</p>
-          <span class="trio-alt">instead of a standalone dictation app</span>
-        </div>
-        <div class="trio-item">
-          <h3>A to-do list that fills itself</h3>
-          <p>Action items are pulled straight from your meetings and tracked as a checklist.</p>
-          <span class="trio-alt">instead of a separate to-do app</span>
+        <div class="mac">
+          <div class="mac-bar"><i class="tl-r"></i><i class="tl-y"></i><i class="tl-g"></i><b>Amlin</b></div>
+          <div class="mac-body">
+            <div class="main">
+              <div class="app-h1">Action items</div>
+              <div class="app-meta">5 open · 1 overdue</div>
+              <div class="toggle"><span class="on">Mine</span><span>Waiting on</span></div>
+              <div class="sec od">Overdue</div>
+              <div class="row"><div class="box"></div><div><div class="t">Send revised pricing copy to design</div><div class="mchips"><span class="c due">Aug 21</span><span class="c pri">↑ High</span><span class="c who">· Weekly Product Sync</span></div></div></div>
+              <div class="sec">Today</div>
+              <div class="row"><div class="box"></div><div><div class="t">Pull step-3 funnel numbers</div><div class="mchips"><span class="c day">today</span><span class="c bell">🔔 4:00 PM</span></div></div></div>
+              <div class="sec">This week</div>
+              <div class="row"><div class="box"></div><div><div class="t">Draft the beta ship-gate checklist</div><div class="mchips"><span class="c day">Thu</span></div></div></div>
+              <div class="row done"><div class="box done"></div><div><div class="t">Share onboarding funnel data with Priya</div></div></div>
+            </div>
+          </div>
         </div>
       </div>
-      <p class="trio-kicker">Bought separately, those run <strong>~$35+/month</strong>. Amlin Pro is <strong>$15</strong> — less than the notetaker or the dictation tool alone, and a fraction of all three together.</p>
     </div>
   </section>
 
-  <section class="section" id="features">
+  <!-- iPhone companion -->
+  <section class="section" style="padding-top:24px">
     <div class="wrap">
-      <div class="section-head">
-        <h2>Everything you need to remember, nothing to distract you</h2>
-        <p>A quiet notepad during the meeting. Intelligence appears the moment it ends.</p>
-      </div>
-      <div class="features">
-        <div class="feature">
-          <div class="ico">◑</div>
-          <h3>Live transcript, labeled</h3>
-          <p>Mic and system audio, separated into <strong>Me</strong> and <strong>Them</strong> as the conversation happens.</p>
+      <div class="phone-sec">
+        <div class="ftext">
+          <div class="kicker">iPhone companion</div>
+          <h2>It's in your pocket too.</h2>
+          <p>Capture in-person meetings, dictate on the go, and check your open loops from anywhere. Everything syncs to your Mac automatically — pick up exactly where you left off.</p>
+          <ul>
+            <li>In-person capture with on-device transcription</li>
+            <li>Your action items and notes, always in sync</li>
+            <li>Reminders that follow you off your desk</li>
+          </ul>
         </div>
-        <div class="feature">
-          <div class="ico">✶</div>
-          <h3>Notes, enhanced</h3>
-          <p>Sparse bullets become a structured, correctly-formatted summary seconds after the call ends.</p>
-        </div>
-        <div class="feature">
-          <div class="ico">❋</div>
-          <h3>Ask across everything</h3>
-          <p>Chat over a single meeting or your entire history, with citations back to the source.</p>
-        </div>
-        <div class="feature">
-          <div class="ico">◗</div>
-          <h3>Dictation anywhere</h3>
-          <p>Hold a key and talk in any app. Your speech is cleaned up on-device and inserted where you're typing.</p>
-        </div>
-        <div class="feature">
-          <div class="ico">◔</div>
-          <h3>Calendar-aware</h3>
-          <p>Your upcoming meetings, front and center — one click to start capturing when a call begins.</p>
-        </div>
-        <div class="feature">
-          <div class="ico">▤</div>
-          <h3>On your iPhone too</h3>
-          <p>Capture in person and sync everything to your Mac with the companion app.</p>
+        <div class="phone">
+          <div class="phone-screen">
+            <div class="phone-notch"></div>
+            <div class="app-h1">Action items</div>
+            <div class="app-meta">Synced · just now</div>
+            <div class="toggle"><span class="on">Mine</span><span>Waiting on</span></div>
+            <div class="sec">Today</div>
+            <div class="row"><div class="box"></div><div><div class="t">Confirm the beta ship gate</div><div class="mchips"><span class="c bell">🔔 9:00 AM</span></div></div></div>
+            <div class="sec">This week</div>
+            <div class="row"><div class="box"></div><div><div class="t">Review Priya's PRD</div><div class="mchips"><span class="c day">Wed</span></div></div></div>
+            <div class="row done"><div class="box done"></div><div><div class="t">Book the design review room</div></div></div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="band" id="privacy">
+  <!-- Value: three tools, one bill (cost math stated ONCE) -->
+  <section class="band">
     <div class="wrap">
       <div class="inner">
-        <div class="mark">🔒</div>
+        <div class="mark">◎</div>
         <div>
-          <h2>Private by design</h2>
-          <p>Audio streams to transcription and is discarded on the spot — it's never written to disk. Your notes and transcripts live on your device and sync only to your own account. Sign-in is with your Google account (Calendar is optional) — no separate password to manage. <a href="privacy.html">Read our privacy policy →</a></p>
+          <h2>Three subscriptions' worth — one login, one bill</h2>
+          <p>A dedicated notetaker, a standalone dictation app, and a separate to-do tool add up to <strong style="color:var(--ink)">~$35+/month</strong>. Amlin is all three for <strong style="color:var(--ink)">$15</strong> — less than the notetaker alone, and the value compounds instead of stacking up on your card.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section" id="pricing">
+  <!-- Privacy (consolidated) -->
+  <section class="section" id="privacy" style="padding-top:64px">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Private by design</h2>
+        <p>The trust model is the product. Amlin is built so your conversations never leave your control.</p>
+      </div>
+      <div class="pillars">
+        <div class="pillar">
+          <h3>No bot joins your call</h3>
+          <p>Capture is OS-level audio only. Nothing appears in the meeting, and no one is told a bot is listening.</p>
+        </div>
+        <div class="pillar">
+          <h3>Audio is never saved</h3>
+          <p>Sound is transcribed live and discarded on the spot — never written to disk. Only your notes and the transcript text remain.</p>
+        </div>
+        <div class="pillar">
+          <h3>Yours alone</h3>
+          <p>Notes stay on your device and sync only to your own account. Sign in with Google; Calendar access is optional and read-only.</p>
+        </div>
+      </div>
+      <p style="text-align:center; margin-top:26px; font-size:15px;"><a href="privacy.html">Read the full privacy policy →</a></p>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="section" id="pricing" style="padding-top:8px">
     <div class="wrap">
       <div class="section-head">
         <h2>Simple pricing</h2>
-        <p>One subscription instead of three. Start free; upgrade when Amlin becomes part of how you work.</p>
+        <p>Start free. Upgrade when Amlin becomes part of how you work.</p>
       </div>
       <div class="plans">
         <div class="plan">
@@ -163,10 +258,20 @@
             <li>Everything in Free</li>
             <li>Priority support</li>
           </ul>
-          <a class="btn btn-primary" href="#">Upgrade to Pro</a>
+          <a class="btn btn-primary" href="download.html">Get Pro</a>
         </div>
       </div>
-      <p class="plans-micro">Replaces ~$35+/mo of separate note-taking, dictation &amp; to-do subscriptions. Prices in USD. Cancel anytime.</p>
+      <p class="plans-micro">One subscription, not three. Prices in USD. Cancel anytime.</p>
+    </div>
+  </section>
+
+  <!-- Closing CTA -->
+  <section class="close-cta">
+    <div class="wrap">
+      <h2>Stop taking notes. Start paying attention.</h2>
+      <p>Download Amlin and let your next meeting write itself up.</p>
+      <a class="btn btn-primary" href="download.html">Download for Mac</a>
+      <p class="micro" style="margin-top:16px">Free to start · macOS 13+ · Sign in with Google</p>
     </div>
   </section>
 
@@ -175,10 +280,10 @@
       <div class="inner">
         <div>
           <span class="brand">Amlin<span class="dot">.</span></span>
-          <p class="tagline">The AI meeting notepad for macOS.</p>
+          <p class="tagline">Meeting notes, dictation & to-dos — one Mac app.</p>
         </div>
         <div class="footer-links">
-          <a href="#features">Features</a>
+          <a href="#how">How it works</a>
           <a href="#pricing">Pricing</a>
           <a href="privacy.html">Privacy</a>
           <a href="terms.html">Terms</a>
