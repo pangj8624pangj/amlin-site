@@ -196,6 +196,16 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.12; let
 .tl-r { background: #e0655a; } .tl-y { background: #e3b341; } .tl-g { background: #57b95a; }
 .mac-bar b { margin-left: 10px; font-family: var(--serif); font-weight: 600; font-size: 13px; color: var(--muted); }
 .mac-body { display: flex; text-align: left; background: var(--paper); }
+/* real app screenshot framed inside the Mac window chrome */
+figure.mac { margin: 0; }
+.mac .shot { display: block; width: 100%; height: auto; }
+
+/* dictation: honest spoken → written illustration (not a fabricated UI) */
+.dict-demo { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 26px; box-shadow: var(--shadow-sm); }
+.dict-said { display: flex; gap: 11px; font-size: 15.5px; color: var(--muted); font-style: italic; line-height: 1.55; }
+.dict-said .dict-ic { color: var(--live); flex: none; font-style: normal; }
+.dict-to { font-size: 12px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--accent); margin: 16px 0 12px; }
+.dict-out { font-size: 17px; color: var(--ink); line-height: 1.55; font-weight: 500; }
 
 /* app sidebar */
 .side { width: 186px; flex: none; border-right: 1px solid var(--line); padding: 15px 12px; background: var(--surface); }
