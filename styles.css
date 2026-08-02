@@ -79,6 +79,7 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.12; let
 .nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
 .brand { font-family: var(--serif); font-weight: 700; font-size: 22px; letter-spacing: -0.02em; color: var(--ink); }
 .brand .dot { color: var(--accent); }
+.brand-mark { height: 1.2em; width: auto; vertical-align: -0.26em; margin-right: 0.42em; border-radius: 24%; }
 .nav-links { display: flex; align-items: center; gap: 26px; }
 .nav-links a:not(.btn) { color: var(--ink-soft); font-size: 15px; font-weight: 500; }
 .nav-links a:not(.btn):hover { color: var(--ink); }
