@@ -63,6 +63,9 @@
     <h3>Website analytics &amp; cookies</h3>
     <p>Our website (amlin.ai) uses Google Analytics to help us understand how visitors find and use the site — for example, which pages are visited, how visitors arrive, and the general region they visit from. Google Analytics sets cookies and collects information such as your device and browser type, approximate location, and the pages you view. We use this information only in aggregate to improve the site; we do not use it to identify you. You can learn how Google handles this data in <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a>, and you can opt out with the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">Google Analytics opt-out browser add-on</a> or by blocking cookies in your browser. If you visit from the EU/EEA or UK, we ask for your consent before loading Google Analytics, and no analytics cookies are set unless you accept; to change your choice later, clear this site's data in your browser and revisit. The Amlin app itself does not use Google Analytics.</p>
 
+    <h3>Support chat</h3>
+    <p>Our website uses Intercom to provide the chat messenger you can use to reach us. Intercom sets cookies that are needed to operate the messenger — for example, to keep your conversation as you move between pages — and processes the messages and any contact details you choose to share with us, along with basic device and browser information. You can read how Intercom handles this data in <a href="https://www.intercom.com/legal/privacy" target="_blank" rel="noopener">Intercom's Privacy Policy</a>.</p>
+
     <h2>Service providers (subprocessors)</h2>
     <p>We share the minimum data necessary with these providers so the product can function:</p>
     <table>
@@ -73,6 +76,7 @@
       <tr><td>Fly.io</td><td>Hosting &amp; sync storage</td><td>Notes, transcripts, account &amp; usage data</td></tr>
       <tr><td>Stripe</td><td>Payments (Merchant of Record)</td><td>Billing details you provide at checkout</td></tr>
       <tr><td>Google Analytics</td><td>Website traffic measurement</td><td>Cookies, device &amp; browser info, pages visited on amlin.ai</td></tr>
+      <tr><td>Intercom</td><td>Website support chat</td><td>Messages you send us, contact details you provide, cookies &amp; device info</td></tr>
     </table>
     <p>Each provider processes data under its own terms. We encourage you to review the retention settings we have in place; we configure providers for minimal retention where that option is available.</p>
 
@@ -126,5 +130,17 @@
       <div class="copyright">© 2026 Amlin. All rights reserved.</div>
     </div>
   </footer>
+
+  <!-- Intercom messenger -->
+  <script>
+    const APP_ID = "l6xy5i6c"
+    window.intercomSettings = {
+      api_base: "https://api-iam.intercom.io",
+      app_id: APP_ID,
+    };
+  </script>
+  <script>
+  (function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/' + APP_ID;var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(document.readyState==='complete'){l();}else if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+  </script>
 </body>
 </html>
