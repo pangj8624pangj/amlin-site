@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="consent.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Page not found — Amlin</title>
+  <meta name="robots" content="noindex" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png" />
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .nf-wrap { min-height: 78vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 40px 24px; }
+    .nf-card img { width: 64px; height: 64px; animation: nf-spin 14s linear infinite; }
+    @keyframes nf-spin { to { transform: rotate(360deg); } }
+    .nf-card h1 { font-size: clamp(28px, 5vw, 42px); margin: 22px 0 12px; }
+    .nf-card p { font-size: 17px; color: var(--ink-soft); margin: 0 auto 26px; max-width: 460px; }
+    @media (prefers-reduced-motion: reduce) { .nf-card img { animation: none; } }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="wrap">
+      <a class="brand" href="index.html" style="text-decoration:none"><img class="brand-mark" src="assets/icon.svg" alt="" width="26" height="26" />Amlin<span class="dot">.</span></a>
+      <div class="nav-links">
+        <a href="index.html#how">How it works</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a class="btn btn-primary" href="download.html">Download</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="nf-wrap">
+    <div class="nf-card">
+      <img src="assets/icon.svg" alt="" />
+      <h1>This page slipped through the cracks.</h1>
+      <p>Unlike your meeting notes — those get caught automatically.</p>
+      <a class="btn btn-primary" href="index.html">Back to Amlin</a>
+    </div>
+  </main>
+</body>
+</html>

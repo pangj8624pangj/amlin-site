@@ -64,3 +64,20 @@
     }
   }
 })();
+
+// ── CTA click events (fires only when GA is loaded, i.e. after consent) ────
+document.addEventListener('click', function (e) {
+  var a = e.target.closest ? e.target.closest('a.btn') : null
+  if (!a || typeof window.gtag !== 'function') return
+  var href = a.getAttribute('href') || ''
+  var host = a.closest('#pricing, .close-cta, .hero, .nav, .footer, .plan')
+  var placement = host ? (host.id || String(host.className).split(' ')[0]) : 'page'
+  if (href.indexOf('download.html') !== -1) {
+    gtag('event', 'download_click', { placement: placement })
+  } else if (href.indexOf('web-checkout') !== -1) {
+    gtag('event', 'get_pro_click', {
+      plan: href.indexOf('plan=annual') !== -1 ? 'annual' : 'monthly',
+      placement: placement
+    })
+  }
+})
