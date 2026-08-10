@@ -378,3 +378,31 @@ h2.rv-in .rw { opacity: 1; transform: none; }
   .rw, .kw { opacity: 1 !important; transform: none !important; filter: none !important; }
   .dict-demo.pending .dict-to, .dict-demo.pending .dict-out { opacity: 1; transform: none; }
 }
+
+/* ── Ink on paper (direction 2 accents) ──────────────────── */
+.ink-wrap { position: relative; display: inline-block; }
+svg.ink { position: absolute; overflow: visible; pointer-events: none; }
+svg.ink path { fill: none; stroke: var(--live); stroke-width: 3; stroke-linecap: round; }
+.ink-under { left: 0; bottom: -0.22em; width: 100%; height: 0.3em; }
+.ink-under path { stroke-dasharray: 110; stroke-dashoffset: 110; }
+.ink-circ { left: -9%; top: -16%; width: 118%; height: 136%; }
+.ink-circ path { stroke-dasharray: 340; stroke-dashoffset: 340; }
+.has-ink.ink-in .ink-under path { transition: stroke-dashoffset 0.7s ease 0.35s; stroke-dashoffset: 0; }
+.has-ink.ink-in .ink-circ path { transition: stroke-dashoffset 0.85s ease 0.2s; stroke-dashoffset: 0; }
+
+.margin-note {
+  font-family: 'Bradley Hand', 'Segoe Script', cursive;
+  font-size: 16px; line-height: 1.35; color: var(--accent-deep);
+  transform: rotate(-2deg); margin-top: 14px; max-width: 220px;
+  opacity: 0; transition: opacity 0.5s ease 0.9s;
+}
+.ink-in ~ * .margin-note, .frow.ink-in .margin-note { opacity: 1; }
+
+.footer .brand-mark { animation: pin-spin 16s linear infinite; }
+@keyframes pin-spin { to { transform: rotate(360deg); } }
+
+@media (prefers-reduced-motion: reduce) {
+  svg.ink path { stroke-dashoffset: 0 !important; }
+  .margin-note { opacity: 1; transition: none; }
+  .footer .brand-mark { animation: none; }
+}

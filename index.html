@@ -34,6 +34,7 @@
     } catch (e) {}
   </script>
   <script src="motion.js" defer></script>
+  <noscript><style>svg.ink path { stroke-dashoffset: 0 !important; } .margin-note { opacity: 1 !important; }</style></noscript>
 </head>
 <body>
   <nav class="nav">
@@ -81,7 +82,7 @@
       <div class="frow">
         <div class="ftext">
           <div class="kicker">Voice dictation, anywhere</div>
-          <h2>Talk. It comes out written.</h2>
+          <h2 class="has-ink">Talk. It comes out <span class="ink-wrap">written<svg class="ink ink-under" viewBox="0 0 100 14" preserveAspectRatio="none" aria-hidden="true"><path d="M 2 8 C 25 3, 50 11, 98 6"/></svg></span>.</h2>
           <p>Hold a key in any app — Mail, Slack, your editor — and speak. Amlin drops the ums, fixes punctuation and casing, and types the finished text right where your cursor is.</p>
           <ul>
             <li>Works system-wide, not just inside Amlin</li>
@@ -100,13 +101,14 @@
       <div class="frow flip">
         <div class="ftext">
           <div class="kicker">A to-do list that fills itself</div>
-          <h2>Every commitment, caught.</h2>
+          <h2 class="has-ink">Every <span class="ink-wrap">commitment<svg class="ink ink-circ" viewBox="0 0 120 46" aria-hidden="true"><path d="M 8 24 C 6 8, 96 2, 112 16 C 122 30, 78 45, 32 42 C 12 40, 4 32, 10 22"/></svg></span>, <span class="ink-wrap">caught<svg class="ink ink-under" viewBox="0 0 100 14" preserveAspectRatio="none" aria-hidden="true"><path d="M 2 8 C 25 3, 50 11, 98 6"/></svg></span>.</h2>
           <p>Amlin pulls the action items out of your meetings — who owns each one, when it's due — and keeps them in one list across every call. Nothing said out loud slips through the cracks.</p>
           <ul>
             <li>Split into yours and what you're waiting on</li>
             <li>Due dates and reminders, set by voice or a click</li>
             <li>Jump from any item back to the line that created it</li>
           </ul>
+          <p class="margin-note" aria-hidden="true">← owners &amp; due dates,<br />pulled out for you</p>
         </div>
         <figure class="mac">
           <div class="mac-bar"><i class="tl-r"></i><i class="tl-y"></i><i class="tl-g"></i><b>Amlin</b></div>
@@ -133,7 +135,7 @@
   <section class="section" id="privacy" style="padding-top:64px">
     <div class="wrap">
       <div class="section-head">
-        <h2>Private by design</h2>
+        <h2 class="has-ink">Private by <span class="ink-wrap">design<svg class="ink ink-under" viewBox="0 0 100 14" preserveAspectRatio="none" aria-hidden="true"><path d="M 2 8 C 25 3, 50 11, 98 6"/></svg></span></h2>
         <p>The trust model is the product. Amlin is built so your conversations never leave your control.</p>
       </div>
       <div class="pillars">

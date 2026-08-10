@@ -112,6 +112,20 @@
     }
   }
 
+  // ── Ink accents draw themselves on scroll (direction 2) ──
+  const inks = document.querySelectorAll('.has-ink')
+  const inkIO = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) {
+        e.target.classList.add('ink-in')
+        const row = e.target.closest('.frow')
+        if (row) row.classList.add('ink-in')
+        inkIO.unobserve(e.target)
+      }
+    })
+  }, { threshold: 0.6 })
+  inks.forEach((el) => inkIO.observe(el))
+
   // ── Ambience: breathing waveform behind the hero ──
   if (hero) {
     const cv = document.createElement('canvas')
