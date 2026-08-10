@@ -23,6 +23,17 @@
   <link rel="icon" href="assets/icon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
   <link rel="stylesheet" href="styles.css" />
+  <script>
+    // Kinetic-hero flag set pre-render so the headline never flashes before
+    // its once-per-session performance. No-JS and reduced-motion stay static.
+    try {
+      if (!sessionStorage.getItem('amlin-hero-played') &&
+          !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.documentElement.classList.add('kinetic')
+      }
+    } catch (e) {}
+  </script>
+  <script src="motion.js" defer></script>
 </head>
 <body>
   <nav class="nav">
