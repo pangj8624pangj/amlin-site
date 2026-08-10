@@ -126,17 +126,17 @@
   }, { threshold: 0.6 })
   inks.forEach((el) => inkIO.observe(el))
 
-  // ── Ambience: breathing waveform behind the hero ──
-  if (hero) {
+  // ── Ambience: breathing waveform ribbons (hero + closing CTA) ──
+  function mountWave(host, midFraction) {
     const cv = document.createElement('canvas')
-    cv.className = 'hero-wave'
+    cv.className = 'wave-ribbon'
     cv.setAttribute('aria-hidden', 'true')
-    hero.appendChild(cv)
+    host.appendChild(cv)
     const ctx = cv.getContext('2d')
     let W, H
     const dpr = Math.min(devicePixelRatio || 1, 2)
     function size() {
-      const r = hero.getBoundingClientRect()
+      const r = host.getBoundingClientRect()
       W = cv.width = r.width * dpr
       H = cv.height = r.height * dpr
     }
@@ -149,7 +149,7 @@
     ]
     ;(function draw(t) {
       ctx.clearRect(0, 0, W, H)
-      const mid = H * 0.86
+      const mid = H * midFraction
       const breathe = 0.55 + 0.45 * Math.sin(t / 2600)
       for (const L of layers) {
         ctx.beginPath()
@@ -168,6 +168,9 @@
       requestAnimationFrame(draw)
     })(0)
   }
+  if (hero) mountWave(hero, 0.86)
+  const closer = document.querySelector('.close-cta')
+  if (closer) mountWave(closer, 0.88)
 
   // ── Ambience: mic pulse on the primary CTAs ──
   document.querySelectorAll('.hero .btn-primary, .close-cta .btn-primary').forEach((btn) => {

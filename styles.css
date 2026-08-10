@@ -323,9 +323,9 @@ figure.mac { margin: 0; }
 
 /* ── Motion layer: kinetic hero + sound-thread ambience ─── */
 .kinetic .hero h1 { visibility: hidden; }
-.hero { position: relative; }
-.hero .wrap { position: relative; z-index: 2; }
-canvas.hero-wave { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+.hero, .close-cta { position: relative; }
+.hero .wrap, .close-cta .wrap { position: relative; z-index: 2; }
+canvas.wave-ribbon { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
 
 h1.kin-run { visibility: visible !important; }
 h1.kin-raw {
