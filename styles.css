@@ -415,17 +415,6 @@ body::after {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* hero screenshot: rough note ⇄ enhanced note, on a slow loop */
-.hero-shot .mac { position: relative; }
-.hero-shot .shot-before {
-  position: absolute; left: 0; bottom: 0; width: 100%;
-  animation: beforeafter 12s ease-in-out infinite;
-}
-@keyframes beforeafter {
-  0%, 22% { opacity: 1; }
-  32%, 84% { opacity: 0; }
-  94%, 100% { opacity: 1; }
-}
 /* FAQ */
 .faq { max-width: 720px; margin: 0 auto; display: grid; gap: 12px; }
 .faq details { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-md); padding: 16px 20px; box-shadow: var(--shadow-sm); }
@@ -443,6 +432,3 @@ a:focus-visible, .btn:focus-visible, summary:focus-visible {
 }
 .colophon { font-size: 12.5px; color: var(--faint); margin-top: 6px; }
 
-@media (prefers-reduced-motion: reduce) {
-  .hero-shot .shot-before { animation: none; opacity: 0; }
-}
