@@ -140,7 +140,28 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.12; let
 /* ── privacy band ────────────────────────────────────── */
 .band { background: var(--panel); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .band .inner { display: flex; gap: 40px; align-items: center; padding: 56px 0; }
-.band .mark { line-height: 0; flex: none; }
+.band .mark { position: relative; width: 62px; height: 62px; line-height: 0; flex: none; }
+/* three tools converge, spin, and become the Amlin pinwheel */
+.band .cv-arcs { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; transform-origin: 50% 50%; }
+.band .cv-logo {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+  border-radius: 24%;
+}
+.band .mark.play .cv-arcs { animation: cv-spin 1.35s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+@keyframes cv-spin {
+  0% { opacity: 1; transform: rotate(0deg) scale(1.12); }
+  70% { opacity: 1; }
+  100% { opacity: 0; transform: rotate(420deg) scale(0.4); }
+}
+.band .mark.play .cv-logo { animation: cv-logo 0.55s ease-out 0.9s backwards; }
+@keyframes cv-logo {
+  from { opacity: 0; transform: translate(-50%, -50%) rotate(-130deg) scale(0.45); }
+  to { opacity: 1; transform: translate(-50%, -50%) rotate(0deg) scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .band .mark.play .cv-arcs, .band .mark.play .cv-logo { animation: none; }
+  .band .cv-arcs { opacity: 0; }
+}
 .band h2 { font-size: clamp(26px, 3.4vw, 34px); margin-bottom: 12px; }
 .band p { font-size: 17px; color: var(--ink-soft); max-width: 640px; }
 

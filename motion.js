@@ -124,6 +124,20 @@
   }, { threshold: 0.6 })
   inks.forEach((el) => inkIO.observe(el))
 
+  // ── Value band: three arcs converge into the pinwheel (plays once) ──
+  const mark = document.querySelector('.band .mark')
+  if (mark) {
+    const markIO = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          mark.classList.add('play')
+          markIO.unobserve(mark)
+        }
+      })
+    }, { threshold: 0.9 })
+    markIO.observe(mark)
+  }
+
   // ── Ambience: breathing waveform ribbons (hero + closing CTA) ──
   function mountWave(host, midFraction) {
     const cv = document.createElement('canvas')
