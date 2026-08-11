@@ -140,7 +140,7 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.12; let
 /* ── privacy band ────────────────────────────────────── */
 .band { background: var(--panel); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .band .inner { display: flex; gap: 40px; align-items: center; padding: 56px 0; }
-.band .mark { font-size: 44px; }
+.band .mark { line-height: 0; flex: none; }
 .band h2 { font-size: clamp(26px, 3.4vw, 34px); margin-bottom: 12px; }
 .band p { font-size: 17px; color: var(--ink-soft); max-width: 640px; }
 
@@ -390,23 +390,11 @@ svg.ink path { fill: none; stroke: var(--live); stroke-width: 3; stroke-linecap:
 .has-ink.ink-in .ink-under path { transition: stroke-dashoffset 0.7s ease 0.35s; stroke-dashoffset: 0; }
 .has-ink.ink-in .ink-circ path { transition: stroke-dashoffset 0.85s ease 0.2s; stroke-dashoffset: 0; }
 
-.margin-note {
-  font-family: 'Bradley Hand', 'Segoe Script', cursive;
-  font-size: 16px; line-height: 1.35; color: var(--accent-deep);
-  transform: rotate(-2deg); margin-top: 14px; max-width: 220px;
-  opacity: 0; transition: opacity 0.5s ease 0.9s;
-}
-/* the note annotates the screenshot BESIDE it — once .frow stacks to one
-   column (mobile), the arrow points at nothing, so the note goes away */
-@media (max-width: 820px) { .margin-note { display: none; } }
-.ink-in ~ * .margin-note, .frow.ink-in .margin-note { opacity: 1; }
-
 .footer .brand-mark { animation: pin-spin 16s linear infinite; }
 @keyframes pin-spin { to { transform: rotate(360deg); } }
 
 @media (prefers-reduced-motion: reduce) {
   svg.ink path { stroke-dashoffset: 0 !important; }
-  .margin-note { opacity: 1; transition: none; }
   .footer .brand-mark { animation: none; }
 }
 

@@ -118,8 +118,6 @@
     entries.forEach((e) => {
       if (e.isIntersecting) {
         e.target.classList.add('ink-in')
-        const row = e.target.closest('.frow')
-        if (row) row.classList.add('ink-in')
         inkIO.unobserve(e.target)
       }
     })
