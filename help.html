@@ -10,23 +10,45 @@
   <meta name="robots" content="noindex" />
   <style>
     /* The app hosts this page as a TRANSPARENT panel over its own UI, so the
-       page paints nothing of its own — Intercom's messenger provides the
-       rounded card and shadow, exactly as it looks on the web. */
+       page paints no background of its own — only the messenger card floats
+       over the app. GUTTER is the transparent band left around that card for
+       its drop shadow; the app sizes the panel to card + gutter, so keep this
+       in sync with HELP_GUTTER in src/main/windows/windows.ts. */
     html, body {
+      --gutter: 12px;
       margin: 0;
       height: 100%;
       background: transparent;
       font: 14px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
     }
+    /* Intercom rounds its own card only in the DESKTOP layout, which it uses
+       above roughly a 500px viewport (measured 2026-08-14); anything narrower
+       gets the phone layout that fills the viewport edge to edge with square
+       corners. A support panel that wide would cover a third of the app window,
+       so the panel stays narrow and supplies the card shape itself: inset the
+       messenger, round it, and let the gutter carry the shadow. !important is
+       what beats the inline geometry their script writes on every resize. */
+    iframe[name="intercom-messenger-frame"] {
+      top: var(--gutter) !important;
+      left: var(--gutter) !important;
+      right: auto !important;
+      bottom: auto !important;
+      width: calc(100% - var(--gutter) * 2) !important;
+      height: calc(100% - var(--gutter) * 2) !important;
+      max-width: none !important;
+      max-height: none !important;
+      border-radius: 14px !important;
+      box-shadow: 0 3px 14px rgba(0, 0, 0, 0.22) !important;
+    }
     /* Shown only if Intercom never boots (blocked, offline, script error), so
-       the panel is never a blank rectangle. */
+       the panel is never a blank rectangle. Same card shape as the messenger. */
     #fallback {
       display: none;
       position: absolute;
-      inset: 0;
+      inset: var(--gutter);
       background: #fffdf8;
       border-radius: 14px;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.18);
+      box-shadow: 0 3px 14px rgba(0, 0, 0, 0.22);
       color: #23201b;
       padding: 22px;
       box-sizing: border-box;
