@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Amlin support</title>
+  <!-- Not a marketing page: this is the surface the Mac app's "Get help" menu
+       renders INSIDE its window (a WebContentsView panel), so it must not be
+       indexed or found as a landing page. -->
+  <meta name="robots" content="noindex" />
+  <style>
+    /* The app hosts this page as a TRANSPARENT panel over its own UI, so the
+       page paints nothing of its own — Intercom's messenger provides the
+       rounded card and shadow, exactly as it looks on the web. */
+    html, body {
+      margin: 0;
+      height: 100%;
+      background: transparent;
+      font: 14px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    }
+    /* Shown only if Intercom never boots (blocked, offline, script error), so
+       the panel is never a blank rectangle. */
+    #fallback {
+      display: none;
+      position: absolute;
+      inset: 0;
+      background: #fffdf8;
+      border-radius: 14px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.18);
+      color: #23201b;
+      padding: 22px;
+      box-sizing: border-box;
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 8px;
+    }
+    #fallback a { color: #146b62; }
+  </style>
+</head>
+<body>
+  <div id="fallback">
+    <strong>Support isn't loading</strong>
+    <span>Email <a href="mailto:support@amlin.ai">support@amlin.ai</a> and we'll pick it up there.</span>
+  </div>
+
+  <!-- Intercom messenger — the SAME workspace as the rest of the site, so a
+       conversation started in the Mac app lands in the same inbox. -->
+  <script>
+    const APP_ID = "l6xy5i6c"
+    window.intercomSettings = {
+      api_base: "https://api-iam.intercom.io",
+      app_id: APP_ID,
+      // No floating launcher: the app's menu item IS the launcher, and the
+      // bubble would float over the app's own UI.
+      hide_default_launcher: true,
+    };
+  </script>
+  <script>
+  (function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/' + APP_ID;var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(document.readyState==='complete'){l();}else if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+  </script>
+  <script>
+    // Open straight into the conversation — the panel exists for nothing else.
+    window.Intercom('show');
+
+    // The messenger's own close button should dismiss the whole panel, not
+    // leave an empty transparent rectangle over the app. `amlinHelp` is the
+    // app's one-method bridge (close only); on the plain web it's absent and
+    // this degrades to a no-op.
+    window.Intercom('onHide', function () {
+      if (window.amlinHelp && typeof window.amlinHelp.close === 'function') {
+        window.amlinHelp.close();
+      }
+    });
+
+    // If the widget never boots, show the email fallback rather than nothing.
+    setTimeout(function () {
+      var booted = !!document.querySelector('.intercom-lightweight-app, iframe[name^="intercom"]');
+      if (!booted) document.getElementById('fallback').style.display = 'flex';
+    }, 6000);
+  </script>
+</body>
+</html>
