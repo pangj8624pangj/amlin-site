@@ -36,6 +36,55 @@
   <script src="motion.js" defer></script>
   <noscript><style>svg.ink path { stroke-dashoffset: 0 !important; }</style></noscript>
   <script defer src="assets/ph.js"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://amlin.ai/#app",
+        "name": "Amlin",
+        "operatingSystem": "macOS 13.0 or later",
+        "applicationCategory": "BusinessApplication",
+        "url": "https://amlin.ai/",
+        "image": "https://amlin.ai/assets/desktop-note.jpg",
+        "description": "Amlin is a macOS app that combines an AI meeting notepad, system-wide voice dictation, and a self-filling to-do list. No bot joins calls; meeting audio is never stored.",
+        "offers": [
+          { "@type": "Offer", "name": "Free", "price": "0", "priceCurrency": "USD" },
+          { "@type": "Offer", "name": "Pro (monthly)", "price": "10", "priceCurrency": "USD" },
+          { "@type": "Offer", "name": "Pro (annual)", "price": "108", "priceCurrency": "USD" }
+        ],
+        "author": { "@type": "Organization", "name": "Amlin Labs LLC", "url": "https://amlin.ai/" }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://amlin.ai/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What happens when I hit the Free plan's limits?",
+            "acceptedAnswer": { "@type": "Answer", "text": "A meeting already in progress always finishes. Amlin checks your hours when you start a meeting, never mid-call. Past the cap, new meeting transcription and Ask questions wait until your month resets or you upgrade. Your notepad, existing notes, and dictation keep working: dictation runs on your Mac and is never metered." }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I cancel anytime?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes. Manage billing in the app opens your billing portal; cancelling keeps Pro until the end of the period you've paid for, and you won't be charged again." }
+          },
+          {
+            "@type": "Question",
+            "name": "Where does my audio go?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Dictation runs entirely on your Mac; that audio never leaves the device. Meeting audio is streamed for live transcription and never stored by Amlin. Only the text remains, as part of your notes." }
+          },
+          {
+            "@type": "Question",
+            "name": "Does it work with Zoom, Meet, and Teams?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes, and with anything else that makes sound on your Mac. Amlin captures system audio at the operating-system level, so there's no bot to invite and nothing for other participants to install." }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
   <nav class="nav">
@@ -254,6 +303,10 @@
         <div class="footer-links">
           <a href="#how">How it works</a>
           <a href="#pricing">Pricing</a>
+          <a href="amlin-vs-granola.html">vs Granola</a>
+          <a href="amlin-vs-mac-dictation.html">vs Mac dictation</a>
+          <a href="for-consultants.html">For consultants</a>
+          <a href="for-executive-assistants.html">For executive assistants</a>
           <a href="privacy.html">Privacy</a>
           <a href="terms.html">Terms</a>
           <a href="refund.html">Refunds</a>

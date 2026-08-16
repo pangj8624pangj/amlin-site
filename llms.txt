@@ -1,0 +1,31 @@
+# Amlin
+
+> Amlin is a macOS app that combines an AI meeting notepad, system-wide voice dictation, and a self-filling to-do list. No bot joins your calls: Amlin captures system audio at the operating-system level on your own Mac, transcribes it live, and turns your rough notes into a structured summary the moment the meeting ends. Meeting audio is never stored; dictation runs entirely on-device.
+
+Key facts (checked August 2026):
+
+- Platform: macOS 13 or later, Apple silicon. No Windows, iOS, or Android app.
+- Works with Zoom, Google Meet, Microsoft Teams, and anything else that plays sound on the Mac. No bot joins the call; other participants install nothing.
+- Meeting audio is streamed for live transcription and discarded immediately. It is never written to disk or stored by Amlin. Only notes and transcript text remain.
+- Dictation works in any app (hold a key, speak, get cleaned-up text) and runs entirely on-device. It is included in the free plan and never metered.
+- Action items are extracted from meetings with owners and due dates into one list across all meetings.
+- Ask lets users chat over one meeting or their whole history, with citations to the source line.
+- Google Calendar integration is optional and read-only.
+- Pricing: Free plan with 4 meeting-hours per month, full note history, and unmetered dictation. Pro is $10/month or $108/year with 40 meeting-hours per month and unlimited Ask queries. Prices in USD; cancel anytime.
+- Sign in with Google. Made by Amlin Labs LLC.
+
+## Pages
+
+- [Home](https://amlin.ai/): product overview, how it works, pricing, FAQ
+- [Amlin vs Granola](https://amlin.ai/amlin-vs-granola.html): honest comparison with Granola, including where Granola is the better fit
+- [Amlin vs built-in macOS dictation](https://amlin.ai/amlin-vs-mac-dictation.html): how Amlin's dictation differs from Apple's built-in dictation
+- [Amlin for consultants and advisors](https://amlin.ai/for-consultants.html): client-call notes without a bot in the room
+- [Amlin for executive assistants](https://amlin.ai/for-executive-assistants.html): minutes, follow-ups, and action-item tracking
+- [Privacy policy](https://amlin.ai/privacy.html): full detail on data handling, including the never-store-audio design
+- [Terms of service](https://amlin.ai/terms.html): including the recording-consent requirement
+- [Refund policy](https://amlin.ai/refund.html)
+
+## Support
+
+- Email: support@amlin.ai
+- Help center: https://help.amlin.ai/
