@@ -83,28 +83,33 @@
           <tbody>
             <tr>
               <th scope="row">Price</th>
-              <td><span class="yes">$10 / month</span>, or $108 / year</td>
+              <td class="win"><span class="yes">$10 / month</span>, or $108 / year</td>
               <td>Business: $14 / user / month. Enterprise from $35.</td>
             </tr>
             <tr>
               <th scope="row">Free plan</th>
-              <td>4 meeting-hours per month. <span class="yes">Full note history, kept forever.</span> Dictation included, never metered.</td>
+              <td class="win">4 meeting-hours per month. <span class="yes">Full note history, kept forever.</span> Dictation included, never metered.</td>
               <td>Unlimited meetings, but access to older notes is restricted until you upgrade.</td>
             </tr>
             <tr>
-              <th scope="row">Platforms</th>
-              <td class="meh">macOS 13+ (Apple silicon)</td>
-              <td><span class="yes">Mac, Windows, iPhone, Android</span></td>
+              <th scope="row">Meeting audio</th>
+              <td class="win"><span class="yes">Never stored.</span> Streamed for live transcription, discarded on the spot. Only text remains.</td>
+              <td>Transcribed by cloud providers (Granola lists Deepgram and AssemblyAI). See Granola's privacy policy for retention details.</td>
+            </tr>
+            <tr>
+              <th scope="row">Voice dictation</th>
+              <td class="win"><span class="yes">System-wide.</span> Hold a key in any app, speak, get clean text. Runs on-device.</td>
+              <td class="meh">None.</td>
+            </tr>
+            <tr>
+              <th scope="row">To-do list</th>
+              <td class="win"><span class="yes">One list across every meeting</span>, with owners and due dates, split into yours and what you're waiting on.</td>
+              <td class="meh">Action items appear inside each note.</td>
             </tr>
             <tr>
               <th scope="row">Bot joins your call?</th>
               <td><span class="yes">No.</span> System-level audio capture.</td>
               <td><span class="yes">No.</span> System-level audio capture.</td>
-            </tr>
-            <tr>
-              <th scope="row">Meeting audio</th>
-              <td><span class="yes">Never stored.</span> Streamed for live transcription, discarded on the spot. Only text remains.</td>
-              <td>Transcribed by cloud providers (Granola lists Deepgram and AssemblyAI). See Granola's privacy policy for retention details.</td>
             </tr>
             <tr>
               <th scope="row">Note enhancement</th>
@@ -117,14 +122,9 @@
               <td>Chat across your meetings.</td>
             </tr>
             <tr>
-              <th scope="row">Voice dictation</th>
-              <td><span class="yes">System-wide.</span> Hold a key in any app, speak, get clean text. Runs on-device.</td>
-              <td class="meh">None.</td>
-            </tr>
-            <tr>
-              <th scope="row">To-do list</th>
-              <td><span class="yes">One list across every meeting</span>, with owners and due dates, split into yours and what you're waiting on.</td>
-              <td class="meh">Action items appear inside each note.</td>
+              <th scope="row">Platforms</th>
+              <td class="meh">macOS 13+ (Apple silicon)</td>
+              <td><span class="yes">Mac, Windows, iPhone, Android</span></td>
             </tr>
             <tr>
               <th scope="row">Integrations</th>
@@ -139,7 +139,7 @@
           </tbody>
         </table>
       </div>
-      <p class="cmp-note">Granola pricing and features change; treat their <a href="https://www.granola.ai/" rel="noopener" target="_blank">official site</a> as the source of truth. We update this page when we notice a change.</p>
+      <p class="cmp-note"><span class="cmp-key" aria-hidden="true"></span>Highlighted rows are where Amlin pulls ahead: price, privacy, and how much of your workday one app covers. Granola pricing and features change; treat their <a href="https://www.granola.ai/" rel="noopener" target="_blank">official site</a> as the source of truth. We update this page when we notice a change.</p>
     </div>
   </section>
 
@@ -149,14 +149,6 @@
         <h2>Which one fits you</h2>
       </div>
       <div class="pick">
-        <div class="card">
-          <h3>Choose Granola if…</h3>
-          <ul>
-            <li>You need Windows, iPhone, or Android alongside (or instead of) a Mac.</li>
-            <li>Your team shares meeting notes, and you want them flowing into Notion, HubSpot, or Slack.</li>
-            <li>You want unlimited meetings on a free plan and don't mind losing easy access to older notes.</li>
-          </ul>
-        </div>
         <div class="card us">
           <h3>Choose Amlin if…</h3>
           <ul>
@@ -164,6 +156,14 @@
             <li>"We never store your audio" and on-device dictation matter to you or to your clients.</li>
             <li>You want every commitment from every call collected into a single list with owners and due dates.</li>
             <li>You want your full note history on the free plan while you evaluate.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Choose Granola if…</h3>
+          <ul>
+            <li>You need Windows, iPhone, or Android alongside (or instead of) a Mac.</li>
+            <li>Your team shares meeting notes, and you want them flowing into Notion, HubSpot, or Slack.</li>
+            <li>You want unlimited meetings on a free plan and don't mind losing easy access to older notes.</li>
           </ul>
         </div>
       </div>
@@ -218,6 +218,7 @@
           <a href="amlin-vs-mac-dictation.html">vs Mac dictation</a>
           <a href="for-consultants.html">For consultants</a>
           <a href="for-executive-assistants.html">For executive assistants</a>
+          <a href="for-project-managers.html">For project managers</a>
           <a href="privacy.html">Privacy</a>
           <a href="terms.html">Terms</a>
           <a href="mailto:support@amlin.ai">support@amlin.ai</a>

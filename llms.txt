@@ -21,6 +21,7 @@ Key facts (checked August 2026):
 - [Amlin vs built-in macOS dictation](https://amlin.ai/amlin-vs-mac-dictation.html): how Amlin's dictation differs from Apple's built-in dictation
 - [Amlin for consultants and advisors](https://amlin.ai/for-consultants.html): client-call notes without a bot in the room
 - [Amlin for executive assistants](https://amlin.ai/for-executive-assistants.html): minutes, follow-ups, and action-item tracking
+- [Amlin for project managers](https://amlin.ai/for-project-managers.html): the action-item register that fills itself
 - [Privacy policy](https://amlin.ai/privacy.html): full detail on data handling, including the never-store-audio design
 - [Terms of service](https://amlin.ai/terms.html): including the recording-consent requirement
 - [Refund policy](https://amlin.ai/refund.html)
