@@ -464,6 +464,11 @@ a:focus-visible, .btn:focus-visible, summary:focus-visible {
 .lp-sub { font-size: 18px; line-height: 1.6; color: var(--ink-soft); max-width: 660px; margin: 0 auto 26px; }
 .lp-updated { font-size: 13.5px; color: var(--muted); }
 
+.sa { max-width: 720px; margin: -8px auto 30px; text-align: left; }
+.sa p { font-size: 16.5px; line-height: 1.65; color: var(--ink-soft); margin-bottom: 13px; }
+.sa p:last-child { margin-bottom: 0; }
+.sa strong { color: var(--ink); }
+
 .cmp-scroll { overflow-x: auto; }
 .cmp { width: 100%; min-width: 620px; border-collapse: separate; border-spacing: 0; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); overflow: hidden; box-shadow: var(--shadow-sm); }
 .cmp th, .cmp td { padding: 13px 18px; text-align: left; font-size: 15px; line-height: 1.5; border-bottom: 1px solid var(--line); vertical-align: top; }
