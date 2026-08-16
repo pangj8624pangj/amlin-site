@@ -60,10 +60,16 @@
 posthog.init("phc_wGpaRh2SCxAxyDbPH3sBd3ConnZ2rbdsDHLXUYGbzjKc", {
   api_host: "https://eu.i.posthog.com",
   autocapture: false,
-  capture_pageview: true,
+  // Explicit pageview below instead of the library's automatic one: verified
+  // 2026-08-15 that the automatic capture never fired on these pages, so the
+  // pageview is sent by our own line — one code path, deterministic in every
+  // browser, and it cannot double-count because automatic capture is off.
+  capture_pageview: false,
   disable_session_recording: true,
+  disable_surveys: true,
   person_profiles: "identified_only",
 });
+posthog.capture("$pageview");
 
 /* Tiny guarded helper so page scripts never depend on load order or break if
  * the CDN is blocked: the stub above queues calls made before array.js lands. */
