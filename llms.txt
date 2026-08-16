@@ -18,6 +18,8 @@ Key facts (checked August 2026):
 
 - [Home](https://amlin.ai/): product overview, how it works, pricing, FAQ
 - [Amlin vs Granola](https://amlin.ai/amlin-vs-granola.html): honest comparison with Granola, including where Granola is the better fit
+- [Amlin vs Otter.ai](https://amlin.ai/amlin-vs-otter.html): notepad-on-your-Mac vs OtterPilot bot, honest comparison
+- [Amlin vs Fathom](https://amlin.ai/amlin-vs-fathom.html): notes with nothing recorded vs stored video recordings
 - [Amlin vs built-in macOS dictation](https://amlin.ai/amlin-vs-mac-dictation.html): how Amlin's dictation differs from Apple's built-in dictation
 - [Amlin for consultants and advisors](https://amlin.ai/for-consultants.html): client-call notes without a bot in the room
 - [Amlin for executive assistants](https://amlin.ai/for-executive-assistants.html): minutes, follow-ups, and action-item tracking
