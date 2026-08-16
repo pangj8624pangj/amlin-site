@@ -464,8 +464,8 @@ a:focus-visible, .btn:focus-visible, summary:focus-visible {
 .lp-sub { font-size: 18px; line-height: 1.6; color: var(--ink-soft); max-width: 660px; margin: 0 auto 26px; }
 .lp-updated { font-size: 13.5px; color: var(--muted); }
 
-.sa { max-width: 720px; margin: -8px auto 30px; text-align: left; }
-.sa p { font-size: 16.5px; line-height: 1.65; color: var(--ink-soft); margin-bottom: 13px; }
+.sa { max-width: 720px; margin: -8px auto 34px; text-align: left; }
+.sa p { font-size: 17px; line-height: 1.7; color: var(--ink-soft); margin-bottom: 18px; }
 .sa p:last-child { margin-bottom: 0; }
 .sa strong { color: var(--ink); }
 
