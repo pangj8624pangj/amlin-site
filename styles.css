@@ -106,6 +106,16 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.12; let
 .hero h1 { font-size: clamp(38px, 6vw, 64px); margin-bottom: 22px; }
 .hero .sub { max-width: 640px; margin: 0 auto 34px; font-size: clamp(17px, 2.2vw, 20px); color: var(--ink-soft); }
 .cta-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+.hero .chain { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; margin: 24px auto 0; }
+.chain-step { background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 8px 16px; font-size: 14.5px; color: var(--ink-soft); box-shadow: var(--shadow-sm); white-space: nowrap; }
+.chain-step b { color: var(--ink); font-weight: 700; }
+.chain-sep { color: var(--accent); font-weight: 700; font-size: 17px; }
+.chain-note { font-size: 14px; color: var(--muted); margin: 10px 0 24px; }
+@media (max-width: 680px) {
+  .hero .chain { flex-direction: column; gap: 8px; }
+  .chain-sep { transform: rotate(90deg); }
+}
 .hero .micro { margin-top: 18px; font-size: 14px; color: var(--muted); }
 
 /* ── positioning trio ────────────────────────────────── */
