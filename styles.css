@@ -471,9 +471,10 @@ a:focus-visible, .btn:focus-visible, summary:focus-visible {
 .dg-hud {
   position: absolute; left: 50%; bottom: 4.5%; transform: translate(-50%, 10px) scale(0.95);
   opacity: 0; background: #f4eedd; border: 1px solid #e6ddc5; border-radius: 999px;
-  padding: 10px 20px; display: flex; align-items: center; gap: 12px; line-height: 1;
+  padding: 10px 20px; display: flex; align-items: center; justify-content: center;
+  gap: 12px; line-height: 1; min-width: 296px; box-sizing: border-box;
   box-shadow: 0 10px 32px rgba(40, 33, 22, 0.24);
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition: opacity 0.25s ease, transform 0.25s ease;
   font-family: var(--sans);
 }
 .dg.rec .dg-hud, .dg.proc .dg-hud, .dg.ok .dg-hud { opacity: 1; transform: translate(-50%, 0) scale(1); }
@@ -493,11 +494,12 @@ a:focus-visible, .btn:focus-visible, summary:focus-visible {
 .dg-time { font-weight: 700; font-size: 14.5px; color: var(--ink); font-variant-numeric: tabular-nums; }
 .dg-badge { width: 21px; height: 21px; border-radius: 50%; border: 1.5px solid #9fb3a4; color: #57705f; font-size: 11px; font-weight: 600; display: flex; align-items: center; justify-content: center; }
 .dg-proc, .dg-check { display: none; font-size: 14.5px; font-weight: 600; color: var(--ink-soft); }
-.dg.proc .dg-esc, .dg.proc .dg-dot, .dg.proc .dg-bars, .dg.proc .dg-time,
-.dg.ok .dg-esc, .dg.ok .dg-dot, .dg.ok .dg-bars, .dg.ok .dg-time { display: none; }
-.dg.proc .dg-proc { display: block; animation: dg-pulse 1s ease infinite; }
-.dg.ok .dg-check { display: block; color: var(--accent-deep); }
-@keyframes dg-pulse { 50% { opacity: 0.55; } }
+.dg-proc::after { content: '…'; }
+.dg.proc .dg-esc, .dg.proc .dg-dot, .dg.proc .dg-bars, .dg.proc .dg-time, .dg.proc .dg-badge,
+.dg.ok .dg-esc, .dg.ok .dg-dot, .dg.ok .dg-bars, .dg.ok .dg-time, .dg.ok .dg-badge { display: none; }
+.dg.proc .dg-proc { display: block; animation: dg-pulse 0.9s ease infinite; }
+.dg.ok .dg-check { display: block; color: var(--accent-deep); font-size: 16px; }
+@keyframes dg-pulse { 50% { opacity: 0.5; } }
 .dg.snap .dg-cover { transition: none; }
 
 .sa { max-width: 720px; margin: -8px auto 34px; text-align: left; }

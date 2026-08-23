@@ -201,15 +201,15 @@
       let s = 0
       timeEl.textContent = '0:00'
       dg.classList.add('rec')
-      const tick = setInterval(() => { s += 1; timeEl.textContent = '0:0' + Math.min(s, 9) }, 1000)
+      const tick = setInterval(() => { s += 1; timeEl.textContent = '0:0' + Math.min(s, 9) }, 750)
       setTimeout(() => {
         clearInterval(tick)
         dg.classList.remove('rec')
         dg.classList.add('proc')
-      }, 3300)
-      setTimeout(() => { dg.classList.remove('proc'); dg.classList.add('ok') }, 4500)
-      setTimeout(() => { dg.classList.remove('ok'); dg.classList.remove('covered') }, 5100)
-      setTimeout(() => { playing = false; play() }, 9200)
+      }, 2000)
+      setTimeout(() => { dg.classList.remove('proc'); dg.classList.add('ok') }, 2700)
+      setTimeout(() => { dg.classList.remove('ok'); dg.classList.remove('covered') }, 3100)
+      setTimeout(() => { playing = false; play() }, 6200)
     }
     const dgIO = new IntersectionObserver((entries) => {
       entries.forEach((e) => {
