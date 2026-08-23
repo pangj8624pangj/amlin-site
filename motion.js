@@ -185,7 +185,7 @@
   if (closer) mountWave(closer, 0.88)
 
   // ── Dictation flow: re-enact the real capture (HUD pops in, records,
-  //    processes, and the last sentence is inserted) on a loop while visible ──
+  //    processes, and the whole email lands line by line) on a loop while visible ──
   const dg = document.querySelector('.dg')
   if (dg) {
     const timeEl = dg.querySelector('.dg-time')
@@ -193,8 +193,9 @@
     const play = () => {
       if (playing) return
       playing = true
-      // reset instantly: sentence covered again with no visible wipe
+      // reset instantly: whole email covered again with no visible wipe
       dg.classList.add('snap')
+      dg.classList.remove('r1', 'r2', 'r3')
       dg.classList.add('covered')
       void dg.offsetWidth
       dg.classList.remove('snap')
@@ -206,10 +207,12 @@
         clearInterval(tick)
         dg.classList.remove('rec')
         dg.classList.add('proc')
-      }, 2000)
-      setTimeout(() => { dg.classList.remove('proc'); dg.classList.add('ok') }, 2700)
-      setTimeout(() => { dg.classList.remove('ok'); dg.classList.remove('covered') }, 3100)
-      setTimeout(() => { playing = false; play() }, 6200)
+      }, 2200)
+      setTimeout(() => { dg.classList.remove('proc'); dg.classList.add('ok') }, 2900)
+      setTimeout(() => { dg.classList.remove('ok'); dg.classList.add('r1') }, 3300)
+      setTimeout(() => { dg.classList.add('r2') }, 3550)
+      setTimeout(() => { dg.classList.add('r3') }, 3980)
+      setTimeout(() => { playing = false; play() }, 7400)
     }
     const dgIO = new IntersectionObserver((entries) => {
       entries.forEach((e) => {

@@ -468,8 +468,16 @@ a:focus-visible, .btn:focus-visible, summary:focus-visible {
    Pill proportions measured from the founder's screen recording: 43.7% of window
    width, 7cqw tall, centered at 59.5%, 3.4% above the bottom edge. ---- */
 .dg { position: relative; line-height: 0; container-type: inline-size; }
-.dg-cover { position: absolute; top: 27.4%; right: 62.6%; width: 0; height: 4%; background: #ffffff; transition: width 0.5s steps(10, end); }
-.dg.covered .dg-cover { width: 26.4%; }
+.dg-cover { position: absolute; height: 3.5%; width: 0; background: #ffffff; }
+.dg-cover.c1 { top: 18.5%; right: 87.4%; transition: width 0.22s steps(5, end); }
+.dg-cover.c2 { top: 24.6%; right: 7.2%; transition: width 0.5s steps(11, end); }
+.dg-cover.c3 { top: 27.7%; right: 63.6%; transition: width 0.3s steps(7, end); }
+.dg.covered .c1 { width: 10.8%; }
+.dg.covered .c2 { width: 91%; }
+.dg.covered .c3 { width: 34.6%; }
+.dg.r1 .c1 { width: 0; }
+.dg.r2 .c2 { width: 0; }
+.dg.r3 .c3 { width: 0; }
 .dg-hud {
   position: absolute; left: 59.5%; bottom: 3.4%; transform: translate(-50%, 8px) scale(0.95);
   opacity: 0; background: #f4eede; border: 1px solid #e6ddc5; border-radius: 999px;
