@@ -184,6 +184,41 @@
   const closer = document.querySelector('.close-cta')
   if (closer) mountWave(closer, 0.88)
 
+  // ── Dictation flow: re-enact the real capture (HUD pops in, records,
+  //    processes, and the last sentence is inserted) on a loop while visible ──
+  const dg = document.querySelector('.dg')
+  if (dg) {
+    const timeEl = dg.querySelector('.dg-time')
+    let playing = false
+    const play = () => {
+      if (playing) return
+      playing = true
+      // reset instantly: sentence covered again with no visible wipe
+      dg.classList.add('snap')
+      dg.classList.add('covered')
+      void dg.offsetWidth
+      dg.classList.remove('snap')
+      let s = 0
+      timeEl.textContent = '0:00'
+      dg.classList.add('rec')
+      const tick = setInterval(() => { s += 1; timeEl.textContent = '0:0' + Math.min(s, 9) }, 1000)
+      setTimeout(() => {
+        clearInterval(tick)
+        dg.classList.remove('rec')
+        dg.classList.add('proc')
+      }, 3300)
+      setTimeout(() => { dg.classList.remove('proc'); dg.classList.add('ok') }, 4500)
+      setTimeout(() => { dg.classList.remove('ok'); dg.classList.remove('covered') }, 5100)
+      setTimeout(() => { playing = false; play() }, 9200)
+    }
+    const dgIO = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) { play(); dgIO.disconnect() }
+      })
+    }, { threshold: 0.35 })
+    dgIO.observe(dg)
+  }
+
   // ── Ambience: mic pulse on the primary CTAs ──
   document.querySelectorAll('.hero .btn-primary, .close-cta .btn-primary').forEach((btn) => {
     const dot = document.createElement('span')
