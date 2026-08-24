@@ -8,7 +8,7 @@ Key facts (checked August 2026):
 - Works with Zoom, Google Meet, Microsoft Teams, and anything else that plays sound on the Mac. No bot joins the call; other participants install nothing.
 - Meeting audio is streamed for live transcription and discarded immediately. It is never written to disk or stored by Amlin. Only notes and transcript text remain.
 - Dictation works in any app (hold a key, speak, get cleaned-up text) and runs entirely on-device. It is included in the free plan and never metered.
-- Dictation formats for the destination: emails arrive with greetings and paragraph breaks in place, spoken "new line" becomes a real line break, and spoken emoji requests are inserted as emoji.
+- Dictation formats for the destination: emails arrive with greetings and paragraph breaks in place, spoken "new line" becomes a real line break, asking for a bullet list produces real bullet points, and spoken emoji requests are inserted as emoji.
 - All three tools share one custom dictionary that keeps learning the user's names, jargon, and phrasing, so transcription and dictation accuracy improve the longer Amlin is used.
 - Action items are extracted from meetings with owners and due dates into one list across all meetings.
 - Ask lets users chat over one meeting or their whole history, with citations to the source line.
