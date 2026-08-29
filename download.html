@@ -22,6 +22,13 @@
     @keyframes dl-spin { to { transform: rotate(360deg); } }
     .dl-card .muted { font-size: 14px; color: var(--muted); margin-top: 20px; }
     .dl-card .muted a { color: var(--accent); text-decoration: underline; }
+    /* JUN-133: shown only when Stripe's after-payment redirect lands here with ?pro=1 */
+    .pro-card { margin: 26px auto 0; max-width: 460px; text-align: left; background: var(--accent-tint); border: 1px solid var(--accent-tint-2); border-radius: 12px; padding: 18px 20px; }
+    .pro-card .pro-badge { color: var(--accent); font-weight: 700; margin-bottom: 8px; font-size: 15px; }
+    .pro-card p { font-size: 15px; margin: 0 0 4px; max-width: none; }
+    .pro-card ol { margin: 8px 0 0 20px; padding: 0; }
+    .pro-card li { margin: 7px 0; font-size: 15px; color: var(--ink-soft); }
+    .pro-card .pro-fineprint { font-size: 13px; color: var(--muted); margin-top: 12px; }
   </style>
   <script defer src="assets/ph.js"></script>
 </head>
@@ -42,6 +49,18 @@
       <h1>Starting your download…</h1>
       <p>Amlin for Mac (Apple silicon, macOS 13+) should begin downloading automatically.</p>
       <p class="muted">Didn't start? <a id="dl-fallback" href="https://github.com/pangj8624pangj/junola-releases/releases/latest">Download it here</a> &nbsp;·&nbsp; <a href="index.html">Back to home</a></p>
+      <!-- JUN-133: post-checkout landing. Stripe's after-payment redirect points
+           here with ?pro=1; the block below is the missing "now what" that tells
+           purchasers their plan activates by signing in with the checkout email. -->
+      <div class="pro-card" id="pro-card" hidden>
+        <p class="pro-badge">✓ Payment received</p>
+        <p><b>Two steps to activate Pro:</b></p>
+        <ol>
+          <li>Install Amlin from the download that just started (drag it into Applications and open it).</li>
+          <li>Inside the app, sign in with Google <b>using the same email you used at checkout</b>. Your Pro plan attaches to that account automatically.</li>
+        </ol>
+        <p class="pro-fineprint">Paid with a different email than your Google account? Message us from the chat bubble in the corner and we'll sort it out.</p>
+      </div>
     </div>
   </main>
 
@@ -52,6 +71,14 @@
     (function () {
       var API = 'https://api.github.com/repos/pangj8624pangj/junola-releases/releases/latest';
       var fb = document.getElementById('dl-fallback');
+      // JUN-133: Stripe's after-payment redirect lands purchasers on ?pro=1.
+      // The activation steps stay visible while the DMG downloads (asset URLs
+      // serve as attachments, so the location change never leaves this page).
+      if (new URLSearchParams(location.search).get('pro') === '1') {
+        document.getElementById('pro-card').hidden = false;
+        document.title = 'Welcome to Amlin Pro';
+        window.amlinTrack && window.amlinTrack('pro_landing_viewed');
+      }
       // The fallback link is a download start too: it fires when the API path
       // failed or the visitor clicked before the redirect.
       fb.addEventListener('click', function () {
