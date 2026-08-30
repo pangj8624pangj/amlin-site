@@ -80,3 +80,47 @@ window.amlinTrack = function (name, props) {
     /* analytics must never break the page */
   }
 };
+
+/* Automation guard (2026-08-29). download.html fires download_clicked on page
+ * LOAD, not on a click, so anything that merely fetches /download books a
+ * download start: cloud crawlers, link-preview bots, and our own headless
+ * regression runs. On 2026-08-29, six of nine download starts came from AWS and
+ * GCP datacenter ranges, and PostHog's own $virt_is_bot read false on all of
+ * them, so its built-in bot filter does not catch this class.
+ *
+ * Deliberately narrow: it keys off signals a real visitor never sets, so a
+ * genuine download is not dropped. Background tabs are NOT excluded, because a
+ * visitor who opens the page in one still downloads the file. */
+var AMLIN_BOT_UA =
+  /bot\b|crawl|spider|slurp|headless|phantomjs|puppeteer|playwright|selenium|facebookexternalhit|curl\/|wget\/|python-requests|node-fetch|axios\//i;
+
+window.amlinIsAutomated = function () {
+  try {
+    // Set by Selenium, Playwright and Puppeteer, so this covers our own
+    // build and regression runs without them needing to opt out.
+    if (navigator.webdriver === true) return true;
+    // Speculative prerender: the page runs but nobody has visited it yet.
+    if (document.prerendering === true) return true;
+    return AMLIN_BOT_UA.test(navigator.userAgent || "");
+  } catch (e) {
+    // The guard must never be the reason a real download goes uncounted.
+    return false;
+  }
+};
+
+/* Capture at most once per browser session for a given event name.
+ * The download page auto-fires on load, so a reload (or a visitor coming back
+ * while the DMG finishes) counted the same download twice: 2026-08-29 05:22:12
+ * and 05:22:22 were one person, ten seconds apart. */
+window.amlinTrackOnce = function (name, props) {
+  var key = "amlin_once_" + name;
+  try {
+    if (sessionStorage.getItem(key)) return false;
+    sessionStorage.setItem(key, "1");
+  } catch (e) {
+    /* Private mode or storage disabled. Fall through and capture: a rare
+     * duplicate is a smaller error than dropping a real download. */
+  }
+  window.amlinTrack(name, props);
+  return true;
+};
