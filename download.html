@@ -79,10 +79,20 @@
         document.title = 'Welcome to Amlin Pro';
         window.amlinTrack && window.amlinTrack('pro_landing_viewed');
       }
+      // One download start per session, and never for automation (2026-08-29).
+      // Both guards live in ph.js, which also defines amlinTrack, so when it
+      // has not loaded there is nothing to capture through anyway.
+      function trackDownloadStart(props) {
+        if (!window.amlinTrackOnce || !window.amlinIsAutomated) return;
+        if (window.amlinIsAutomated()) return;
+        window.amlinTrackOnce('download_clicked', props);
+      }
       // The fallback link is a download start too: it fires when the API path
-      // failed or the visitor clicked before the redirect.
+      // failed or the visitor clicked before the redirect. It shares the
+      // once-per-session guard, since a fallback click after a fired auto
+      // belongs to the same download.
       fb.addEventListener('click', function () {
-        window.amlinTrack && window.amlinTrack('download_clicked', { asset: 'dmg', trigger: 'fallback' });
+        trackDownloadStart({ asset: 'dmg', trigger: 'fallback' });
       });
       fetch(API, { headers: { Accept: 'application/vnd.github+json' } })
         .then(function (r) { if (!r.ok) throw new Error('api ' + r.status); return r.json(); })
@@ -97,12 +107,11 @@
             // through the analytics stub, so this works even before the
             // script finishes loading, and the location change starts a file
             // download, so the page (and its queue) stays alive.
-            window.amlinTrack &&
-              window.amlinTrack('download_clicked', {
-                asset: 'dmg',
-                trigger: 'auto',
-                version: data.tag_name || null
-              });
+            trackDownloadStart({
+              asset: 'dmg',
+              trigger: 'auto',
+              version: data.tag_name || null
+            });
             window.location.href = dmg.browser_download_url;
           }
         })
