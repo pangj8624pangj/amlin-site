@@ -79,7 +79,7 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.12; let
 .nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
 .brand { font-family: var(--serif); font-weight: 700; font-size: 22px; letter-spacing: -0.02em; color: var(--ink); }
 .brand .dot { color: var(--accent); }
-.brand-mark { height: 1.2em; width: auto; vertical-align: -0.26em; margin-right: 0.42em; border-radius: 24%; }
+.brand-mark { height: 1.2em; width: auto; vertical-align: -0.26em; margin-right: 0.42em; border-radius: 24%; transform-origin: 50% 50%; }
 .nav-links { display: flex; align-items: center; gap: 26px; }
 .nav-links a:not(.btn) { color: var(--ink-soft); font-size: 15px; font-weight: 500; }
 .nav-links a:not(.btn):hover { color: var(--ink); }
@@ -386,7 +386,7 @@ h1.kin-off { opacity: 0; }
 .kw.on { opacity: 1; transform: none; filter: none; }
 
 /* headline scroll reveals */
-.rw { display: inline-block; opacity: 0; transform: translateY(10px); transition: opacity 0.45s ease, transform 0.45s ease; }
+.rw { display: inline-block; opacity: 0; transform: translate(var(--rw-x, 0px), 10px); transition: opacity 0.45s ease, transform 0.45s ease; }
 h2.rv-in .rw { opacity: 1; transform: none; }
 
 /* dictation demo performs on scroll */
@@ -421,6 +421,7 @@ svg.ink path { fill: none; stroke: var(--live); stroke-width: 3; stroke-linecap:
 .has-ink.ink-in .ink-circ path { transition: stroke-dashoffset 0.85s ease 0.2s; stroke-dashoffset: 0; }
 
 .footer .brand-mark { animation: pin-spin 16s linear infinite; }
+.windy .footer .brand-mark { animation: none; }
 @keyframes pin-spin { to { transform: rotate(360deg); } }
 
 @media (prefers-reduced-motion: reduce) {

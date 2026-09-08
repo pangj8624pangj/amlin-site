@@ -9,6 +9,50 @@
     return
   }
 
+  // ── Scroll is wind. One model with gust inertia and slow decay drives the
+  //    pinwheel marks (real angular momentum), the ribbon surge, the paper
+  //    motes, and the direction headlines settle in from. Meaning over motion:
+  //    Amlin turns moving air into text; the mark is what makes air visible. ──
+  document.documentElement.classList.add('windy')
+  const wind = { v: 0, dir: 1 }
+  {
+    const pins = document.querySelectorAll('.nav .brand-mark, .footer .brand-mark')
+    const shotWrap = document.querySelector('.hero-shot')
+    const planes = shotWrap && matchMedia('(min-width: 821px)').matches
+      ? [
+          [shotWrap.querySelector('.shot-caption'), -9],
+          [shotWrap.querySelector('.strip'), 13]
+        ].filter((p) => p[0])
+      : []
+    let lastY = scrollY
+    let lastT = performance.now()
+    let angle = 0
+    let spinV = 0.05
+    ;(function windTick(now) {
+      const dt = Math.max(now - lastT, 1)
+      const dy = scrollY - lastY
+      lastY = scrollY
+      lastT = now
+      const target = Math.min(Math.abs(dy) / dt * 16 / 24, 1)
+      if (target > wind.v) wind.v += (target - wind.v) * 0.25 // gusts arrive fast
+      else wind.v *= 0.965 // and die slowly
+      if (dy !== 0) wind.dir = dy > 0 ? 1 : -1
+      // pinwheels: wind torque against rotational inertia, so a flick spins
+      // them up and they coast back down to an idle drift
+      const drive = 0.05 + wind.v * wind.v * 16 * wind.dir
+      spinV += (drive - spinV) * 0.06
+      angle = (angle + spinV) % 360
+      pins.forEach((p) => { p.style.transform = 'rotate(' + angle + 'deg)' })
+      // notepad scene: planes drift apart slightly as the scene passes center
+      if (planes.length) {
+        const r = shotWrap.getBoundingClientRect()
+        const p = Math.min(Math.max(1 - (r.top + r.height / 2) / innerHeight, 0), 1) * 2 - 1
+        planes.forEach((pl) => { pl[0].style.transform = 'translateY(' + (p * pl[1]).toFixed(1) + 'px)' })
+      }
+      requestAnimationFrame(windTick)
+    })(lastT)
+  }
+
   // ── Kinetic hero: raw speech types itself, Enhance lands, headline resolves ──
   const hero = document.querySelector('.hero')
   const h1 = hero ? hero.querySelector('h1') : null
@@ -69,6 +113,8 @@
   const headIO = new IntersectionObserver((entries) => {
     entries.forEach((e) => {
       if (e.isIntersecting) {
+        // words settle in from the direction the wind is blowing right now
+        e.target.style.setProperty('--rw-x', (wind.dir * (6 + wind.v * 26)).toFixed(1) + 'px')
         e.target.classList.add('rv-in')
         headIO.unobserve(e.target)
       }
@@ -159,10 +205,18 @@
       { amp: 12, speed: 1.6, hue: 'rgba(20,107,98,0.11)', w: 1.4 },
       { amp: 28, speed: 0.6, hue: 'rgba(206,75,60,0.09)', w: 1.4 }
     ]
+    // paper motes ride the same wind as everything else
+    const motes = Array.from({ length: 9 }, (_, i) => ({
+      x: Math.random(), y: 0.15 + Math.random() * 0.7,
+      r: 0.9 + Math.random() * 1.3, s: 0.25 + Math.random() * 0.5,
+      ph: Math.random() * 6.28,
+      hue: i % 3 === 2 ? 'rgba(206,75,60,0.15)' : 'rgba(20,107,98,0.16)'
+    }))
     ;(function draw(t) {
       ctx.clearRect(0, 0, W, H)
       const mid = H * midFraction
-      const breathe = 0.55 + 0.45 * Math.sin(t / 2600)
+      const gust = 1 + wind.v * 1.6
+      const breathe = (0.55 + 0.45 * Math.sin(t / 2600)) * gust
       for (const L of layers) {
         ctx.beginPath()
         for (let x = 0; x <= W; x += 6 * dpr) {
@@ -176,6 +230,15 @@
         ctx.strokeStyle = L.hue
         ctx.lineWidth = L.w * dpr
         ctx.stroke()
+      }
+      for (const m of motes) {
+        m.x += m.s * 0.0004 + wind.v * 0.005
+        if (m.x > 1.02) m.x -= 1.04
+        const my = (m.y + Math.sin(t / 1900 + m.ph) * 0.03 - wind.v * 0.05) * H
+        ctx.beginPath()
+        ctx.arc(m.x * W, my, m.r * dpr, 0, 6.283)
+        ctx.fillStyle = m.hue
+        ctx.fill()
       }
       requestAnimationFrame(draw)
     })(0)
