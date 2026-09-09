@@ -18,24 +18,16 @@
   <link rel="canonical" href="https://amlin.ai/" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png" />
   <link rel="icon" href="assets/icon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
-  <link rel="stylesheet" href="styles.css?v=9" />
-  <script>
-    // Kinetic-hero flag set pre-render so the headline never flashes before
-    // its once-per-session performance. No-JS and reduced-motion stay static.
-    try {
-      if (!sessionStorage.getItem('amlin-hero-played') &&
-          !matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        document.documentElement.classList.add('kinetic')
-      }
-    } catch (e) {}
-  </script>
-  <script src="motion.js?v=6" defer></script>
-  <noscript><style>svg.ink path { stroke-dashoffset: 0 !important; }</style></noscript>
+  <link rel="stylesheet" href="scrollcraft.css?v=1" />
+  <link rel="stylesheet" href="amlin-flight.css?v=1" />
   <script defer src="assets/ph.js"></script>
+  <noscript>
+    <style>#flight, #mark, #map, #markMeta { display: none !important; }</style>
+  </noscript>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -87,236 +79,196 @@
   </script>
 </head>
 <body>
-  <nav class="nav">
-    <div class="wrap">
-      <span class="brand"><img class="brand-mark" src="assets/icon.svg" alt="Amlin" width="26" height="26" />Amlin</span>
-      <div class="nav-links">
-        <a href="#how">How it works</a>
-        <a href="#privacy">Privacy</a>
-        <a href="#pricing">Pricing</a>
-        <a class="btn btn-primary" href="download.html">Download</a>
+  <a class="skip" href="#pricing">Skip to pricing</a>
+  <span id="how"></span>
+
+  <!-- ONE unbroken world. The engine flies it; the field and the mark are the page's own. -->
+  <div id="flight" data-sc-mode="worldflight" data-sc-seam="0.16">
+
+    <div data-sc-world>
+      <canvas id="air" aria-hidden="true"></canvas>
+
+      <div data-sc-segment data-sc-w="1.4" data-sc-waypoint="Air"><i class="seg-decoy" data-sc-poster hidden></i></div>
+      <div data-sc-segment data-sc-w="1.4" data-sc-waypoint="The cost"><i class="seg-decoy" data-sc-poster hidden></i></div>
+      <div data-sc-segment data-sc-w="2.6" data-sc-waypoint="The catch">
+        <i class="seg-decoy" data-sc-poster hidden></i>
+        <figure class="plate plate--note" id="plateNote">
+          <img src="assets/desktop-note.jpg" width="1760" height="1155" alt="An Amlin meeting note: a clean structured summary with decisions, key points, and action items." />
+          <figcaption class="plate__cap">The note, seconds after the call</figcaption>
+        </figure>
+      </div>
+      <div data-sc-segment data-sc-w="1.4" data-sc-waypoint="It learns you"><i class="seg-decoy" data-sc-poster hidden></i></div>
+      <div data-sc-segment data-sc-w="1.6" data-sc-waypoint="Three currents">
+        <i class="seg-decoy" data-sc-poster hidden></i>
+        <figure class="plate plate--dict" id="plateDict">
+          <img src="assets/dictation-gmail.png" width="1438" height="1312" alt="Dictating an email in Gmail with Amlin: a clean, punctuated paragraph typed by voice." />
+          <figcaption class="plate__cap">Dictation, in Gmail</figcaption>
+        </figure>
+        <figure class="plate plate--todo" id="plateTodo">
+          <img src="assets/desktop-actions.jpg" width="1760" height="1155" alt="Amlin's action items view: open loops grouped into overdue, today, and this week, with owners and due dates." />
+          <figcaption class="plate__cap">Action items, across every meeting</figcaption>
+        </figure>
+      </div>
+      <div data-sc-segment data-sc-w="1.4" data-sc-waypoint="Nothing kept"><i class="seg-decoy" data-sc-poster hidden></i></div>
+      <div data-sc-segment data-sc-w="1.2" data-sc-waypoint="Yours"><i class="seg-decoy" data-sc-poster hidden></i></div>
+    </div>
+
+    <div data-sc-world-copy>
+      <div class="w w--hero" data-sc-copy data-sc-window="hero">
+        <h1>Stay in the conversation. Amlin takes the notes.</h1>
+        <p class="lede">One Mac app that listens with you: meeting notes written the moment a call ends, dictation wherever you type, and a to-do list that fills itself.</p>
+        <div class="cta-row">
+          <a class="btn btn--primary" href="download.html">Download for Mac</a>
+        </div>
+        <p class="micro">Free to start · macOS 13+ · Apple silicon · Sign in with Google</p>
+      </div>
+
+      <div class="w w--cost" data-sc-copy data-sc-window="0.13 0.245 0.25 0.3">
+        <h2>You can be present, or you can be writing it down.</h2>
+      </div>
+      <div class="w w--costb" data-sc-copy data-sc-window="0.15 0.255 0.3 0.3">
+        <p>Never both. A conversation moves at talking speed, the useful parts blow past in a sentence, and what nobody catches is gone by the next meeting.</p>
+      </div>
+
+      <div class="w w--catch" data-sc-copy data-sc-window="0.26 0.37 0.28 0.3">
+        <h2>The catch.</h2>
+        <p>Amlin takes the call live, straight off your Mac&rsquo;s own audio. No bot joins, and nobody else has to install a thing.</p>
+      </div>
+      <div class="w w--tag w--tag1" data-sc-copy data-sc-window="0.30 0.44 0.3 0.25"><span class="tag">Summary</span></div>
+      <div class="w w--tag w--tag2" data-sc-copy data-sc-window="0.325 0.45 0.3 0.25"><span class="tag">Decisions</span></div>
+      <div class="w w--tag w--tag3" data-sc-copy data-sc-window="0.35 0.46 0.3 0.25"><span class="tag">Action items · owners · due dates</span></div>
+      <div class="w w--catchb" data-sc-copy data-sc-window="0.375 0.475 0.3 0.3">
+        <p>The moment the call ends, the loose stream is a written note: what was said, what was decided, who owes what by when. Ask questions of it later and get answers with citations to the exact line.</p>
+      </div>
+
+      <div class="w w--learn" data-sc-copy data-sc-window="0.49 0.60 0.28 0.3">
+        <h2>Every pass teaches it.</h2>
+      </div>
+      <div class="w w--learnb" data-sc-copy data-sc-window="0.505 0.615 0.3 0.3">
+        <p>Your names, your acronyms, and your way of putting things settle into one custom dictionary shared by everything Amlin writes. Transcripts and dictation both come out more accurate the longer you use it. The wheel turns easier each time.</p>
+      </div>
+
+      <div class="w w--tri" data-sc-copy data-sc-window="0.615 0.70 0.28 0.3">
+        <h2>Three currents, one wheel.</h2>
+      </div>
+      <div class="w w--trib" data-sc-copy data-sc-window="0.635 0.745 0.28 0.28">
+        <p>Dictation runs anywhere on your Mac. Hold a key and talk: the ums disappear, punctuation lands, and finished text types itself where your cursor is. An email arrives shaped like an email, a spoken &ldquo;new line&rdquo; becomes a real line break, a bullet list appears when you ask for one, and a 🙂 lands where you meant it. On-device, unmetered, free.</p>
+        <p>To-dos file themselves. Every commitment from every meeting lands in one list with owners and due dates, and each item links back to the line that created it.</p>
+      </div>
+      <div class="w w--bill" data-sc-copy data-sc-window="0.675 0.755 0.3 0.3">
+        <p>Bought separately, a notetaker, a dictation app, and a to-do tool run about $35 a month. Amlin is all three for $10, and the free plan is real.</p>
+      </div>
+
+      <div class="w w--still" data-sc-copy data-sc-window="0.765 0.875 0.25 0.3">
+        <h2>The air leaves. The writing stays.</h2>
+        <p>Meeting audio is transcribed live and discarded on the spot: never written to disk, never stored. Dictation audio never leaves your Mac at all. What remains is text, your notes and transcripts, synced to your account alone.</p>
+        <p><a href="privacy.html">Read the full privacy policy</a></p>
+      </div>
+
+      <div class="w w--finale" data-sc-copy data-sc-window="finale">
+        <h2>Yours.</h2>
+        <p>The pinwheel&rsquo;s next stop is your Mac&rsquo;s menu bar.</p>
+        <div class="cta-row" style="justify-content:center">
+          <span class="slot" id="markSlot"><img src="assets/icon.svg" alt="" width="20" height="20" style="border-radius:22%" /></span>
+          <a class="btn btn--primary" href="download.html">Download for Mac</a>
+        </div>
+        <p class="micro">Free to start · macOS 13+ · Apple silicon · Sign in with Google</p>
       </div>
     </div>
-  </nav>
 
-  <header class="hero">
-    <div class="wrap">
-      <span class="eyebrow">Notes · Dictation · To-dos · One Mac app</span>
-      <h1>Stay in the conversation.<br />Amlin takes the notes.</h1>
-      <h2 class="sub" style="font-weight:500; margin-bottom:14px;">Amlin is one Mac app for meeting notes, voice dictation, and to-dos. All three share a custom dictionary that keeps learning your words.</h2>
-      <p class="sub">Jot rough notes while you talk. Amlin transcribes the call on your Mac and turns them into a clean, structured summary the moment it ends. The names, jargon, and phrasing it picks up make every transcript and every dictation more accurate, in your style. No bot in the room; we never store your audio.</p>
-      <div class="cta-row">
-        <a class="btn btn-primary" href="download.html">Download for Mac</a>
-        <a class="btn btn-ghost" href="#how">See how it works</a>
-      </div>
-      <p class="micro">Free to start · macOS 13+ · Apple silicon · Sign in with Google</p>
-    </div>
-  </header>
-
-  <!-- Hero visual: a real Amlin note (rough notes → enhanced summary + action items) -->
-  <div class="hero-shot">
-    <div class="shot-caption">
-      <div class="k">The notepad, seconds after your call</div>
-      <p>The whole conversation, captured and written up for you, whether you took notes or not.</p>
-    </div>
-    <figure class="mac">
-      <div class="mac-bar"><i class="tl-r"></i><i class="tl-y"></i><i class="tl-g"></i><b>Amlin</b></div>
-      <img class="shot" src="assets/desktop-note.jpg" width="1760" height="1155" fetchpriority="high" alt="An Amlin meeting note: a clean structured summary with decisions, key points, and action items." />
-    </figure>
-    <div class="strip">
-      <div class="s"><div class="d">◑</div><h4>Me / Them transcript</h4><p>Mic and system audio, split into who said what, labeled live as you talk.</p></div>
-      <div class="s"><div class="d">❋</div><h4>Ask across everything</h4><p>Chat over one meeting or your whole history, with citations back to the source line.</p></div>
-      <div class="s"><div class="d">◔</div><h4>Calendar-aware</h4><p>Your next meeting is one click from capture. Amlin knows when the call starts.</p></div>
-    </div>
+    <div data-sc-spacer aria-hidden="true"></div>
   </div>
 
-  <!-- Dictation -->
-  <section class="section" id="how">
-    <div class="wrap">
-      <div class="frow">
-        <div class="ftext">
-          <div class="kicker">Voice dictation, anywhere</div>
-          <h2 class="has-ink">Talk. It comes out <span class="ink-wrap">written<svg class="ink ink-under" viewBox="0 0 100 14" preserveAspectRatio="none" aria-hidden="true"><path d="M 2 8 C 25 3, 50 11, 98 6"/></svg></span>.</h2>
-          <p>Hold a key in any app (Mail, Slack, your editor) and speak. Amlin drops the ums, fixes punctuation and casing, and types the finished text right where your cursor is.</p>
-          <p>It also formats for what you're writing. Dictate an email and it arrives shaped like one: the greeting on its own line, clean paragraph breaks where you said "new line," and a 🙂 exactly where you asked for it.</p>
-          <ul>
-            <li>Works system-wide, not just inside Amlin</li>
-            <li>Cleaned up on-device, fast and private</li>
-            <li>Emojis, line breaks, and bullet lists by voice, placed where you meant them</li>
-            <li>Uses the same custom dictionary as your meeting notes, so it already knows your names and jargon</li>
-          </ul>
-        </div>
-        <figure class="mac">
-          <div class="mac-bar"><i class="tl-r"></i><i class="tl-y"></i><i class="tl-g"></i><b>Gmail</b></div>
-          <div class="dg">
-            <img class="shot" src="assets/dictation-gmail.png" width="1438" height="1312" loading="lazy" alt="Dictating an email in Gmail with Amlin: a clean, punctuated paragraph typed by voice, ending with Amlin's dictation bar inserting the last sentence." />
-            <div class="dg-cover c1" aria-hidden="true"></div>
-            <div class="dg-cover c2" aria-hidden="true"></div>
-            <div class="dg-cover c3" aria-hidden="true"></div>
-            <div class="dg-hud" aria-hidden="true">
-              <span class="dg-esc">&times;<i>esc</i></span>
-              <span class="dg-dot"></span>
-              <span class="dg-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
-              <span class="dg-time">0:00</span>
-              <span class="dg-proc">Processing</span>
-              <span class="dg-check">✓</span>
-              <span class="dg-badge">L</span>
-            </div>
-          </div>
-        </figure>
-      </div>
+  <!-- The mark: the page's only chrome. Nav, progress, and wind gauge in one object. -->
+  <div class="mark" id="mark">
+    <button class="mark__btn" id="markBtn" type="button" aria-expanded="false" aria-controls="map" aria-label="Amlin. Open the page map."></button>
+  </div>
+  <div class="mark__meta" id="markMeta" aria-hidden="true"><span id="wpLabel">Air</span><span class="f" id="force">F0</span></div>
+  <nav class="map" id="map" hidden aria-label="Page map">
+    <hr />
+    <a href="#pricing">Pricing</a>
+    <a href="#faq">Questions</a>
+  </nav>
 
-      <!-- To-dos / Open loops: a real Amlin Action items view -->
-      <div class="frow flip">
-        <div class="ftext">
-          <div class="kicker">A to-do list that fills itself</div>
-          <h2 class="has-ink">Every <span class="ink-wrap">commitment<svg class="ink ink-circ" viewBox="0 0 120 46" aria-hidden="true"><path d="M 8 24 C 6 8, 96 2, 112 16 C 122 30, 78 45, 32 42 C 12 40, 4 32, 10 22"/></svg></span>, <span class="ink-wrap">caught<svg class="ink ink-under" viewBox="0 0 100 14" preserveAspectRatio="none" aria-hidden="true"><path d="M 2 8 C 25 3, 50 11, 98 6"/></svg></span>.</h2>
-          <p>Amlin pulls the action items out of your meetings, with owners and due dates, and keeps them in one list across every call.</p>
-          <ul>
-            <li>Split into yours and what you're waiting on</li>
-            <li>Due dates and reminders, set by voice or a click</li>
-            <li>Jump from any item back to the line that created it</li>
-          </ul>
-        </div>
-        <figure class="mac">
-          <div class="mac-bar"><i class="tl-r"></i><i class="tl-y"></i><i class="tl-g"></i><b>Amlin</b></div>
-          <img class="shot" src="assets/desktop-actions.jpg" width="1760" height="1155" loading="lazy" alt="Amlin's Action items view: open loops grouped into Overdue, Today, and This week, with owners, priorities, and due dates." />
-        </figure>
+  <!-- The appendix: plain, printed, crawlable. The experience is above. -->
+  <main class="appendix">
+    <noscript>
+      <div class="nojs-hero">
+        <h1>Stay in the conversation. Amlin takes the notes.</h1>
+        <p>One Mac app that listens with you: meeting notes written the moment a call ends, dictation wherever you type, and a to-do list that fills itself. No bot joins your calls, and meeting audio is never stored. <a href="download.html">Download for Mac</a>.</p>
       </div>
-    </div>
-  </section>
+    </noscript>
 
-  <!-- Value: three tools, one bill (cost math stated ONCE) -->
-  <section class="band">
-    <div class="wrap">
-      <div class="inner">
-        <div class="mark" aria-hidden="true">
-          <svg class="cv-arcs" viewBox="0 0 56 56" fill="none" stroke-width="3.2" stroke-linecap="round">
-            <path d="M 28 4 A 24 24 0 0 1 51.6 32.2" stroke="#146b62" />
-            <path d="M 48.8 40 A 24 24 0 0 1 12.6 46.4" stroke="#ce4b3c" />
-            <path d="M 7.2 40 A 24 24 0 0 1 19.8 5.4" stroke="#23201b" />
-          </svg>
-          <img class="cv-logo" src="assets/icon.svg" alt="" width="44" height="44" />
-        </div>
-        <div>
-          <h2>Three subscriptions' worth, on one bill</h2>
-          <p>A dedicated notetaker, a standalone dictation app, and a separate to-do tool add up to <strong style="color:var(--ink)">about $35 a month</strong>. Amlin is all three for <strong style="color:var(--ink)">$10</strong>, less than the notetaker alone.</p>
-          <p style="margin-top:12px">Separate apps also can't share what they learn. In Amlin, the notepad, dictation, and to-dos draw on <strong style="color:var(--ink)">one custom dictionary</strong>: every meeting teaches it your names, your jargon, your phrasing, and everything you transcribe or dictate comes out more accurate for it.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Privacy (consolidated) -->
-  <section class="section" id="privacy" style="padding-top:64px">
-    <div class="wrap">
-      <div class="section-head">
-        <h2 class="has-ink"><span class="ink-wrap">Private<svg class="ink ink-under" viewBox="0 0 100 14" preserveAspectRatio="none" aria-hidden="true"><path d="M 2 8 C 25 3, 50 11, 98 6"/></svg></span> by design</h2>
-        <p>Amlin is built so your conversations never leave your control.</p>
-      </div>
-      <div class="pillars">
-        <div class="pillar">
-          <h3>No bot joins your call</h3>
-          <p>Amlin captures your computer's audio at the operating-system level. There's no meeting bot to admit, and nothing for anyone else to install. It all runs on your Mac.</p>
-        </div>
-        <div class="pillar">
-          <h3>We never store your audio</h3>
-          <p>Sound is streamed for live transcription and discarded by Amlin on the spot, never written to disk. Only your notes and the transcript text remain.</p>
-        </div>
-        <div class="pillar">
-          <h3>Yours alone</h3>
-          <p>Notes stay on your device and sync only to your own account. Sign in with Google; Calendar access is optional and read-only.</p>
-        </div>
-      </div>
-      <p style="text-align:center; margin-top:26px; font-size:15px;"><a href="privacy.html">Read the full privacy policy →</a></p>
-    </div>
-  </section>
-
-  <!-- Pricing -->
-  <section class="section" id="pricing" style="padding-top:8px">
-    <div class="wrap">
-      <div class="section-head">
+    <section class="ap" id="pricing">
+      <div class="apw">
         <h2>Simple pricing</h2>
-        <p>Start free and upgrade when Amlin becomes part of how you work.</p>
-      </div>
-      <div class="plans">
-        <div class="plan">
-          <h3>Free</h3>
-          <div class="price">$0</div>
-          <p class="note">For getting started</p>
-          <ul>
-            <li>4 meeting-hours per month</li>
-            <li>10 Ask queries per month</li>
-            <li>Full notepad, transcription &amp; enhance</li>
-            <li>Unlimited system-wide dictation</li>
-          </ul>
-          <a class="btn btn-ghost" href="download.html">Download for Mac</a>
+        <p class="sect-lede">Start free and upgrade when Amlin becomes part of how you work.</p>
+        <div class="plans">
+          <div class="plan">
+            <h3>Free</h3>
+            <div class="price">$0</div>
+            <p class="note">For getting started</p>
+            <ul>
+              <li>4 meeting-hours per month</li>
+              <li>10 Ask queries per month</li>
+              <li>Full notepad, transcription &amp; enhance</li>
+              <li>Unlimited system-wide dictation</li>
+            </ul>
+            <a class="btn btn--ghost" href="download.html">Download for Mac</a>
+          </div>
+          <div class="plan plan--pro">
+            <p class="plan__tag">Pro</p>
+            <h3>Pro</h3>
+            <div class="price">$10<span> / month</span></div>
+            <p class="note">or $108 / year (save 10%)</p>
+            <ul>
+              <li>40 meeting-hours per month</li>
+              <li>Unlimited Ask queries</li>
+              <li>Everything in Free</li>
+              <li>Priority support</li>
+            </ul>
+            <a class="btn btn--primary" href="https://junola-proxy.fly.dev/v1/billing/web-checkout">Get Pro Monthly</a>
+            <a class="btn btn--ghost" href="https://junola-proxy.fly.dev/v1/billing/web-checkout?plan=annual">Get Pro Annual (save 10%)</a>
+            <p class="plan-note">Pro activates when you sign in to the app with the same email you use at checkout.</p>
+          </div>
         </div>
-        <div class="plan featured">
-          <span class="tag">Pro</span>
-          <h3>Pro</h3>
-          <div class="price">$10<span> / month</span></div>
-          <p class="note">or $108 / year (save 10%)</p>
-          <ul>
-            <li>40 meeting-hours per month</li>
-            <li>Unlimited Ask queries</li>
-            <li>Everything in Free</li>
-            <li>Priority support</li>
-          </ul>
-          <a class="btn btn-primary" href="https://junola-proxy.fly.dev/v1/billing/web-checkout">Get Pro Monthly</a>
-          <a class="btn btn-ghost" href="https://junola-proxy.fly.dev/v1/billing/web-checkout?plan=annual">Get Pro Annual (save 10%)</a>
-          <p class="plan-note">Pro activates when you sign in to the app with the same email you use at checkout.</p>
-        </div>
+        <p class="plans-micro">Prices in USD. Cancel anytime.</p>
       </div>
-      <p class="plans-micro">Prices in USD. Cancel anytime.</p>
-    </div>
-  </section>
+    </section>
 
-  <!-- FAQ: objection handling at the moment of decision -->
-  <section class="section" id="faq" style="padding-top:0">
-    <div class="wrap">
-      <div class="section-head">
+    <section class="ap" id="faq">
+      <div class="apw" style="padding-top:0">
         <h2>Questions, answered</h2>
-      </div>
-      <div class="faq">
-        <details>
-          <summary>What happens when I hit the Free plan's limits?</summary>
-          <p>A meeting already in progress always finishes. Amlin checks your hours when you start a meeting, never mid-call. Past the cap, new meeting transcription and Ask questions wait until your month resets (or you upgrade). Your notepad, your existing notes, and dictation keep working: dictation runs on your Mac and is never metered.</p>
-        </details>
-        <details>
-          <summary>Can I cancel anytime?</summary>
-          <p>Yes. "Manage billing" in the app opens your billing portal; cancelling keeps Pro until the end of the period you've paid for, and you won't be charged again. Refunds are covered by our <a href="refund.html">refund policy</a>.</p>
-        </details>
-        <details>
-          <summary>Where does my audio go?</summary>
-          <p>Dictation runs entirely on your Mac. That audio never leaves the device. Meeting audio is streamed for live transcription and never stored by Amlin; only the text remains, as part of your notes. The full picture is in our <a href="privacy.html">privacy policy</a>.</p>
-        </details>
-        <details>
-          <summary>Does it work with Zoom, Meet, and Teams?</summary>
-          <p>With all of them, and anything else that makes sound on your Mac. Amlin captures system audio at the operating-system level, so there's no bot to invite and nothing for other participants to install.</p>
-        </details>
-      </div>
-    </div>
-  </section>
-
-  <!-- Closing CTA -->
-  <section class="close-cta">
-    <div class="wrap">
-      <h2>Stop taking notes.</h2>
-      <p>Download Amlin and let your next meeting write itself up.</p>
-      <a class="btn btn-primary" href="download.html">Download for Mac</a>
-      <p class="micro" style="margin-top:16px">Free to start · macOS 13+ · Sign in with Google</p>
-    </div>
-  </section>
-
-  <footer class="footer">
-    <div class="wrap">
-      <div class="inner">
-        <div>
-          <span class="brand"><img class="brand-mark" src="assets/icon.svg" alt="Amlin" width="26" height="26" />Amlin</span>
-          <p class="tagline">Meeting notes, dictation & to-dos in one Mac app.</p>
+        <div class="faq" style="margin-top:2rem">
+          <details>
+            <summary>What happens when I hit the Free plan&rsquo;s limits?</summary>
+            <p>A meeting already in progress always finishes. Amlin checks your hours when you start a meeting, never mid-call. Past the cap, new meeting transcription and Ask questions wait until your month resets (or you upgrade). Your notepad, your existing notes, and dictation keep working: dictation runs on your Mac and is never metered.</p>
+          </details>
+          <details>
+            <summary>Can I cancel anytime?</summary>
+            <p>Yes. &ldquo;Manage billing&rdquo; in the app opens your billing portal; cancelling keeps Pro until the end of the period you&rsquo;ve paid for, and you won&rsquo;t be charged again. Refunds are covered by our <a href="refund.html">refund policy</a>.</p>
+          </details>
+          <details>
+            <summary>Where does my audio go?</summary>
+            <p>Dictation runs entirely on your Mac. That audio never leaves the device. Meeting audio is streamed for live transcription and never stored by Amlin; only the text remains, as part of your notes. The full picture is in our <a href="privacy.html">privacy policy</a>.</p>
+          </details>
+          <details>
+            <summary>Does it work with Zoom, Meet, and Teams?</summary>
+            <p>With all of them, and anything else that makes sound on your Mac. Amlin captures system audio at the operating-system level, so there&rsquo;s no bot to invite and nothing for other participants to install.</p>
+          </details>
         </div>
-        <div class="footer-cols">
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="apw">
+      <div class="foot__top">
+        <div class="foot__brand">
+          <img src="assets/icon.svg" alt="Amlin" width="26" height="26" />
+          <p>Meeting notes, dictation &amp; to-dos in one Mac app.</p>
+        </div>
+        <div class="fcols">
           <nav class="fcol" aria-label="Product">
             <h4>Product</h4>
             <a href="index.html#how">How it works</a>
@@ -350,9 +302,12 @@
           </nav>
         </div>
       </div>
-      <div class="copyright">© 2026 Amlin. All rights reserved.</div>
+      <div class="foot__legal">© 2026 Amlin. All rights reserved.</div>
     </div>
   </footer>
+
+  <script src="scrollcraft.js?v=1"></script>
+  <script src="amlin-flight.js?v=1"></script>
 
   <!-- Intercom messenger -->
   <script>
