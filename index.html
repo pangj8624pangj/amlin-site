@@ -23,7 +23,7 @@
   <link rel="icon" href="assets/icon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
   <link rel="stylesheet" href="scrollcraft.css?v=1" />
-  <link rel="stylesheet" href="amlin-flight.css?v=2" />
+  <link rel="stylesheet" href="amlin-flight.css?v=3" />
   <script defer src="assets/ph.js"></script>
   <noscript>
     <style>#flight, #mark, #map, #markMeta { display: none !important; }</style>
@@ -86,12 +86,11 @@
   <div id="flight" data-sc-mode="worldflight" data-sc-seam="0.16">
 
     <div data-sc-world>
-      <canvas id="air" aria-hidden="true"></canvas>
-
       <div data-sc-segment data-sc-w="1.3" data-sc-waypoint="Air"><i class="seg-decoy" data-sc-poster hidden></i></div>
       <div data-sc-segment data-sc-w="1.3" data-sc-waypoint="The cost"><i class="seg-decoy" data-sc-poster hidden></i></div>
       <div data-sc-segment data-sc-w="2.2" data-sc-waypoint="The catch">
         <i class="seg-decoy" data-sc-poster hidden></i>
+        <div class="ground ground--catch" aria-hidden="true"></div>
         <figure class="plate plate--note" id="plateNote">
           <img src="assets/desktop-note.jpg" width="1760" height="1155" alt="An Amlin meeting note: a clean structured summary with decisions, key points, and action items." />
           <figcaption class="plate__cap">The note, seconds after the call</figcaption>
@@ -112,7 +111,7 @@
           <figcaption class="plate__cap">Action items, across every meeting</figcaption>
         </figure>
       </div>
-      <div data-sc-segment data-sc-w="1.3" data-sc-waypoint="Nothing kept"><i class="seg-decoy" data-sc-poster hidden></i></div>
+      <div data-sc-segment data-sc-w="1.3" data-sc-waypoint="Nothing kept"><i class="seg-decoy" data-sc-poster hidden></i><div class="ground ground--deep" aria-hidden="true"></div></div>
       <div data-sc-segment data-sc-w="1.2" data-sc-waypoint="Yours"><i class="seg-decoy" data-sc-poster hidden></i></div>
     </div>
 
@@ -126,26 +125,30 @@
         <p class="micro">Free to start · macOS 13+ · Apple silicon · Sign in with Google</p>
       </div>
 
-      <div class="w w--mid" data-sc-copy data-sc-window="0.125 0.219 0.22 0.2" data-leg="1">
-        <h2>You can be present, or you can be writing it down.</h2>
+      <div class="w w--poster" data-sc-copy data-sc-window="0.125 0.219 0.22 0.2" data-leg="1">
+        <h2><span>You can be present,</span> <span class="alt">or you can be writing it down.</span></h2>
         <p>Never both. A conversation moves at talking speed, the useful parts blow past in a sentence, and what nobody catches is gone by the next meeting.</p>
       </div>
 
-      <div class="w w--top" data-sc-copy data-sc-window="0.247 0.406 0.22 0.2" data-leg="2">
+      <div class="w w--catch" data-sc-copy data-sc-window="0.247 0.406 0.22 0.2" data-leg="2">
         <h2>The catch.</h2>
-        <p>Amlin takes the call live, straight off your Mac&rsquo;s own audio. No bot joins, and nobody else has to install a thing.</p>
-        <p>The moment the call ends, the loose stream is a written note: what was said, what was decided, who owes what by when. Ask questions of it later and get answers with citations to the exact line.</p>
+        <p>Amlin takes the call live, straight off your Mac&rsquo;s own audio. No bot joins, and nobody else installs a thing. The moment the call ends, the loose stream is a written note.</p>
       </div>
-      <div class="w w--tag w--tag1" data-sc-copy data-sc-window="0.275 0.40 0.3 0.2" data-leg="2"><span class="tag">Summary</span></div>
-      <div class="w w--tag w--tag2" data-sc-copy data-sc-window="0.29 0.40 0.3 0.2" data-leg="2"><span class="tag">Decisions</span></div>
-      <div class="w w--tag w--tag3" data-sc-copy data-sc-window="0.305 0.40 0.3 0.2" data-leg="2"><span class="tag">Action items · owners · due dates</span></div>
+      <div class="w w--contents" data-sc-copy data-sc-window="0.247 0.406 0.22 0.2" data-leg="2">
+        <ul class="contents">
+          <li><strong>Summary</strong><span>What was said</span></li>
+          <li><strong>Decisions</strong><span>What was agreed</span></li>
+          <li><strong>Action items</strong><span>Who owes what, by when</span></li>
+          <li><strong>Ask</strong><span>Answers with a citation to the exact line</span></li>
+        </ul>
+      </div>
 
-      <div class="w w--mid" data-sc-copy data-sc-window="0.432 0.526 0.22 0.2" data-leg="3">
+      <div class="w w--trail" data-sc-copy data-sc-window="0.432 0.526 0.22 0.2" data-leg="3">
         <h2>Every pass teaches it.</h2>
         <p>Your names, your acronyms, and your way of putting things settle into one custom dictionary shared by everything Amlin writes. Transcripts and dictation both come out more accurate the longer you use it. The wheel turns easier each time.</p>
       </div>
 
-      <div class="w w--top" data-sc-copy data-sc-window="0.547 0.648 0.22 0.2" data-leg="4">
+      <div class="w w--right" data-sc-copy data-sc-window="0.547 0.648 0.22 0.2" data-leg="4">
         <h2>Dictation, anywhere on your Mac.</h2>
         <p>Hold a key and talk. The ums disappear, punctuation lands, and finished text types itself where your cursor is. An email arrives shaped like an email, a spoken &ldquo;new line&rdquo; becomes a real line break, a bullet list appears when you ask for one, and a 🙂 lands where you meant it.</p>
         <p>On-device, unmetered, and free on every plan.</p>
@@ -157,7 +160,7 @@
         <p>Bought separately, a notetaker, a dictation app, and a to-do tool run about $35 a month. Amlin is all three for $10, on one dictionary and one bill.</p>
       </div>
 
-      <div class="w w--mid" data-sc-copy data-sc-window="0.792 0.886 0.22 0.2" data-leg="6">
+      <div class="w w--center w--inv" data-sc-copy data-sc-window="0.792 0.886 0.22 0.2" data-leg="6">
         <h2>The air leaves. The writing stays.</h2>
         <p>Meeting audio is transcribed live and discarded on the spot: never written to disk, never stored. Dictation audio never leaves your Mac at all. What remains is text, your notes and transcripts, synced to your account alone.</p>
         <p><a href="privacy.html">Read the full privacy policy</a></p>
@@ -181,7 +184,7 @@
   <div class="mark" id="mark">
     <button class="mark__btn" id="markBtn" type="button" aria-expanded="false" aria-controls="map" aria-label="Amlin. Open the page map."></button>
   </div>
-  <div class="mark__meta" id="markMeta" aria-hidden="true"><span id="wpLabel">Air</span><span class="f" id="force">F0</span></div>
+  <div class="mark__meta" id="markMeta" aria-hidden="true"><span id="wpLabel">Air</span></div>
   <nav class="map" id="map" hidden aria-label="Page map">
     <hr />
     <a href="#pricing">Pricing</a>
@@ -305,7 +308,7 @@
   </footer>
 
   <script src="scrollcraft.js?v=1"></script>
-  <script src="amlin-flight.js?v=2"></script>
+  <script src="amlin-flight.js?v=3"></script>
 
   <!-- Intercom messenger -->
   <script>

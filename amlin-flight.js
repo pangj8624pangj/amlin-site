@@ -38,7 +38,11 @@
     stops.forEach(function (m, i) { m.style.top = Math.round(stopY(i)) + 'px'; });
   }
   placeStops();
-  addEventListener('resize', placeStops, { passive: true });
+  var lastW = innerWidth;
+  addEventListener('resize', function () {
+    if (innerWidth === lastW && matchMedia('(max-width: 860px)').matches) return;
+    lastW = innerWidth; placeStops();
+  }, { passive: true });
 
   // ---- the wheel: eight curled blades, lit from the top left ---------------
   var BIG = 'M512 512 C372 442 407 260 547 260 C505 358 547 456 512 512 Z';
@@ -56,7 +60,7 @@
     }
     for (i = 0; i < 4; i++) {
       s += '<g class="' + cls + ' blade--s" data-base="' + (45 + i * 90) + '" transform="rotate(' + (45 + i * 90) + ' 512 512)">' +
-        '<path d="' + SMALL + '" fill="' + fillSmall + '"/>' +
+        '<path d="' + SMALL + '" fill="' + fillSmall + '" stroke="#146b62" stroke-opacity="0.55" stroke-width="2.5"/>' +
         '<path d="' + SMALL + '" fill="' + foldSmall + '" transform="translate(512 512) scale(0.6) translate(-512 -512)"/></g>';
     }
     return s;
@@ -64,33 +68,27 @@
   var svg =
     '<svg viewBox="0 0 1024 1024" aria-hidden="true" focusable="false">' +
     '<defs>' +
-      '<linearGradient id="gTeal" x1="0.15" y1="0" x2="0.85" y2="1"><stop offset="0" stop-color="#2aa393"/><stop offset="0.55" stop-color="#146b62"/><stop offset="1" stop-color="#0b3f3a"/></linearGradient>' +
-      '<linearGradient id="gTealFold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0b3f3a"/><stop offset="1" stop-color="#062926"/></linearGradient>' +
-      '<linearGradient id="gBrass" x1="0.1" y1="0" x2="0.9" y2="1"><stop offset="0" stop-color="#f3dc9a"/><stop offset="0.5" stop-color="#cfa54f"/><stop offset="1" stop-color="#8a6320"/></linearGradient>' +
-      '<linearGradient id="gBrassFold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8a6320"/><stop offset="1" stop-color="#5a3f12"/></linearGradient>' +
-      '<radialGradient id="gHub" cx="0.36" cy="0.32" r="0.75"><stop offset="0" stop-color="#fff4cf"/><stop offset="0.35" stop-color="#e2bd66"/><stop offset="0.8" stop-color="#8a6320"/><stop offset="1" stop-color="#4a3410"/></radialGradient>' +
-      '<radialGradient id="gSheen" cx="0.36" cy="0.3" r="0.55"><stop offset="0" stop-color="#ffffff" stop-opacity="0.55"/><stop offset="0.45" stop-color="#ffffff" stop-opacity="0.12"/><stop offset="1" stop-color="#ffffff" stop-opacity="0"/></radialGradient>' +
-      '<g id="silhouette"><g transform="' + UP + '">' + blades('sil', '#fff', '#fff', '#fff', '#fff') + '</g></g>' +
-      '<mask id="rotorMask"><use id="maskUse" href="#silhouette"/></mask>' +
+      '<linearGradient id="gSage" x1="0.15" y1="0" x2="0.85" y2="1"><stop offset="0" stop-color="#b9d3cc"/><stop offset="0.6" stop-color="#9fc1b8"/><stop offset="1" stop-color="#7fa79d"/></linearGradient>' +
+      '<linearGradient id="gSageFold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#146b62"/><stop offset="1" stop-color="#0e544d"/></linearGradient>' +
+      '<linearGradient id="gCream" x1="0.1" y1="0" x2="0.9" y2="1"><stop offset="0" stop-color="#fffdf5"/><stop offset="0.6" stop-color="#fbf7ec"/><stop offset="1" stop-color="#e9e2d0"/></linearGradient>' +
+      '<linearGradient id="gCreamFold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#146b62"/><stop offset="1" stop-color="#0e544d"/></linearGradient>' +
+      '<radialGradient id="gHub" cx="0.36" cy="0.32" r="0.8"><stop offset="0" stop-color="#2d8a7e"/><stop offset="0.5" stop-color="#146b62"/><stop offset="1" stop-color="#0e544d"/></radialGradient>' +
     '</defs>' +
     '<circle class="mark__arc" cx="512" cy="512" r="' + ARC_R + '" fill="none" stroke="#9fc1b8" stroke-width="14" stroke-linecap="round" stroke-dasharray="' + ARC_C + '" stroke-dashoffset="' + ARC_C + '" transform="rotate(-90 512 512)"/>' +
-    '<g class="mark__rotor"><g transform="' + UP + '">' + blades('blade', 'url(#gTeal)', 'url(#gBrass)', 'url(#gTealFold)', 'url(#gBrassFold)') + '</g></g>' +
-    '<g mask="url(#rotorMask)"><circle cx="512" cy="512" r="520" fill="url(#gSheen)"/></g>' +
+    '<g class="mark__rotor"><g transform="' + UP + '">' + blades('blade', 'url(#gSage)', 'url(#gCream)', 'url(#gSageFold)', 'url(#gCreamFold)') + '</g></g>' +
     '<circle cx="512" cy="512" r="66" fill="url(#gHub)"/>' +
-    '<circle cx="512" cy="512" r="66" fill="none" stroke="#4a3410" stroke-opacity="0.45" stroke-width="3"/>' +
-    '<circle cx="492" cy="492" r="13" fill="#fff8e0" fill-opacity="0.85"/>' +
+    '<circle cx="512" cy="512" r="66" fill="none" stroke="#0e544d" stroke-opacity="0.6" stroke-width="3"/>' +
+    '<circle cx="492" cy="492" r="13" fill="#fbf7ec" fill-opacity="0.85"/>' +
     '</svg>';
   markBtn.innerHTML = svg;
   var wrap3d = markBtn;
   var rotor = markBtn.querySelector('.mark__rotor');
-  var maskUse = markBtn.querySelector('#maskUse');
   var arc = markBtn.querySelector('.mark__arc');
   var bladeEls = Array.prototype.slice.call(markBtn.querySelectorAll('.blade'));
 
   // ---- chrome: waypoint label, readout, the map ----------------------------
   var meta = document.getElementById('markMeta');
   var wpLabel = document.getElementById('wpLabel');
-  var forceEl = document.getElementById('force');
   var map = document.getElementById('map');
   var segEls = document.querySelectorAll('[data-sc-segment]');
   var names = Array.prototype.map.call(segEls, function (s) { return s.getAttribute('data-sc-waypoint'); });
@@ -112,6 +110,7 @@
   });
   addEventListener('sc:waypoint', function (e) {
     wpLabel.textContent = e.detail.label;
+    document.documentElement.classList.toggle('on-deep', e.detail.index === 6);
     map.querySelectorAll('button[data-leg]').forEach(function (b) {
       b.setAttribute('aria-current', String(+b.dataset.leg === e.detail.index));
     });
@@ -134,21 +133,9 @@
     todo: document.getElementById('plateTodo')
   };
   var slot = document.getElementById('markSlot');
-  var canvas = document.getElementById('air');
-  var ctx = canvas.getContext('2d');
-  var vw = innerWidth, vh = innerHeight, dpr = Math.min(devicePixelRatio || 1, 1.5);
-  var RAKE = 7.9 * Math.PI / 180;
-  var DIRX = Math.cos(RAKE), DIRY = -Math.sin(RAKE);
-  var noteRect = null;
-
-  function sizeCanvas() {
-    vw = innerWidth; vh = innerHeight;
-    canvas.width = Math.round(vw * dpr); canvas.height = Math.round(vh * dpr);
-    var r = plates.note.getBoundingClientRect();
-    noteRect = { x0: r.left / vw, x1: r.right / vw, y0: r.top / vh, y1: r.bottom / vh };
-  }
-  sizeCanvas();
-  addEventListener('resize', sizeCanvas, { passive: true });
+  var vw = innerWidth, vh = innerHeight;
+  function measure() { vw = innerWidth; vh = innerHeight; }
+  addEventListener('resize', measure, { passive: true });
 
   if (reduce) {
     arc.style.strokeDashoffset = '0';
@@ -171,12 +158,6 @@
   var lastY = scrollY, lastT = performance.now();
   var angle = 0, spinV = 0.05, lastFlex = 99, learned = 0;
 
-  // ---- the catch stream: exists only at the peak ---------------------------
-  var COUNT = matchMedia('(max-width: 860px)').matches ? 28 : 54;
-  var P = [];
-  for (var i = 0; i < COUNT; i++) {
-    P.push({ x: Math.random() * 0.6 - 0.1, y: 0.2 + Math.random() * 0.6, s: 0.7 + Math.random() * 0.8, r: 1.1 + Math.random() * 1.2, ph: Math.random() * 6.28, caught: 0 });
-  }
   var lastState = '';
 
   function frame(now) {
@@ -192,17 +173,18 @@
     if (dy !== 0) wind.dir = dy > 0 ? 1 : -1;
 
     var catchW = sstep((t - (C0[2] - 0.2)) / 0.4) * (1 - sstep((t - (C0[3] - 0.2)) / 0.3));
+    // the wheel swells and turns easier at It learns you
+    var swell = sstep(1 - Math.abs(legLocal(t, 3) - 0.5) * 2.6);
     learned = Math.max(learned, sstep(legLocal(t, 3)));
 
     // ---- torque against inertia -------------------------------------------
     var idle = 0.05 * (1 + 0.35 * Math.sin(now / 4300)) * (1 + 0.6 * learned);
-    var drive = idle + catchW * 1.5 + wind.v * wind.v * 22 * wind.dir;
+    var drive = idle + catchW * 1.5 + swell * 1.2 + wind.v * wind.v * 22 * wind.dir;
     spinV += (drive - spinV) * 0.06;
     angle = (angle + spinV * dt / 16.7) % 360;
     if (angle < 0) angle += 360;
     var rot = 'rotate(' + angle.toFixed(2) + ' 512 512)';
     rotor.setAttribute('transform', rot);
-    maskUse.setAttribute('transform', rot);
     var flex = clamp(-spinV * 1.1, -7, 7);
     if (Math.abs(flex - lastFlex) > 0.06) {
       lastFlex = flex;
@@ -217,9 +199,11 @@
     var S0 = mob ? Math.min(vw * 0.72, vh * 0.42) : Math.min(vw * 0.42, vh * 0.74, 700);
     var u = sstep((t - 0.9) / 0.9);              // open -> dock
     var u2 = sstep((t - 10.0) / 0.7);            // dock -> menu-bar slot
-    var cx = lerp(mob ? vw * 0.5 : vw * 0.68, vw - 44, u);
-    var cy = lerp(mob ? vh * 0.25 : vh * 0.44, 44, u);
-    var size = lerp(S0, 56, u);
+    var dock = 56 + swell * (mob ? 40 : 120);
+    var cx = lerp(mob ? vw * 0.5 : vw * 0.68, vw - 16 - dock / 2, u);
+    var cy = lerp(mob ? vh * 0.25 : vh * 0.44, 16 + dock / 2, u);
+    var size = lerp(S0, dock, u);
+    document.documentElement.style.setProperty('--dock', dock.toFixed(0) + 'px');
     if (u2 > 0) {
       var sr = slot.getBoundingClientRect();
       cx = lerp(cx, sr.left + sr.width / 2, u2);
@@ -230,14 +214,12 @@
     markEl.style.transform = 'translate3d(' + cx.toFixed(1) + 'px,' + cy.toFixed(1) + 'px,0) translate(-50%,-50%) scale(' + scale.toFixed(4) + ')';
     // a lit object in perspective at the open; flat chrome once docked
     var tilt = 1 - u;
-    wrap3d.style.transform = 'rotateX(' + (26 * tilt).toFixed(1) + 'deg) rotateY(' + (-16 * tilt).toFixed(1) + 'deg)';
+    wrap3d.style.transform = 'rotateX(' + (18 * tilt).toFixed(1) + 'deg) rotateY(' + (-12 * tilt).toFixed(1) + 'deg)';
     markEl.classList.toggle('is-docked', u > 0.85 && u2 < 0.5);
     meta.classList.toggle('is-on', u > 0.9 && u2 < 0.2);
     var blur = Math.max(0, Math.abs(spinV) - 2.5) * 0.09;
     rotor.style.filter = blur > 0.05 ? 'blur(' + Math.min(blur / scale, 2 / scale).toFixed(1) + 'px)' : '';
     arc.style.strokeDashoffset = (ARC_C * (1 - t / TOTAL)).toFixed(0);
-    var F = Math.min(9, Math.round(wind.v * 9));
-    if (forceEl.textContent !== 'F' + F) forceEl.textContent = 'F' + F;
 
     // ---- plates: written in before the stop -------------------------------
     var rNote = sstep((legLocal(t, 2) - 0.12) / 0.38);
@@ -246,47 +228,8 @@
     plates.note.style.clipPath = 'inset(0 0 ' + ((1 - rNote) * 100).toFixed(1) + '% 0 round 14px)';
     plates.dict.style.clipPath = 'inset(0 0 ' + ((1 - rDict) * 100).toFixed(1) + '% 0 round 14px)';
     plates.todo.style.clipPath = 'inset(0 0 ' + ((1 - rTodo) * 100).toFixed(1) + '% 0 round 14px)';
-
-    // ---- the catch stream -------------------------------------------------
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    if (catchW > 0.01) {
-      var Dx = cx / vw, Dy = cy / vh;
-      var spd = (1.3 + wind.v * 1.6) * 0.0035;
-      for (i = 0; i < COUNT; i++) {
-        var p = P[i];
-        if (p.caught) {
-          var V = (7 + wind.v * 8) * (vh / 900);
-          p.x += (-0.139 * V) / vw; p.y += (0.985 * V) / vh;
-          var die = noteRect ? sstep((p.y - noteRect.y1 + 0.06) / 0.1) : sstep((p.y - 0.85) / 0.1);
-          var la = (1 - die) * catchW;
-          if (la <= 0.02 || p.y > 1.04) { p.x = -0.02; p.y = 0.2 + Math.random() * 0.6; p.caught = 0; continue; }
-          var TL = 22 * dpr;
-          ctx.strokeStyle = 'rgba(14,84,77,' + (0.5 * la).toFixed(3) + ')';
-          ctx.lineWidth = 1.1 * dpr;
-          ctx.beginPath();
-          ctx.moveTo(p.x * canvas.width, p.y * canvas.height);
-          ctx.lineTo(p.x * canvas.width + 0.139 * TL, p.y * canvas.height - 0.985 * TL);
-          ctx.stroke();
-          continue;
-        }
-        var step = p.s * spd;
-        p.x += DIRX * step;
-        p.y += DIRY * step * (vw / vh) + Math.sin(now / 900 + p.ph) * 0.0002;
-        var ddx = Dx - p.x, ddy = Dy - p.y;
-        var dist = Math.sqrt(ddx * ddx + ddy * ddy);
-        if (dist < 0.05) { p.caught = 1; continue; }
-        p.x += ddx * 0.045; p.y += ddy * 0.045;
-        if (p.x > 1.03 || p.y < -0.06) { p.x = -0.02; p.y = 0.2 + Math.random() * 0.6; continue; }
-        var a = 0.42 * catchW * (0.7 + 0.3 * Math.sin(now / 1400 + p.ph));
-        var L = (8 + wind.v * 12) * dpr;
-        ctx.strokeStyle = 'rgba(20,107,98,' + a.toFixed(3) + ')';
-        ctx.lineWidth = p.r * dpr;
-        ctx.beginPath();
-        ctx.moveTo(p.x * canvas.width, p.y * canvas.height);
-        ctx.lineTo(p.x * canvas.width - DIRX * L, p.y * canvas.height - DIRY * L);
-        ctx.stroke();
-      }
-    }
+    plates.todo.style.translate = '0 ' + ((1 - rTodo) * 48).toFixed(1) + 'px';
+    plates.dict.style.clipPath = 'inset(0 ' + ((1 - rDict) * 100).toFixed(1) + '% 0 0 round 14px)';
 
     // ---- the flight ends on the same paper the appendix is printed on -----
     var fade = 1 - clamp((ty - (TOTAL + 0.15)) / 0.55, 0, 1);
@@ -299,7 +242,7 @@
 
     // ---- honest state for the verification harness ------------------------
     var sig = [Math.round(angle / 4), Math.round(t * 20), Math.round(rNote * 20),
-               Math.round((rDict + rTodo) * 10), Math.round(u * 10 + u2 * 10), F].join('|');
+               Math.round((rDict + rTodo) * 10), Math.round(u * 10 + u2 * 10), Math.round(swell * 10)].join('|');
     if (sig !== lastState) { lastState = sig; markEl.setAttribute('data-sc-verify-state', sig); }
     var hold = t > C0[6] + 0.4 && t < C0[7];
     markEl.setAttribute('data-sc-verify-hold', hold ? 'true' : 'false');
