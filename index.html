@@ -23,7 +23,7 @@
   <link rel="icon" href="assets/icon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
   <link rel="stylesheet" href="scrollcraft.css?v=1" />
-  <link rel="stylesheet" href="amlin-flight.css?v=1" />
+  <link rel="stylesheet" href="amlin-flight.css?v=2" />
   <script defer src="assets/ph.js"></script>
   <noscript>
     <style>#flight, #mark, #map, #markMeta { display: none !important; }</style>
@@ -88,33 +88,36 @@
     <div data-sc-world>
       <canvas id="air" aria-hidden="true"></canvas>
 
-      <div data-sc-segment data-sc-w="1.4" data-sc-waypoint="Air"><i class="seg-decoy" data-sc-poster hidden></i></div>
-      <div data-sc-segment data-sc-w="1.4" data-sc-waypoint="The cost"><i class="seg-decoy" data-sc-poster hidden></i></div>
-      <div data-sc-segment data-sc-w="2.6" data-sc-waypoint="The catch">
+      <div data-sc-segment data-sc-w="1.3" data-sc-waypoint="Air"><i class="seg-decoy" data-sc-poster hidden></i></div>
+      <div data-sc-segment data-sc-w="1.3" data-sc-waypoint="The cost"><i class="seg-decoy" data-sc-poster hidden></i></div>
+      <div data-sc-segment data-sc-w="2.2" data-sc-waypoint="The catch">
         <i class="seg-decoy" data-sc-poster hidden></i>
         <figure class="plate plate--note" id="plateNote">
           <img src="assets/desktop-note.jpg" width="1760" height="1155" alt="An Amlin meeting note: a clean structured summary with decisions, key points, and action items." />
           <figcaption class="plate__cap">The note, seconds after the call</figcaption>
         </figure>
       </div>
-      <div data-sc-segment data-sc-w="1.4" data-sc-waypoint="It learns you"><i class="seg-decoy" data-sc-poster hidden></i></div>
-      <div data-sc-segment data-sc-w="1.6" data-sc-waypoint="Three currents">
+      <div data-sc-segment data-sc-w="1.3" data-sc-waypoint="It learns you"><i class="seg-decoy" data-sc-poster hidden></i></div>
+      <div data-sc-segment data-sc-w="1.4" data-sc-waypoint="Dictation">
         <i class="seg-decoy" data-sc-poster hidden></i>
         <figure class="plate plate--dict" id="plateDict">
           <img src="assets/dictation-gmail.png" width="1438" height="1312" alt="Dictating an email in Gmail with Amlin: a clean, punctuated paragraph typed by voice." />
           <figcaption class="plate__cap">Dictation, in Gmail</figcaption>
         </figure>
+      </div>
+      <div data-sc-segment data-sc-w="1.4" data-sc-waypoint="To-dos">
+        <i class="seg-decoy" data-sc-poster hidden></i>
         <figure class="plate plate--todo" id="plateTodo">
           <img src="assets/desktop-actions.jpg" width="1760" height="1155" alt="Amlin's action items view: open loops grouped into overdue, today, and this week, with owners and due dates." />
           <figcaption class="plate__cap">Action items, across every meeting</figcaption>
         </figure>
       </div>
-      <div data-sc-segment data-sc-w="1.4" data-sc-waypoint="Nothing kept"><i class="seg-decoy" data-sc-poster hidden></i></div>
+      <div data-sc-segment data-sc-w="1.3" data-sc-waypoint="Nothing kept"><i class="seg-decoy" data-sc-poster hidden></i></div>
       <div data-sc-segment data-sc-w="1.2" data-sc-waypoint="Yours"><i class="seg-decoy" data-sc-poster hidden></i></div>
     </div>
 
     <div data-sc-world-copy>
-      <div class="w w--hero" data-sc-copy data-sc-window="hero">
+      <div class="w w--hero" data-sc-copy data-sc-window="hero" data-leg="0">
         <h1>Stay in the conversation. Amlin takes the notes.</h1>
         <p class="lede">One Mac app that listens with you: meeting notes written the moment a call ends, dictation wherever you type, and a to-do list that fills itself.</p>
         <div class="cta-row">
@@ -123,49 +126,44 @@
         <p class="micro">Free to start · macOS 13+ · Apple silicon · Sign in with Google</p>
       </div>
 
-      <div class="w w--cost" data-sc-copy data-sc-window="0.13 0.245 0.25 0.3">
+      <div class="w w--mid" data-sc-copy data-sc-window="0.125 0.219 0.22 0.2" data-leg="1">
         <h2>You can be present, or you can be writing it down.</h2>
-      </div>
-      <div class="w w--costb" data-sc-copy data-sc-window="0.15 0.255 0.3 0.3">
         <p>Never both. A conversation moves at talking speed, the useful parts blow past in a sentence, and what nobody catches is gone by the next meeting.</p>
       </div>
 
-      <div class="w w--catch" data-sc-copy data-sc-window="0.26 0.37 0.28 0.3">
+      <div class="w w--top" data-sc-copy data-sc-window="0.247 0.406 0.22 0.2" data-leg="2">
         <h2>The catch.</h2>
         <p>Amlin takes the call live, straight off your Mac&rsquo;s own audio. No bot joins, and nobody else has to install a thing.</p>
-      </div>
-      <div class="w w--tag w--tag1" data-sc-copy data-sc-window="0.30 0.44 0.3 0.25"><span class="tag">Summary</span></div>
-      <div class="w w--tag w--tag2" data-sc-copy data-sc-window="0.325 0.45 0.3 0.25"><span class="tag">Decisions</span></div>
-      <div class="w w--tag w--tag3" data-sc-copy data-sc-window="0.35 0.46 0.3 0.25"><span class="tag">Action items · owners · due dates</span></div>
-      <div class="w w--catchb" data-sc-copy data-sc-window="0.375 0.475 0.3 0.3">
         <p>The moment the call ends, the loose stream is a written note: what was said, what was decided, who owes what by when. Ask questions of it later and get answers with citations to the exact line.</p>
       </div>
+      <div class="w w--tag w--tag1" data-sc-copy data-sc-window="0.275 0.40 0.3 0.2" data-leg="2"><span class="tag">Summary</span></div>
+      <div class="w w--tag w--tag2" data-sc-copy data-sc-window="0.29 0.40 0.3 0.2" data-leg="2"><span class="tag">Decisions</span></div>
+      <div class="w w--tag w--tag3" data-sc-copy data-sc-window="0.305 0.40 0.3 0.2" data-leg="2"><span class="tag">Action items · owners · due dates</span></div>
 
-      <div class="w w--learn" data-sc-copy data-sc-window="0.49 0.60 0.28 0.3">
+      <div class="w w--mid" data-sc-copy data-sc-window="0.432 0.526 0.22 0.2" data-leg="3">
         <h2>Every pass teaches it.</h2>
-      </div>
-      <div class="w w--learnb" data-sc-copy data-sc-window="0.505 0.615 0.3 0.3">
         <p>Your names, your acronyms, and your way of putting things settle into one custom dictionary shared by everything Amlin writes. Transcripts and dictation both come out more accurate the longer you use it. The wheel turns easier each time.</p>
       </div>
 
-      <div class="w w--tri" data-sc-copy data-sc-window="0.615 0.70 0.28 0.3">
-        <h2>Three currents, one wheel.</h2>
-      </div>
-      <div class="w w--trib" data-sc-copy data-sc-window="0.635 0.745 0.28 0.28">
-        <p>Dictation runs anywhere on your Mac. Hold a key and talk: the ums disappear, punctuation lands, and finished text types itself where your cursor is. An email arrives shaped like an email, a spoken &ldquo;new line&rdquo; becomes a real line break, a bullet list appears when you ask for one, and a 🙂 lands where you meant it. On-device, unmetered, free.</p>
-        <p>To-dos file themselves. Every commitment from every meeting lands in one list with owners and due dates, and each item links back to the line that created it.</p>
-      </div>
-      <div class="w w--bill" data-sc-copy data-sc-window="0.675 0.755 0.3 0.3">
-        <p>Bought separately, a notetaker, a dictation app, and a to-do tool run about $35 a month. Amlin is all three for $10, and the free plan is real.</p>
+      <div class="w w--top" data-sc-copy data-sc-window="0.547 0.648 0.22 0.2" data-leg="4">
+        <h2>Dictation, anywhere on your Mac.</h2>
+        <p>Hold a key and talk. The ums disappear, punctuation lands, and finished text types itself where your cursor is. An email arrives shaped like an email, a spoken &ldquo;new line&rdquo; becomes a real line break, a bullet list appears when you ask for one, and a 🙂 lands where you meant it.</p>
+        <p>On-device, unmetered, and free on every plan.</p>
       </div>
 
-      <div class="w w--still" data-sc-copy data-sc-window="0.765 0.875 0.25 0.3">
+      <div class="w w--top" data-sc-copy data-sc-window="0.670 0.771 0.22 0.2" data-leg="5">
+        <h2>To-dos that file themselves.</h2>
+        <p>Every commitment from every meeting lands in one list with owners and due dates, and each item links back to the line that created it.</p>
+        <p>Bought separately, a notetaker, a dictation app, and a to-do tool run about $35 a month. Amlin is all three for $10, on one dictionary and one bill.</p>
+      </div>
+
+      <div class="w w--mid" data-sc-copy data-sc-window="0.792 0.886 0.22 0.2" data-leg="6">
         <h2>The air leaves. The writing stays.</h2>
         <p>Meeting audio is transcribed live and discarded on the spot: never written to disk, never stored. Dictation audio never leaves your Mac at all. What remains is text, your notes and transcripts, synced to your account alone.</p>
         <p><a href="privacy.html">Read the full privacy policy</a></p>
       </div>
 
-      <div class="w w--finale" data-sc-copy data-sc-window="finale">
+      <div class="w w--finale" data-sc-copy data-sc-window="0.90 1 0.3 0" data-leg="7">
         <h2>Yours.</h2>
         <p>The pinwheel&rsquo;s next stop is your Mac&rsquo;s menu bar.</p>
         <div class="cta-row" style="justify-content:center">
@@ -291,7 +289,6 @@
           <nav class="fcol" aria-label="Learn">
             <h4>Learn</h4>
             <a href="how-to-take-meeting-notes.html">How to take meeting notes</a>
-            <a href="meeting-notes-template.html">Meeting notes template</a>
           </nav>
           <nav class="fcol" aria-label="Support and legal">
             <h4>Support &amp; legal</h4>
@@ -308,7 +305,7 @@
   </footer>
 
   <script src="scrollcraft.js?v=1"></script>
-  <script src="amlin-flight.js?v=1"></script>
+  <script src="amlin-flight.js?v=2"></script>
 
   <!-- Intercom messenger -->
   <script>

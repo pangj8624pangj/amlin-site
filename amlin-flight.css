@@ -22,7 +22,11 @@
   --r-plate: 14px; --r-ui: 10px;
 }
 
-html { scrollbar-color: color-mix(in oklab, #146b62 40%, transparent) transparent; }
+html { scrollbar-color: color-mix(in oklab, #146b62 40%, transparent) transparent; scroll-snap-type: y mandatory; }
+/* the stops: one screen you can read, then the next */
+.sc-world__spacer { position: relative; }
+.stop { position: absolute; left: 0; width: 1px; height: 1px; scroll-snap-align: start; }
+.appendix { scroll-snap-align: start; }
 
 /* ---- skip link ---------------------------------------------------------- */
 .skip {
@@ -51,9 +55,8 @@ html { scrollbar-color: color-mix(in oklab, #146b62 40%, transparent) transparen
   overflow: hidden;
 }
 .plate img { width: 100%; height: auto; display: block; }
-.plate--note { right: 5vw; top: 50%; transform: translateY(-50%); width: min(44vw, 780px); }
-.plate--dict { right: 4vw;  top: 10vh; width: min(30vw, 520px); }
-.plate--todo { right: 12vw; bottom: 7vh; width: min(34vw, 600px); }
+.plate--note, .plate--todo { right: 5vw; top: 50%; transform: translateY(-50%); width: min(45vw, 112vh); }
+.plate--dict { right: 8vw; top: 50%; transform: translateY(-50%); width: min(38vw, 70vh); }
 .plate__cap {
   font-family: var(--sc-font-mono); font-size: var(--sc-t-xs);
   letter-spacing: var(--sc-track-wide); text-transform: uppercase;
@@ -81,26 +84,19 @@ html { scrollbar-color: color-mix(in oklab, #146b62 40%, transparent) transparen
 .w .lede { font-size: var(--sc-t-lg); line-height: 1.45; color: var(--sc-ink); max-width: 44ch; }
 .w .micro { font-size: var(--sc-t-sm); color: var(--sc-ink-soft); margin-top: var(--sc-4); }
 
-.w--hero   { bottom: clamp(3rem, 11vh, 8rem); max-width: min(34rem, 42vw); }
-.w--cost   { top: 20vh; }
-.w--costb  { top: 44vh; max-width: 33rem; }
-.w--catch  { top: 16vh; }
-.w--catchb { top: 56vh; max-width: 30rem; }
-.w--learn  { top: 22vh; }
-.w--learnb { top: 42vh; }
-.w--tri    { top: 12vh; }
-.w--trib   { top: 32vh; max-width: 31rem; }
-.w--bill   { bottom: 10vh; max-width: 31rem; }
-.w--still  { top: 30vh; }
+.w { max-width: min(34rem, 40vw); }
+.w--hero   { bottom: clamp(3rem, 11vh, 8rem); }
+.w--top    { top: 18vh; }
+.w--mid    { top: 26vh; }
 .w--finale {
   left: 50%; translate: -50% 0; top: 34vh; text-align: center;
   max-width: min(40rem, 88vw);
 }
 .w--finale p { margin-inline: auto; }
 
-/* labels that cascade in beside the note at the catch */
-.w--tag { left: auto; right: calc(5vw + min(44vw, 780px) + 2.5vw); max-width: 14rem; text-align: right; }
-.w--tag1 { top: 30vh; } .w--tag2 { top: 40vh; } .w--tag3 { top: 50vh; }
+/* labels that cascade in under the catch copy */
+.w--tag { max-width: 20rem; }
+.w--tag1 { top: 66vh; } .w--tag2 { top: 72vh; } .w--tag3 { top: 78vh; }
 .w--tag .tag {
   font-family: var(--sc-font-mono); font-size: var(--sc-t-xs);
   letter-spacing: var(--sc-track-wide); text-transform: uppercase;
@@ -131,22 +127,26 @@ html { scrollbar-color: color-mix(in oklab, #146b62 40%, transparent) transparen
   position: fixed; left: 0; top: 0; width: 640px; height: 640px;
   z-index: var(--sc-z-chrome);
   transform-origin: 50% 50%;
+  perspective: 1400px;
   will-change: transform, opacity;
   pointer-events: none;
 }
 .mark__btn {
   all: unset; display: block; width: 100%; height: 100%;
   cursor: pointer; pointer-events: auto;
-  border-radius: 22%;
+  border-radius: 50%;
+  transform-style: preserve-3d;
+  filter: drop-shadow(0 28px 26px rgba(14, 84, 77, 0.30)) drop-shadow(0 4px 6px rgba(14, 84, 77, 0.18));
+  will-change: transform;
 }
-.mark__btn:focus-visible { outline: 2px solid var(--sc-accent); outline-offset: 4px; }
+.mark__btn:focus-visible { outline: 2px solid var(--sc-accent); outline-offset: 6px; }
 .mark svg { width: 100%; height: 100%; overflow: visible; }
 .mark__rotor, .blade { will-change: transform, filter; }
 .mark__arc { opacity: 0; transition: opacity 300ms var(--sc-ease-out); }
 .mark.is-docked .mark__arc { opacity: 1; }
 
 .mark__meta {
-  position: fixed; right: 16px; top: 74px; z-index: var(--sc-z-chrome);
+  position: fixed; right: 16px; top: 80px; z-index: var(--sc-z-chrome);
   font-family: var(--sc-font-mono); font-size: 11px;
   letter-spacing: var(--sc-track-wide); text-transform: uppercase;
   color: var(--sc-ink-soft); text-align: right;
@@ -158,7 +158,7 @@ html { scrollbar-color: color-mix(in oklab, #146b62 40%, transparent) transparen
 
 /* the map the mark unfolds */
 .map {
-  position: fixed; right: 16px; top: 96px; z-index: var(--sc-z-chrome);
+  position: fixed; right: 16px; top: 104px; z-index: var(--sc-z-chrome);
   background: var(--sc-canvas);
   border: 1px solid var(--sc-hairline-strong); border-radius: var(--r-plate);
   box-shadow: var(--sc-e2);
@@ -253,30 +253,24 @@ html { scrollbar-color: color-mix(in oklab, #146b62 40%, transparent) transparen
   .w { left: var(--sc-gutter); right: var(--sc-gutter); max-width: none; }
   .w h1 { font-size: var(--sc-t-2xl); }
   .w h2 { font-size: var(--sc-t-xl); }
-  .w--hero  { bottom: clamp(2rem, 7vh, 4rem); }
-  .w--cost  { top: 12vh; } .w--costb { top: 38vh; }
-  .w--catch { top: 8vh; }  .w--catchb { display: none; }
-  .w--tag { left: var(--sc-gutter); right: auto; text-align: left; max-width: 14rem; }
-  .w--tag1 { top: 40vh; } .w--tag2 { top: 46vh; } .w--tag3 { top: 52vh; }
-  .w--learn { top: 14vh; } .w--learnb { top: 34vh; }
-  .w--tri  { top: 8vh; }  .w--trib { top: 22vh; }
-  .w--trib p { font-size: var(--sc-t-sm); }
-  .w--bill { bottom: 6vh; }
-  .w--still { top: 22vh; }
+  .w p { font-size: var(--sc-t-sm); }
+  .w--hero  { bottom: clamp(2rem, 6vh, 4rem); }
+  .w--top, .w--mid { top: 8vh; }
+  .w--tag { display: none; }
   .w--finale { top: 26vh; }
-  .plate--note { right: 4vw; left: 4vw; width: auto; top: auto; bottom: 4vh; transform: none; }
-  .plate--dict { right: 4vw; left: 18vw; width: auto; top: auto; bottom: 26vh; }
-  .plate--todo { left: 4vw; right: 18vw; width: auto; bottom: 4vh; }
+  .plate--note, .plate--todo { right: 4vw; left: 4vw; width: auto; max-width: 60vh; margin-inline: auto; top: auto; bottom: 4vh; transform: none; }
+  .plate--dict { right: 8vw; left: 8vw; width: auto; max-width: 44vh; margin-inline: auto; top: auto; bottom: 4vh; transform: none; }
   .plate__cap { display: none; }
-  .mark__meta { top: 64px; right: 12px; }
-  .map { right: 12px; top: 86px; }
+  .mark__meta { top: 70px; right: 12px; }
+  .map { right: 12px; top: 92px; }
   .plans { grid-template-columns: 1fr; }
 }
 
 /* ---- reduced motion: the story on still paper --------------------------- */
 @media (prefers-reduced-motion: reduce) {
   .plate { clip-path: none !important; }
-  .mark { transform: none !important; left: auto; top: 16px; right: 16px; width: 48px; height: 48px; }
+  .mark { transform: none !important; left: auto; top: 16px; right: 16px; width: 56px; height: 56px; }
+  .mark__btn { transform: none !important; filter: none; }
   .mark__arc { opacity: 1; }
   .mark__meta { opacity: 1; }
 }
