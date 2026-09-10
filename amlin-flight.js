@@ -23,11 +23,15 @@
   var TOTAL = C0[W.length];
   // where each stop lands, as a fraction of its leg
   var STOP = [0, 0.5, 0.55, 0.5, 0.5, 0.5, 0.5, 0.5];
-  var stopY = function (i) { return i === 0 ? 0 : (C0[i] + W[i] * STOP[i]) * innerHeight; };
+  // the engine sizes the spacer in px from its own viewport reading; use that
+  // as the ruler so stops, windows and the landing agree on a phone whose
+  // toolbar keeps changing innerHeight
+  var spacer = document.querySelector('[data-sc-spacer]');
+  var ruler = function () { return (spacer.offsetHeight || innerHeight * (TOTAL + 1)) / (TOTAL + 1); };
+  var stopY = function (i) { return i === 0 ? 0 : (C0[i] + W[i] * STOP[i]) * ruler(); };
   var legLocal = function (t, i) { return clamp((t - C0[i]) / W[i], 0, 1); };
 
   // ---- scroll stops: one screen you can read, then the next -----------------
-  var spacer = document.querySelector('[data-sc-spacer]');
   var stops = W.map(function (_, i) {
     var m = document.createElement('i');
     m.className = 'stop';
@@ -38,6 +42,17 @@
     stops.forEach(function (m, i) { m.style.top = Math.round(stopY(i)) + 'px'; });
   }
   placeStops();
+  var snapOff = false, noSnap = /nosnap/.test(location.search);
+  function snapGate() {
+    if (noSnap) return;
+    // snapping carries the reader onto the appendix, then lets go; it takes
+    // hold again only once they are back nearer the last stop than the appendix
+    var ap = spacer.offsetHeight, mid = (stopY(W.length - 1) + ap) / 2;
+    if (!snapOff && scrollY >= ap - 2) { snapOff = true; document.documentElement.style.scrollSnapType = 'none'; }
+    else if (snapOff && scrollY < mid) { snapOff = false; document.documentElement.style.scrollSnapType = ''; }
+  }
+  addEventListener('scroll', snapGate, { passive: true });
+  snapGate();
   var lastW = innerWidth;
   addEventListener('resize', function () {
     if (innerWidth === lastW && matchMedia('(max-width: 860px)').matches) return;
@@ -127,11 +142,6 @@
   // ---- shared state --------------------------------------------------------
   var worldEl = document.querySelector('[data-sc-world]');
   var copyEl = document.querySelector('[data-sc-world-copy]');
-  var plates = {
-    note: document.getElementById('plateNote'),
-    dict: document.getElementById('plateDict'),
-    todo: document.getElementById('plateTodo')
-  };
   var slot = document.getElementById('markSlot');
   var vw = innerWidth, vh = innerHeight;
   function measure() { vw = innerWidth; vh = innerHeight; }
@@ -143,7 +153,7 @@
     // past the landing the appendix covers the flight; take the copy layer
     // out of the page so nothing hidden is left underneath
     var park = function () {
-      var gone = scrollY / innerHeight > TOTAL + 0.7;
+      var gone = scrollY > spacer.offsetHeight - innerHeight * 0.45;
       copyEl.style.display = gone ? 'none' : '';
       markEl.style.visibility = gone ? 'hidden' : '';
     };
@@ -164,8 +174,8 @@
     var dt = Math.max(now - lastT, 1);
     var dy = scrollY - lastY;
     lastY = scrollY; lastT = now;
-    var ty = scrollY / vh;
-    var t = clamp(ty, 0, TOTAL);
+    var R = ruler();
+    var t = clamp(scrollY / R, 0, TOTAL);
 
     var target = Math.min(Math.abs(dy) / dt * 16 / 24, 1);
     if (target > wind.v) wind.v += (target - wind.v) * 0.25;
@@ -173,8 +183,7 @@
     if (dy !== 0) wind.dir = dy > 0 ? 1 : -1;
 
     var catchW = sstep((t - (C0[2] - 0.2)) / 0.4) * (1 - sstep((t - (C0[3] - 0.2)) / 0.3));
-    // the wheel swells and turns easier at It learns you
-    var swell = sstep(1 - Math.abs(legLocal(t, 3) - 0.5) * 2.6);
+    var swell = 0;
     learned = Math.max(learned, sstep(legLocal(t, 3)));
 
     // ---- torque against inertia -------------------------------------------
@@ -199,7 +208,7 @@
     var S0 = mob ? Math.min(vw * 0.72, vh * 0.42) : Math.min(vw * 0.42, vh * 0.74, 700);
     var u = sstep((t - 0.9) / 0.9);              // open -> dock
     var u2 = sstep((t - 10.0) / 0.7);            // dock -> menu-bar slot
-    var dock = 56 + swell * (mob ? 40 : 120);
+    var dock = 56;
     var cx = lerp(mob ? vw * 0.5 : vw * 0.68, vw - 16 - dock / 2, u);
     var cy = lerp(mob ? vh * 0.25 : vh * 0.44, 16 + dock / 2, u);
     var size = lerp(S0, dock, u);
@@ -221,18 +230,9 @@
     rotor.style.filter = blur > 0.05 ? 'blur(' + Math.min(blur / scale, 2 / scale).toFixed(1) + 'px)' : '';
     arc.style.strokeDashoffset = (ARC_C * (1 - t / TOTAL)).toFixed(0);
 
-    // ---- plates: written in before the stop -------------------------------
-    var rNote = sstep((legLocal(t, 2) - 0.12) / 0.38);
-    var rDict = sstep((legLocal(t, 4) - 0.08) / 0.36);
-    var rTodo = sstep((legLocal(t, 5) - 0.08) / 0.36);
-    plates.note.style.clipPath = 'inset(0 0 ' + ((1 - rNote) * 100).toFixed(1) + '% 0 round 14px)';
-    plates.dict.style.clipPath = 'inset(0 0 ' + ((1 - rDict) * 100).toFixed(1) + '% 0 round 14px)';
-    plates.todo.style.clipPath = 'inset(0 0 ' + ((1 - rTodo) * 100).toFixed(1) + '% 0 round 14px)';
-    plates.todo.style.translate = '0 ' + ((1 - rTodo) * 48).toFixed(1) + 'px';
-    plates.dict.style.clipPath = 'inset(0 ' + ((1 - rDict) * 100).toFixed(1) + '% 0 0 round 14px)';
-
     // ---- the flight ends on the same paper the appendix is printed on -----
-    var fade = 1 - clamp((ty - (TOTAL + 0.15)) / 0.55, 0, 1);
+    var endY = spacer.offsetHeight - innerHeight;
+    var fade = 1 - clamp((scrollY - endY) / (innerHeight * 0.55), 0, 1);
     worldEl.style.opacity = fade;
     copyEl.style.opacity = fade;
     markEl.style.opacity = fade;
@@ -241,8 +241,7 @@
     copyEl.style.display = fade < 0.03 ? 'none' : '';
 
     // ---- honest state for the verification harness ------------------------
-    var sig = [Math.round(angle / 4), Math.round(t * 20), Math.round(rNote * 20),
-               Math.round((rDict + rTodo) * 10), Math.round(u * 10 + u2 * 10), Math.round(swell * 10)].join('|');
+    var sig = [Math.round(angle / 4), Math.round(t * 20), Math.round(u * 10 + u2 * 10)].join('|');
     if (sig !== lastState) { lastState = sig; markEl.setAttribute('data-sc-verify-state', sig); }
     var hold = t > C0[6] + 0.4 && t < C0[7];
     markEl.setAttribute('data-sc-verify-hold', hold ? 'true' : 'false');
