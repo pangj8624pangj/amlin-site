@@ -12,7 +12,7 @@
   var lerp = function (a, b, t) { return a + (b - a) * t; };
 
   if (/nosnap/.test(location.search)) document.documentElement.style.scrollSnapType = 'none';
-  ScrollCraft.mount(document);
+  var api = ScrollCraft.mount(document);
   function relayout() { dispatchEvent(new Event('resize')); }
   addEventListener('load', relayout);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(relayout);
@@ -27,8 +27,7 @@
   // as the ruler so stops, windows and the landing agree on a phone whose
   // toolbar keeps changing innerHeight
   var spacer = document.querySelector('[data-sc-spacer]');
-  var ruler = function () { return (spacer.offsetHeight || innerHeight * (TOTAL + 1)) / (TOTAL + 1); };
-  var stopY = function (i) { return i === 0 ? 0 : (C0[i] + W[i] * STOP[i]) * ruler(); };
+  var stopY = function (i) { return i === 0 ? 0 : Math.round((C0[i] + W[i] * STOP[i]) * innerHeight); };
   var legLocal = function (t, i) { return clamp((t - C0[i]) / W[i], 0, 1); };
 
   // ---- scroll stops: one screen you can read, then the next -----------------
@@ -53,10 +52,19 @@
   }
   addEventListener('scroll', snapGate, { passive: true });
   snapGate();
-  var lastW = innerWidth;
+  // A phone's toolbar changes innerHeight after load. The engine then measures
+  // progress on the new height but keeps the spacer at its mount-time size, so
+  // every stop and window would drift from what it shows. Re-lay the engine
+  // out on any height change and keep the reader on the same track position.
+  var lastW = innerWidth, lastVh = innerHeight;
   addEventListener('resize', function () {
-    if (innerWidth === lastW && matchMedia('(max-width: 860px)').matches) return;
-    lastW = innerWidth; placeStops();
+    if (innerWidth === lastW && innerHeight === lastVh) return;
+    var tNow = scrollY / lastVh;
+    lastW = innerWidth; lastVh = innerHeight;
+    api.layout();
+    placeStops();
+    var y = Math.round(tNow * innerHeight);
+    if (Math.abs(y - scrollY) > 2 && tNow <= TOTAL + 1) scrollTo({ top: y, behavior: 'instant' });
   }, { passive: true });
 
   // ---- the wheel: eight curled blades, lit from the top left ---------------
@@ -174,8 +182,7 @@
     var dt = Math.max(now - lastT, 1);
     var dy = scrollY - lastY;
     lastY = scrollY; lastT = now;
-    var R = ruler();
-    var t = clamp(scrollY / R, 0, TOTAL);
+    var t = clamp(scrollY / innerHeight, 0, TOTAL);   // the engine's own ruler
 
     var target = Math.min(Math.abs(dy) / dt * 16 / 24, 1);
     if (target > wind.v) wind.v += (target - wind.v) * 0.25;
