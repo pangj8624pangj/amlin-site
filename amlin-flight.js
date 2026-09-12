@@ -11,7 +11,6 @@
   var sstep = function (x) { x = clamp(x, 0, 1); return x * x * (3 - 2 * x); };
   var lerp = function (a, b, t) { return a + (b - a) * t; };
 
-  if (/nosnap/.test(location.search)) document.documentElement.style.scrollSnapType = 'none';
   var api = ScrollCraft.mount(document);
   function relayout() { dispatchEvent(new Event('resize')); }
   addEventListener('load', relayout);
@@ -31,25 +30,27 @@
   var legLocal = function (t, i) { return clamp((t - C0[i]) / W[i], 0, 1); };
 
   // ---- scroll stops: one screen you can read, then the next -----------------
-  var stops = W.map(function (_, i) {
+  // eight stops plus the landing on the appendix, all markers in the spacer
+  var stops = W.concat([0]).map(function () {
     var m = document.createElement('i');
     m.className = 'stop';
     spacer.appendChild(m);
     return m;
   });
   function placeStops() {
-    stops.forEach(function (m, i) { m.style.top = Math.round(stopY(i)) + 'px'; });
+    stops.forEach(function (m, i) { m.style.top = (i < W.length ? stopY(i) : spacer.offsetHeight) + 'px'; });
   }
   placeStops();
   var snapOff = false, noSnap = /nosnap/.test(location.search);
+  var setSnap = function (on) { document.documentElement.style.scrollSnapType = on && !noSnap ? 'y mandatory' : 'none'; };
   function snapGate() {
-    if (noSnap) return;
     // snapping carries the reader onto the appendix, then lets go; it takes
     // hold again only once they are back nearer the last stop than the appendix
     var ap = spacer.offsetHeight, mid = (stopY(W.length - 1) + ap) / 2;
-    if (!snapOff && scrollY >= ap - 2) { snapOff = true; document.documentElement.style.scrollSnapType = 'none'; }
-    else if (snapOff && scrollY < mid) { snapOff = false; document.documentElement.style.scrollSnapType = ''; }
+    if (!snapOff && scrollY >= ap - 2) { snapOff = true; setSnap(false); }
+    else if (snapOff && scrollY < mid) { snapOff = false; setSnap(true); }
   }
+  setSnap(true);
   addEventListener('scroll', snapGate, { passive: true });
   snapGate();
   // A phone's toolbar changes innerHeight after load. The engine then measures
@@ -211,15 +212,12 @@
     }
 
     // ---- the mark's flight path -------------------------------------------
-    var mob = vw <= 860;
-    var S0 = mob ? Math.min(vw * 0.72, vh * 0.42) : Math.min(vw * 0.42, vh * 0.74, 700);
-    var u = sstep((t - 0.9) / 0.9);              // open -> dock
-    var u2 = sstep((t - 10.0) / 0.7);            // dock -> menu-bar slot
-    var dock = 56;
-    var cx = lerp(mob ? vw * 0.5 : vw * 0.68, vw - 16 - dock / 2, u);
-    var cy = lerp(mob ? vh * 0.25 : vh * 0.44, 16 + dock / 2, u);
-    var size = lerp(S0, dock, u);
-    document.documentElement.style.setProperty('--dock', dock.toFixed(0) + 'px');
+    // the wheel lives its whole life as chrome: docked from the first pixel,
+    // stepping down to menu-bar size beside the button at the close
+    var u = 1, dock = 56;
+    document.documentElement.style.setProperty('--dock', dock + 'px');
+    var u2 = sstep((t - 10.0) / 0.7);
+    var cx = vw - 16 - dock / 2, cy = 16 + dock / 2, size = dock;
     if (u2 > 0) {
       var sr = slot.getBoundingClientRect();
       cx = lerp(cx, sr.left + sr.width / 2, u2);
@@ -229,8 +227,6 @@
     var scale = size / 640;
     markEl.style.transform = 'translate3d(' + cx.toFixed(1) + 'px,' + cy.toFixed(1) + 'px,0) translate(-50%,-50%) scale(' + scale.toFixed(4) + ')';
     // a lit object in perspective at the open; flat chrome once docked
-    var tilt = 1 - u;
-    wrap3d.style.transform = 'rotateX(' + (18 * tilt).toFixed(1) + 'deg) rotateY(' + (-12 * tilt).toFixed(1) + 'deg)';
     markEl.classList.toggle('is-docked', u > 0.85 && u2 < 0.5);
     meta.classList.toggle('is-on', u > 0.9 && u2 < 0.2);
     var blur = Math.max(0, Math.abs(spinV) - 2.5) * 0.09;
