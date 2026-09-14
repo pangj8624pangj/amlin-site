@@ -134,6 +134,7 @@
   });
   addEventListener('sc:waypoint', function (e) {
     wpLabel.textContent = e.detail.label;
+    if (reduce) meta.classList.toggle('is-on', e.detail.index > 0);
     document.documentElement.classList.toggle('on-deep', e.detail.index === 6);
     map.querySelectorAll('button[data-leg]').forEach(function (b) {
       b.setAttribute('aria-current', String(+b.dataset.leg === e.detail.index));
@@ -152,13 +153,13 @@
   var worldEl = document.querySelector('[data-sc-world]');
   var copyEl = document.querySelector('[data-sc-world-copy]');
   var slot = document.getElementById('markSlot');
+  var gust = document.querySelector('.gust');
   var vw = innerWidth, vh = innerHeight;
   function measure() { vw = innerWidth; vh = innerHeight; }
   addEventListener('resize', measure, { passive: true });
 
   if (reduce) {
     arc.style.strokeDashoffset = '0';
-    meta.classList.add('is-on');
     // past the landing the appendix covers the flight; take the copy layer
     // out of the page so nothing hidden is left underneath
     var park = function () {
@@ -228,7 +229,8 @@
     markEl.style.transform = 'translate3d(' + cx.toFixed(1) + 'px,' + cy.toFixed(1) + 'px,0) translate(-50%,-50%) scale(' + scale.toFixed(4) + ')';
     // a lit object in perspective at the open; flat chrome once docked
     markEl.classList.toggle('is-docked', u > 0.85 && u2 < 0.5);
-    meta.classList.toggle('is-on', u > 0.9 && u2 < 0.2);
+    meta.classList.toggle('is-on', t > C0[1] - 0.25 && u2 < 0.2);
+    if (gust) gust.style.transform = 'translateX(' + (wind.v * 16).toFixed(1) + 'px)';
     var blur = Math.max(0, Math.abs(spinV) - 2.5) * 0.09;
     rotor.style.filter = blur > 0.05 ? 'blur(' + Math.min(blur / scale, 2 / scale).toFixed(1) + 'px)' : '';
     arc.style.strokeDashoffset = (ARC_C * (1 - t / TOTAL)).toFixed(0);
