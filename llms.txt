@@ -28,6 +28,7 @@ Key facts (checked August 2026):
 - [Amlin for project managers](https://amlin.ai/for-project-managers.html): the action-item register that fills itself
 - [How to take meeting notes](https://amlin.ai/how-to-take-meeting-notes.html): a plain-language guide to what to capture, a copy-paste template, and after-meeting habits
 - [Meeting notes template](https://amlin.ai/meeting-notes-template.html): four copy-paste plain-text templates for team meetings, client calls, one-on-ones, and project kickoffs
+- [Talk to text on a Mac](https://amlin.ai/talk-to-text-mac.html): how to turn on and use built-in Mac dictation, the commands it understands, and where it tends to frustrate people
 - [Privacy policy](https://amlin.ai/privacy.html): full detail on data handling, including the never-store-audio design
 - [Terms of service](https://amlin.ai/terms.html): including the recording-consent requirement
 - [Refund policy](https://amlin.ai/refund.html)
