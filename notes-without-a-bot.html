@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google Analytics is loaded via consent.js; EU/EEA visitors are asked for consent first -->
+  <script src="consent.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Notes Without a Bot: How No-Bot Capture Works</title>
+  <meta name="description" content="How AI meeting notes work when no bot joins the call, how that differs from meeting bots, and what each approach means for guests, hosts, and stored recordings." />
+  <link rel="canonical" href="https://amlin.ai/notes-without-a-bot.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Notes Without a Bot: How No-Bot Capture Works" />
+  <meta property="og:description" content="How AI meeting notes work when no bot joins the call, how that differs from meeting bots, and what each approach means for guests, hosts, and stored recordings." />
+  <meta property="og:url" content="https://amlin.ai/notes-without-a-bot.html" />
+  <meta property="og:image" content="https://amlin.ai/assets/desktop-note.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png" />
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+  <link rel="stylesheet" href="styles.css?v=9" />
+  <script defer src="assets/ph.js"></script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Notes Without a Bot: How No-Bot Capture Works",
+  "description": "How AI meeting notes work when no bot joins the call, how that differs from meeting bots, and what each approach means for guests, hosts, and stored recordings.",
+  "datePublished": "2026-09-29",
+  "author": {
+    "@type": "Organization",
+    "name": "Amlin Labs LLC"
+  }
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Can an app take meeting notes without a bot joining the call?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. An app running on your own computer can pick up the sound the computer plays, which is the other participants' voices, plus your microphone. It turns that sound into text as the meeting happens. Nothing joins the call, so nobody else sees an extra attendee or has to approve anything."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does the other person know I'm taking notes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not automatically. With no bot in the call, nothing on the other person's screen changes. That makes telling them your responsibility. Depending on where you and they are located, you may need their consent before recording or transcribing a conversation, so check the rules that apply to you and ask when in doubt."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does no-bot capture work for phone calls and in-person meetings?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It works for anything your Mac can hear. A video call, a call on speaker, or a conversation in a room picked up by the microphone are all possible. It cannot capture a call you take on a different device, because the sound has to reach the computer running the app."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the downsides of no-bot capture?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It only hears what happens on the one computer it runs on, so it cannot join a call on your behalf while you are away, and it produces no video file to replay. If you want a recording to watch later, a bot-based tool is the better fit."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is audio stored when no bot is used?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "That depends on the app. Some upload and keep the audio, others transcribe it and discard it. Amlin transcribes live and never stores the meeting audio, so only the text remains."
+      }
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <nav class="nav">
+    <div class="wrap">
+      <a class="brand" href="index.html" style="text-decoration:none"><img class="brand-mark" src="assets/icon.svg" alt="" width="26" height="26" />Amlin<span class="dot">.</span></a>
+      <div class="nav-links">
+        <a href="index.html#how">How it works</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a class="btn btn-primary" href="download.html">Download</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="lp-hero">
+    <span class="eyebrow">Explainer</span>
+    <h1>How meeting notes work when no bot joins the call</h1>
+    <p class="lp-sub">Most AI note apps send a bot into your video call. A few skip that and listen from your own computer instead. This page explains how the second kind works, what it changes for the people on your call, and where it falls short.</p>
+  </header>
+
+  <section class="section" style="padding-top:12px">
+    <div class="wrap prose-wrap" style="padding-top:0">
+      <div class="sa">
+        <p><strong>The short version:</strong> a no-bot app records nothing inside the video call. It runs on your own computer, listens to the sound that computer is already playing plus your microphone, and turns that sound into text as the meeting happens. Because it never joins as a participant, the other people on the call see no extra attendee and install nothing. It only hears what your one computer hears.</p>
+      </div>
+
+      <h2>What is a meeting bot?</h2>
+      <p>A meeting bot is a piece of software that signs in to your Zoom, Google Meet, or Microsoft Teams call as if it were a guest. It appears in the participant list, often under a name like "Sam's Notetaker." The host may have to admit it from the waiting room. Once inside, it receives the same audio and video stream as every other attendee, sends it to the company's servers, and comes back with a transcript and summary.</p>
+      <p>That design has one big advantage. The bot lives in the cloud, so it can attend a meeting even if your laptop is closed. It also has a cost. Everyone on the call can see a recorder is present, some organizations block unfamiliar bots outright, and a copy of the recording usually sits on the vendor's servers afterward.</p>
+
+      <h2>How can an app take notes without joining the call?</h2>
+      <p>Think about what happens on your Mac during a video call. The other people's voices come out of your speakers or headphones. Your own voice goes in through your microphone. A no-bot app listens at those two points on your machine. The call itself is untouched, and the video service has no idea anything else is paying attention.</p>
+      <p>On a Mac, Apple provides a way for an app to capture the sound the computer is playing, and macOS asks you for permission the first time. That is why these apps work with Zoom, Meet, Teams, and anything else that makes noise, including a phone call on speaker. There is no list of supported video services to check, because the app never talks to any of them.</p>
+
+      <h2>What changes for the other people on the call?</h2>
+      <ul>
+        <li>They see no extra attendee in the participant list.</li>
+        <li>They do not need to install, approve, or sign in to anything.</li>
+        <li>The host does not have to admit a guest or change any meeting setting.</li>
+        <li>Nothing tells them notes are being taken, so telling them is up to you.</li>
+      </ul>
+      <p>That last point deserves attention. A visible bot doubles as an announcement that the call is being recorded. Without one, you carry the job of saying so. Laws on recording and transcribing conversations differ by country and by state, and some places require everyone's agreement first. A short sentence at the start of a call, such as "I'm taking notes with an app on my computer, is that okay?", covers you in most situations, and it is good manners too.</p>
+
+      <h2>What do you give up with no-bot capture?</h2>
+      <p>There are three limits worth knowing before you choose.</p>
+      <ol>
+        <li><strong>Your computer has to be there.</strong> A bot can attend while your laptop is shut. A no-bot app needs to be running on the machine that is hearing the call.</li>
+        <li><strong>One vantage point.</strong> It hears what your Mac hears. A meeting you join from your phone will not reach it.</li>
+        <li><strong>Usually no video to replay.</strong> Bots often keep the video so you can watch it later. An app that only listens from your computer may keep a transcript and nothing else.</li>
+      </ol>
+
+      <h2>Who is each approach a good fit for?</h2>
+      <p>A bot suits recurring internal meetings where everybody expects a recorder, and where a shared library of recordings is something the team wants. No-bot capture suits conversations where an extra attendee would change the mood: a client call, a candidate interview, a sensitive one-on-one, or a meeting on a customer's own video account where you cannot bring a guest. Some people use both, depending on the meeting.</p>
+
+      <h2>What happens to the audio afterward?</h2>
+      <p>The answer depends on the app, and skipping the bot does not settle it. An app can still upload the audio and store it. Ask three things before you trust any of them with a serious conversation: is the audio saved, for how long, and who besides you can open it.</p>
+
+      <h2>If you'd rather not have a bot in your calls</h2>
+      <p>Amlin is a Mac app built around no-bot capture. It listens to the sound your Mac plays and to your microphone, transcribes live, and writes a structured summary with decisions and action items when the meeting ends. It streams the audio for transcription and discards it right away, so the meeting audio is never stored and only text remains. Amlin has no video recording at all, and it needs macOS 13 or later on Apple silicon. Recording consent is your responsibility, as its terms of service spell out.</p>
+      <p>The free plan covers 4 meeting-hours a month with full note history. Pro costs $10 a month or $108 a year.</p>
+      <div class="cta-row" style="justify-content:center; margin-top:12px">
+        <a class="btn btn-primary" href="download.html">Download Amlin for Mac</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="faq" style="padding-top:0">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Questions people ask</h2>
+      </div>
+      <div class="faq">
+        <details>
+          <summary>Can an app take meeting notes without a bot joining the call?</summary>
+          <p>Yes. An app running on your own computer can pick up the sound the computer plays, which is the other participants' voices, plus your microphone. It turns that sound into text as the meeting happens. Nothing joins the call, so nobody else sees an extra attendee or has to approve anything.</p>
+        </details>
+        <details>
+          <summary>Does the other person know I'm taking notes?</summary>
+          <p>Not automatically. With no bot in the call, nothing on the other person's screen changes. That makes telling them your responsibility. Depending on where you and they are located, you may need their consent before recording or transcribing a conversation, so check the rules that apply to you and ask when in doubt.</p>
+        </details>
+        <details>
+          <summary>Does no-bot capture work for phone calls and in-person meetings?</summary>
+          <p>It works for anything your Mac can hear. A video call, a call on speaker, or a conversation in a room picked up by the microphone are all possible. It cannot capture a call you take on a different device, because the sound has to reach the computer running the app.</p>
+        </details>
+        <details>
+          <summary>What are the downsides of no-bot capture?</summary>
+          <p>It only hears what happens on the one computer it runs on, so it cannot join a call on your behalf while you are away, and it produces no video file to replay. If you want a recording to watch later, a bot-based tool is the better fit.</p>
+        </details>
+        <details>
+          <summary>Is audio stored when no bot is used?</summary>
+          <p>That depends on the app. Some upload and keep the audio, others transcribe it and discard it. Amlin transcribes live and never stores the meeting audio, so only the text remains.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="close-cta">
+    <div class="wrap">
+      <h2>Take notes without adding a guest to the call.</h2>
+      <p>Amlin's free plan covers 4 meeting-hours a month with full history.</p>
+      <a class="btn btn-primary" href="download.html">Download for Mac</a>
+      <p class="micro" style="margin-top:16px">Free to start · macOS 13+ · Sign in with Google</p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="inner">
+        <div>
+          <span class="brand"><img class="brand-mark" src="assets/icon.svg" alt="Amlin" width="26" height="26" />Amlin</span>
+          <p class="tagline">Meeting notes, dictation &amp; to-dos in one Mac app.</p>
+        </div>
+        <div class="footer-cols">
+          <nav class="fcol" aria-label="Product">
+            <h4>Product</h4>
+            <a href="index.html#how">How it works</a>
+            <a href="index.html#pricing">Pricing</a>
+            <a href="download.html">Download</a>
+          </nav>
+          <nav class="fcol" aria-label="Compare">
+            <h4>Compare</h4>
+            <a href="amlin-vs-granola.html">Amlin vs Granola</a>
+            <a href="amlin-vs-otter.html">Amlin vs Otter</a>
+            <a href="amlin-vs-fathom.html">Amlin vs Fathom</a>
+            <a href="amlin-vs-mac-dictation.html">Amlin vs Mac dictation</a>
+          </nav>
+          <nav class="fcol" aria-label="Who it's for">
+            <h4>Who it&rsquo;s for</h4>
+            <a href="for-consultants.html">Consultants &amp; advisors</a>
+            <a href="for-executive-assistants.html">Executive assistants</a>
+            <a href="for-project-managers.html">Project managers</a>
+          </nav>
+          <nav class="fcol" aria-label="Learn">
+            <h4>Learn</h4>
+            <a href="how-to-take-meeting-notes.html">How to take meeting notes</a>
+            <a href="meeting-notes-template.html">Meeting notes template</a>
+            <a href="talk-to-text-mac.html">Talk to text on Mac</a>
+            <a href="app-that-takes-notes-for-you.html">App that takes notes for you</a>
+            <a href="notes-without-a-bot.html">Notes without a bot</a>
+          </nav>
+          <nav class="fcol" aria-label="Support and legal">
+            <h4>Support &amp; legal</h4>
+            <a href="https://help.amlin.ai/" target="_blank" rel="noopener">Help Center</a>
+            <a href="mailto:support@amlin.ai">support@amlin.ai</a>
+            <a href="privacy.html">Privacy</a>
+            <a href="terms.html">Terms</a>
+            <a href="refund.html">Refunds</a>
+          </nav>
+        </div>
+      </div>
+      <div class="copyright">© 2026 Amlin. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <!-- Intercom messenger -->
+  <script>
+    const APP_ID = "l6xy5i6c"
+    window.intercomSettings = {
+      api_base: "https://api-iam.intercom.io",
+      app_id: APP_ID,
+    };
+    (function () { var w = window; var ic = w.Intercom; if (typeof ic === "function") { ic('reattach_activator'); ic('update', w.intercomSettings); } else { var d = document; var i = function () { i.c(arguments); }; i.q = []; i.c = function (args) { i.q.push(args); }; w.Intercom = i; var l = function () { var s = d.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = 'https://widget.intercom.io/widget/' + APP_ID; var x = d.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x); }; if (document.readyState === 'complete') { l(); } else if (w.attachEvent) { w.attachEvent('onload', l); } else { w.addEventListener('load', l, false); } } })();
+  </script>
+</body>
+</html>
