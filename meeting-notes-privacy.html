@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google Analytics is loaded via consent.js; EU/EEA visitors are asked for consent first -->
+  <script src="consent.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meeting Notes Privacy: What AI Notetakers Store and Where</title>
+  <meta name="description" content="What AI meeting notetakers keep after a call (audio, video, transcripts, summaries), where it is stored, who can open it, and the questions to ask any app before you use it for a private conversation." />
+  <link rel="canonical" href="https://amlin.ai/meeting-notes-privacy.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Meeting Notes Privacy: What AI Notetakers Store and Where" />
+  <meta property="og:description" content="What AI meeting notetakers keep after a call (audio, video, transcripts, summaries), where it is stored, who can open it, and the questions to ask any app before you use it for a private conversation." />
+  <meta property="og:url" content="https://amlin.ai/meeting-notes-privacy.html" />
+  <meta property="og:image" content="https://amlin.ai/assets/desktop-note.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png" />
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+  <link rel="stylesheet" href="styles.css?v=9" />
+  <script defer src="assets/ph.js"></script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Meeting Notes Privacy: What AI Notetakers Store and Where",
+  "description": "What AI meeting notetakers keep after a call (audio, video, transcripts, summaries), where it is stored, who can open it, and the questions to ask any app before you use it for a private conversation.",
+  "datePublished": "2026-10-06",
+  "author": {
+    "@type": "Organization",
+    "name": "Amlin Labs LLC"
+  }
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do AI notetakers store my meeting recordings?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Many do. Bot-based tools commonly keep the audio, and often the video, on their servers so you can replay the meeting later. Other apps transcribe the sound and discard it. The vendor's privacy policy or help pages should say which, and how long a stored copy is kept. Amlin never stores meeting audio and keeps only the text."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Who can read my meeting transcript?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You can, and so can anyone you share it with. Beyond that, it depends on the app. Some tools make transcripts visible to everyone in your workspace by default, and the company's own staff or its service providers may be able to access them under its policy. Check the sharing defaults and the list of providers the company names."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my meeting used to train AI models?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Some companies say they may use customer content to improve their models, and others say they do not. Look for a plain sentence about it in the privacy policy. Amlin's privacy policy states that it does not use notes or transcripts to train its own models."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does Amlin send to outside companies?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Amlin streams meeting audio to its transcription provider, Deepgram, to get a live transcript, and the audio is discarded once transcribed. It sends note and transcript text to Anthropic to write summaries and answer questions. Fly.io hosts the synced notes. The privacy policy lists every provider and what each one receives."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I delete my notes and transcripts?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In Amlin you can delete individual notes in the app at any time, and you can email support@amlin.ai to have your account and its data removed. For any other app, find the deletion steps before you start using it, and check whether deleting a note also deletes the stored audio."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does it matter if the notetaker is on my device or in the cloud?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It matters in two ways. Anything processed on the vendor's servers is a copy that leaves your control, and a bot has to send the whole call there. An app that listens from your own computer can still send audio out for transcription, so ask the same questions about it. Amlin does that for transcription only, then discards the audio."
+      }
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <nav class="nav">
+    <div class="wrap">
+      <a class="brand" href="index.html" style="text-decoration:none"><img class="brand-mark" src="assets/icon.svg" alt="" width="26" height="26" />Amlin<span class="dot">.</span></a>
+      <div class="nav-links">
+        <a href="index.html#how">How it works</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a class="btn btn-primary" href="download.html">Download</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="lp-hero">
+    <span class="eyebrow">Explainer</span>
+    <h1>What do AI meeting notetakers store, and where?</h1>
+    <p class="lp-sub">A meeting is full of things you never wrote down anywhere else: prices, opinions, health news, a client's worries. Before an app listens to it, you should know what the app keeps afterward. This page lists what can be stored and the questions that get a straight answer.</p>
+  </header>
+
+  <section class="section" style="padding-top:12px">
+    <div class="wrap prose-wrap" style="padding-top:0">
+      <div class="sa">
+        <p><strong>The short version:</strong> an AI notetaker can keep up to five things from a call: the audio, the video, a word-for-word transcript, a summary, and details about who attended. Apps differ a lot on which of these they save, for how long, and who can open them. Amlin keeps the transcript, your notes, and a summary as text and never stores the meeting audio. It has no video at all.</p>
+      </div>
+
+      <h2>What can an AI notetaker keep from a meeting?</h2>
+      <ul>
+        <li><strong>Audio.</strong> The sound of everyone speaking. This is the most sensitive item, because it holds voices and every word, including the ones that never made it into a summary.</li>
+        <li><strong>Video.</strong> Bot-based tools that join through Zoom, Meet, or Teams often save the screen share and the faces too.</li>
+        <li><strong>Transcript.</strong> The conversation as text, usually labeled by speaker.</li>
+        <li><strong>Summary and action items.</strong> A short version written by an AI model from the transcript or your notes.</li>
+        <li><strong>Attendee details.</strong> Names, and sometimes email addresses, pulled from a calendar invite.</li>
+      </ul>
+      <p>Two apps that both say "we take your notes" can differ on all five. Reading the privacy policy for these specific items tells you more than any marketing page.</p>
+
+      <h2>Where does the data go?</h2>
+      <p>Almost every AI notetaker sends something to computers other than yours. Turning speech into text takes heavy processing, and writing a summary needs an AI model, so most apps pay outside companies to do both. Those companies are called service providers or subprocessors, and a trustworthy policy names them.</p>
+      <p>Then there is storage. The finished notes usually sit on the vendor's servers so you can open them from a phone or another computer. If the audio or video is kept, it sits there too. Each place a copy lives is another place to be hacked, subpoenaed, or opened by an employee with access.</p>
+
+      <h2>Who else can see my meetings?</h2>
+      <p>Start with the people you share with. Some tools make every transcript visible to your whole workspace until you change a setting, and some post summaries automatically to a chat channel or email them to every invitee. After that come the vendor's staff, who may be able to open stored data for support or abuse checks, and the providers named in the policy. A few vendors allow customer content to be used for improving their AI models, and the policy will say so, sometimes in a settings page rather than the main text.</p>
+
+      <h2>Which questions get a straight answer?</h2>
+      <ol>
+        <li>Is the audio saved? If yes, for how long?</li>
+        <li>Is video saved?</li>
+        <li>Which outside companies receive my meeting, and what exactly does each get?</li>
+        <li>Is my content used to train AI models?</li>
+        <li>Who in my workspace can see a transcript by default?</li>
+        <li>How do I delete a meeting, and does that remove every copy?</li>
+        <li>Does the app tell the other people on the call that it is listening?</li>
+      </ol>
+      <p>If the answers are hard to find, that tells you something too. A good policy answers each in a sentence.</p>
+
+      <h2>Does skipping the bot make a notetaker more private?</h2>
+      <p>It removes one problem. With no bot, there is no extra attendee on the call and no copy of the video made by a guest account. It does not settle where your audio goes, because an app on your own computer can still upload sound for transcription and keep it. The questions above apply to every kind of notetaker. For how the two designs work, see <a href="notes-without-a-bot.html">notes without a bot</a>.</p>
+
+      <h2>What about the other people on the call?</h2>
+      <p>Privacy runs both ways. Your client, candidate, or colleague did not choose your notetaker. In many places the law expects you to tell them or get their agreement before recording or transcribing. Saying "I'm using an app on my computer to take notes, is that okay?" takes five seconds. Keep in mind that a transcript can be forwarded, so the people you speak with are trusting your tool as well as you.</p>
+
+      <h2>If you want text-only notes</h2>
+      <p>Amlin transcribes live on your Mac and keeps the text. Here is what its privacy policy says it does with your meeting:</p>
+      <ul>
+        <li>Audio from your microphone and from the sound your Mac plays is streamed to its transcription provider, Deepgram, and discarded once transcribed. Amlin never writes audio files to disk or keeps them.</li>
+        <li>Your notes and transcripts are stored on your device and synced to your account, and you can delete notes in the app or ask support@amlin.ai to remove your account.</li>
+        <li>Note and transcript text goes to Anthropic to write summaries and answer your questions. Fly.io hosts the synced notes.</li>
+        <li>Amlin states that it does not sell personal information or use your notes to train its own models.</li>
+        <li>No video is recorded and no bot joins the call.</li>
+      </ul>
+      <p>Audio does leave your Mac for transcription, so Amlin is not an offline tool. You can read the full list of providers in the <a href="privacy.html">privacy policy</a>. Recording consent is your responsibility under the <a href="terms.html">terms</a>. Amlin needs macOS 13 or later on Apple silicon, and the free plan covers 4 meeting-hours a month with full history. Pro costs $10 a month or $108 a year.</p>
+      <div class="cta-row" style="justify-content:center; margin-top:12px">
+        <a class="btn btn-primary" href="download.html">Download Amlin for Mac</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="faq" style="padding-top:0">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Questions people ask</h2>
+      </div>
+      <div class="faq">
+        <details>
+          <summary>Do AI notetakers store my meeting recordings?</summary>
+          <p>Many do. Bot-based tools commonly keep the audio, and often the video, on their servers so you can replay the meeting later. Other apps transcribe the sound and discard it. The vendor's privacy policy or help pages should say which, and how long a stored copy is kept. Amlin never stores meeting audio and keeps only the text.</p>
+        </details>
+        <details>
+          <summary>Who can read my meeting transcript?</summary>
+          <p>You can, and so can anyone you share it with. Beyond that, it depends on the app. Some tools make transcripts visible to everyone in your workspace by default, and the company's own staff or its service providers may be able to access them under its policy. Check the sharing defaults and the list of providers the company names.</p>
+        </details>
+        <details>
+          <summary>Is my meeting used to train AI models?</summary>
+          <p>Some companies say they may use customer content to improve their models, and others say they do not. Look for a plain sentence about it in the privacy policy. Amlin's privacy policy states that it does not use notes or transcripts to train its own models.</p>
+        </details>
+        <details>
+          <summary>What does Amlin send to outside companies?</summary>
+          <p>Amlin streams meeting audio to its transcription provider, Deepgram, to get a live transcript, and the audio is discarded once transcribed. It sends note and transcript text to Anthropic to write summaries and answer questions. Fly.io hosts the synced notes. The privacy policy lists every provider and what each one receives.</p>
+        </details>
+        <details>
+          <summary>Can I delete my notes and transcripts?</summary>
+          <p>In Amlin you can delete individual notes in the app at any time, and you can email support@amlin.ai to have your account and its data removed. For any other app, find the deletion steps before you start using it, and check whether deleting a note also deletes the stored audio.</p>
+        </details>
+        <details>
+          <summary>Does it matter if the notetaker is on my device or in the cloud?</summary>
+          <p>It matters in two ways. Anything processed on the vendor's servers is a copy that leaves your control, and a bot has to send the whole call there. An app that listens from your own computer can still send audio out for transcription, so ask the same questions about it. Amlin does that for transcription only, then discards the audio.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="close-cta">
+    <div class="wrap">
+      <h2>Notes you can read, with no audio left behind.</h2>
+      <p>Amlin's free plan covers 4 meeting-hours a month with full history.</p>
+      <a class="btn btn-primary" href="download.html">Download for Mac</a>
+      <p class="micro" style="margin-top:16px">Free to start · macOS 13+ · Sign in with Google</p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="inner">
+        <div>
+          <span class="brand"><img class="brand-mark" src="assets/icon.svg" alt="Amlin" width="26" height="26" />Amlin</span>
+          <p class="tagline">Meeting notes, dictation &amp; to-dos in one Mac app.</p>
+        </div>
+        <div class="footer-cols">
+          <nav class="fcol" aria-label="Product">
+            <h4>Product</h4>
+            <a href="index.html#how">How it works</a>
+            <a href="index.html#pricing">Pricing</a>
+            <a href="download.html">Download</a>
+          </nav>
+          <nav class="fcol" aria-label="Compare">
+            <h4>Compare</h4>
+            <a href="amlin-vs-granola.html">Amlin vs Granola</a>
+            <a href="amlin-vs-otter.html">Amlin vs Otter</a>
+            <a href="amlin-vs-fathom.html">Amlin vs Fathom</a>
+            <a href="amlin-vs-mac-dictation.html">Amlin vs Mac dictation</a>
+          </nav>
+          <nav class="fcol" aria-label="Who it's for">
+            <h4>Who it&rsquo;s for</h4>
+            <a href="for-consultants.html">Consultants &amp; advisors</a>
+            <a href="for-executive-assistants.html">Executive assistants</a>
+            <a href="for-project-managers.html">Project managers</a>
+          </nav>
+          <nav class="fcol" aria-label="Learn">
+            <h4>Learn</h4>
+            <a href="how-to-take-meeting-notes.html">How to take meeting notes</a>
+            <a href="meeting-notes-template.html">Meeting notes template</a>
+            <a href="talk-to-text-mac.html">Talk to text on Mac</a>
+            <a href="app-that-takes-notes-for-you.html">App that takes notes for you</a>
+            <a href="notes-without-a-bot.html">Notes without a bot</a>
+            <a href="meeting-notes-privacy.html">Meeting notes privacy</a>
+          </nav>
+          <nav class="fcol" aria-label="Support and legal">
+            <h4>Support &amp; legal</h4>
+            <a href="https://help.amlin.ai/" target="_blank" rel="noopener">Help Center</a>
+            <a href="mailto:support@amlin.ai">support@amlin.ai</a>
+            <a href="privacy.html">Privacy</a>
+            <a href="terms.html">Terms</a>
+            <a href="refund.html">Refunds</a>
+          </nav>
+        </div>
+      </div>
+      <div class="copyright">© 2026 Amlin. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <!-- Intercom messenger -->
+  <script>
+    const APP_ID = "l6xy5i6c"
+    window.intercomSettings = {
+      api_base: "https://api-iam.intercom.io",
+      app_id: APP_ID,
+    };
+    (function () { var w = window; var ic = w.Intercom; if (typeof ic === "function") { ic('reattach_activator'); ic('update', w.intercomSettings); } else { var d = document; var i = function () { i.c(arguments); }; i.q = []; i.c = function (args) { i.q.push(args); }; w.Intercom = i; var l = function () { var s = d.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = 'https://widget.intercom.io/widget/' + APP_ID; var x = d.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x); }; if (document.readyState === 'complete') { l(); } else if (w.attachEvent) { w.attachEvent('onload', l); } else { w.addEventListener('load', l, false); } } })();
+  </script>
+</body>
+</html>
