@@ -18,16 +18,13 @@
   <link rel="canonical" href="https://amlin.ai/" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..700,0..100&family=Hanken+Grotesk:wght@400..700&display=swap" rel="stylesheet" />
   <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png" />
   <link rel="icon" href="assets/icon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
-  <link rel="stylesheet" href="scrollcraft.css?v=1" />
-  <link rel="stylesheet" href="amlin-flight.css?v=7" />
+  <link rel="stylesheet" href="styles.css?v=10" />
+  <link rel="stylesheet" href="home.css?v=1" />
   <script defer src="assets/ph.js"></script>
-  <noscript>
-    <style>#flight, #mark, #map, #markMeta { display: none !important; }</style>
-  </noscript>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -98,133 +95,129 @@
   }
   </script>
 </head>
-<body>
+<body class="home">
   <a class="skip" href="#pricing">Skip to pricing</a>
-  <span id="how"></span>
 
-  <!-- ONE unbroken world. The engine flies it; the field and the mark are the page's own. -->
-  <div id="flight" data-sc-mode="worldflight" data-sc-seam="0.16">
-
-    <div data-sc-world>
-      <div data-sc-segment data-sc-w="1.3" data-sc-waypoint="Overview"><i class="seg-decoy" data-sc-poster hidden></i></div>
-      <div data-sc-segment data-sc-w="1.3" data-sc-waypoint="The problem"><i class="seg-decoy" data-sc-poster hidden></i></div>
-      <div data-sc-segment data-sc-w="2.2" data-sc-waypoint="Meeting notes">
-        <i class="seg-decoy" data-sc-poster hidden></i>
-        <div class="ground ground--catch" aria-hidden="true"></div>
-        <figure class="plate plate--note" id="plateNote">
-          <img src="assets/desktop-note.jpg" width="1760" height="1155" alt="An Amlin meeting note: a clean structured summary with decisions, key points, and action items." />
-          <figcaption class="plate__cap">The note, seconds after the call</figcaption>
-        </figure>
-      </div>
-      <div data-sc-segment data-sc-w="1.3" data-sc-waypoint="Your dictionary"><i class="seg-decoy" data-sc-poster hidden></i></div>
-      <div data-sc-segment data-sc-w="1.4" data-sc-waypoint="Dictation">
-        <i class="seg-decoy" data-sc-poster hidden></i>
-        <figure class="plate plate--dict" id="plateDict">
-          <img src="assets/dictation-gmail.png" width="1438" height="1312" alt="Dictating an email in Gmail with Amlin: a clean, punctuated paragraph typed by voice." />
-          <figcaption class="plate__cap">Dictation, in Gmail</figcaption>
-        </figure>
-      </div>
-      <div data-sc-segment data-sc-w="1.4" data-sc-waypoint="To-dos">
-        <i class="seg-decoy" data-sc-poster hidden></i>
-        <figure class="plate plate--todo" id="plateTodo">
-          <img src="assets/desktop-actions.jpg" width="1760" height="1155" alt="Amlin's action items view: open loops grouped into overdue, today, and this week, with owners and due dates." />
-          <figcaption class="plate__cap">Action items, across every meeting</figcaption>
-        </figure>
-      </div>
-      <div data-sc-segment data-sc-w="1.3" data-sc-waypoint="Privacy"><i class="seg-decoy" data-sc-poster hidden></i><div class="ground ground--deep" aria-hidden="true"></div></div>
-      <div data-sc-segment data-sc-w="1.2" data-sc-waypoint="Download"><i class="seg-decoy" data-sc-poster hidden></i></div>
-    </div>
-
-    <div data-sc-world-copy>
-      <div class="w w--hero" data-sc-copy data-sc-window="hero" data-leg="0">
-        <h1>Stay in the conversation. Amlin takes the notes.</h1>
-        <p class="lede">One Mac app that listens with you: meeting notes written the moment a call ends, dictation wherever you type, and a to-do list that fills itself.</p>
-        <div class="cta-row">
-          <a class="btn btn--primary" href="download.html">Download for Mac</a>
-        </div>
-        <p class="micro">Free to start · macOS 13+ · Apple silicon · Sign in with Google</p>
-      </div>
-      <div class="w w--gust" data-sc-copy data-sc-window="hero" data-leg="0" aria-hidden="true"><svg class="gust" viewBox="0 0 620 380" aria-hidden="true"><path class="g g0" fill="#146b62" d="M40.0 210.0 L48.3 209.0 L56.6 207.6 L65.0 206.3 L73.3 205.0 L81.7 203.8 L90.1 202.6 L98.5 201.4 L107.0 200.4 L115.6 199.3 L124.1 198.3 L132.7 197.3 L141.4 196.4 L150.0 195.5 L158.8 194.6 L167.5 193.8 L176.3 193.0 L185.1 192.1 L194.0 191.3 L202.9 190.5 L211.8 189.7 L220.8 189.0 L229.8 188.2 L238.8 187.3 L247.8 186.5 L256.9 185.7 L266.0 184.8 L275.2 183.9 L284.3 183.0 L293.5 182.0 L302.7 180.9 L311.9 179.7 L321.1 178.5 L330.4 177.2 L339.7 175.9 L348.9 174.5 L358.2 173.1 L367.5 171.7 L376.9 170.2 L386.2 168.6 L395.5 166.9 L404.9 165.2 L414.2 163.4 L423.5 161.6 L432.9 159.6 L442.2 157.6 L451.5 155.4 L460.8 153.1 L470.0 150.2 L470.0 150.2 L460.4 150.7 L450.9 151.6 L441.4 152.5 L431.9 153.3 L422.5 154.2 L413.0 155.0 L403.6 155.8 L394.2 156.6 L384.8 157.3 L375.4 158.0 L366.0 158.7 L356.7 159.4 L347.3 160.1 L338.0 160.7 L328.7 161.4 L319.5 162.1 L310.2 162.7 L300.9 163.4 L291.7 164.1 L282.5 164.9 L273.4 165.8 L264.2 166.7 L255.1 167.6 L246.0 168.6 L237.0 169.6 L227.9 170.7 L218.9 171.8 L210.0 172.9 L201.0 174.1 L192.1 175.3 L183.3 176.6 L174.4 177.9 L165.6 179.3 L156.9 180.8 L148.2 182.3 L139.5 183.9 L130.9 185.5 L122.3 187.3 L113.8 189.1 L105.4 191.0 L97.0 192.9 L88.6 195.0 L80.3 197.1 L72.1 199.4 L63.9 201.7 L55.8 204.2 L47.8 206.9 L40.0 210.0 Z"/><path class="g g1" fill="#9fc1b8" d="M120.0 262.0 L126.4 261.4 L132.7 260.5 L139.1 259.7 L145.5 258.8 L151.9 257.9 L158.3 257.1 L164.8 256.3 L171.4 255.5 L177.9 254.7 L184.5 253.9 L191.1 253.1 L197.7 252.4 L204.4 251.7 L211.1 250.9 L217.8 250.2 L224.6 249.5 L231.4 248.7 L238.2 248.0 L245.0 247.3 L251.9 246.6 L258.8 245.9 L265.7 245.1 L272.6 244.4 L279.5 243.6 L286.5 242.8 L293.5 241.9 L300.5 241.0 L307.5 240.0 L314.5 239.1 L321.6 238.2 L328.6 237.2 L335.7 236.2 L342.8 235.2 L349.9 234.1 L357.0 233.1 L364.2 232.0 L371.3 230.9 L378.4 229.8 L385.6 228.6 L392.7 227.4 L399.9 226.2 L407.1 224.9 L414.2 223.6 L421.4 222.3 L428.6 220.9 L435.7 219.5 L442.9 218.0 L450.0 216.1 L450.0 216.1 L442.7 216.5 L435.4 217.1 L428.1 217.7 L420.9 218.3 L413.6 218.9 L406.4 219.6 L399.1 220.2 L391.9 220.8 L384.7 221.4 L377.5 222.0 L370.3 222.6 L363.1 223.2 L355.9 223.9 L348.8 224.5 L341.6 225.1 L334.5 225.7 L327.4 226.4 L320.3 227.0 L313.2 227.7 L306.1 228.3 L299.1 229.0 L292.1 229.7 L285.1 230.5 L278.1 231.2 L271.1 232.1 L264.2 233.0 L257.3 233.9 L250.4 234.9 L243.6 235.9 L236.7 236.9 L230.0 237.9 L223.2 239.0 L216.5 240.1 L209.7 241.3 L203.1 242.4 L196.4 243.7 L189.8 244.9 L183.3 246.2 L176.7 247.5 L170.2 248.9 L163.8 250.3 L157.4 251.8 L151.0 253.3 L144.7 254.8 L138.4 256.4 L132.2 258.1 L126.1 259.9 L120.0 262.0 Z"/><path class="g g2" fill="#146b62" d="M20.0 150.0 L25.0 149.3 L29.9 148.4 L34.9 147.6 L40.0 146.8 L45.0 146.0 L50.1 145.2 L55.2 144.4 L60.3 143.7 L65.5 143.0 L70.6 142.3 L75.8 141.6 L81.1 141.0 L86.3 140.3 L91.6 139.7 L96.9 139.1 L102.2 138.4 L107.5 137.8 L112.9 137.2 L118.3 136.6 L123.7 136.1 L129.1 135.5 L134.5 134.9 L140.0 134.3 L145.5 133.7 L151.0 133.0 L156.5 132.4 L162.0 131.7 L167.5 131.0 L173.1 130.4 L178.6 129.7 L184.2 129.0 L189.8 128.3 L195.4 127.5 L201.0 126.8 L206.6 126.0 L212.2 125.2 L217.8 124.4 L223.5 123.6 L229.1 122.8 L234.8 121.9 L240.4 121.1 L246.1 120.2 L251.7 119.2 L257.4 118.3 L263.1 117.3 L268.7 116.2 L274.4 115.1 L280.0 113.9 L280.0 113.9 L274.3 114.4 L268.5 115.0 L262.8 115.6 L257.1 116.3 L251.4 116.9 L245.7 117.5 L240.0 118.1 L234.3 118.6 L228.7 119.2 L223.0 119.8 L217.3 120.3 L211.7 120.9 L206.1 121.4 L200.4 121.9 L194.8 122.5 L189.2 123.0 L183.6 123.5 L178.0 124.1 L172.4 124.6 L166.9 125.2 L161.3 125.7 L155.8 126.3 L150.3 126.9 L144.8 127.5 L139.3 128.1 L133.8 128.8 L128.4 129.5 L123.0 130.2 L117.6 130.9 L112.2 131.7 L106.8 132.4 L101.5 133.2 L96.2 134.0 L90.9 134.9 L85.6 135.7 L80.4 136.6 L75.2 137.5 L70.0 138.5 L64.9 139.4 L59.7 140.4 L54.7 141.5 L49.6 142.5 L44.6 143.6 L39.6 144.8 L34.6 146.0 L29.7 147.2 L24.8 148.5 L20.0 150.0 Z"/><path class="g g3" fill="#0e544d" d="M200.0 118.0 L205.7 116.6 L211.4 115.3 L217.2 114.0 L222.9 112.7 L228.8 111.5 L234.6 110.4 L240.5 109.3 L246.4 108.3 L252.3 107.4 L258.3 106.5 L264.3 105.6 L270.3 104.8 L276.3 104.0 L282.4 103.3 L288.5 102.5 L294.6 101.9 L300.8 101.2 L307.0 100.6 L313.2 100.0 L319.4 99.4 L325.7 98.8 L331.9 98.2 L338.2 97.6 L344.5 97.0 L350.9 96.4 L357.2 95.9 L363.6 95.3 L370.0 94.7 L376.4 94.0 L382.8 93.4 L389.3 92.8 L395.7 92.1 L402.2 91.4 L408.6 90.7 L415.1 90.0 L421.6 89.2 L428.1 88.4 L434.6 87.6 L441.2 86.7 L447.7 85.8 L454.2 84.8 L460.8 83.8 L467.3 82.7 L473.9 81.6 L480.4 80.4 L486.9 79.1 L493.5 77.8 L500.0 76.3 L500.0 76.3 L493.4 77.4 L486.8 78.4 L480.2 79.4 L473.7 80.4 L467.1 81.3 L460.5 82.2 L454.0 83.0 L447.4 83.8 L440.9 84.6 L434.4 85.3 L427.9 86.0 L421.3 86.6 L414.8 87.3 L408.4 87.9 L401.9 88.5 L395.4 89.0 L389.0 89.6 L382.5 90.1 L376.1 90.7 L369.7 91.2 L363.3 91.7 L356.9 92.3 L350.6 92.8 L344.2 93.4 L337.9 93.9 L331.6 94.5 L325.3 95.1 L319.0 95.8 L312.8 96.5 L306.6 97.2 L300.4 97.9 L294.3 98.7 L288.1 99.5 L282.0 100.3 L275.9 101.2 L269.9 102.1 L263.9 103.1 L257.9 104.1 L251.9 105.2 L246.0 106.3 L240.1 107.5 L234.3 108.8 L228.4 110.1 L222.7 111.5 L216.9 113.0 L211.2 114.5 L205.6 116.2 L200.0 118.0 Z"/><path class="g g4" fill="#9fc1b8" d="M70.0 318.0 L74.1 317.6 L78.1 317.1 L82.2 316.6 L86.2 316.1 L90.3 315.5 L94.4 315.0 L98.6 314.5 L102.7 314.0 L106.9 313.5 L111.1 313.0 L115.3 312.6 L119.5 312.1 L123.7 311.6 L128.0 311.2 L132.3 310.7 L136.6 310.3 L140.9 309.8 L145.2 309.4 L149.6 308.9 L154.0 308.5 L158.3 308.0 L162.7 307.6 L167.1 307.1 L171.6 306.6 L176.0 306.1 L180.4 305.6 L184.9 305.1 L189.4 304.5 L193.8 303.9 L198.3 303.3 L202.8 302.6 L207.3 302.0 L211.8 301.3 L216.4 300.7 L220.9 300.0 L225.4 299.3 L230.0 298.5 L234.5 297.8 L239.0 297.0 L243.6 296.3 L248.2 295.5 L252.7 294.6 L257.3 293.8 L261.8 292.9 L266.4 292.0 L270.9 291.0 L275.5 290.0 L280.0 288.8 L280.0 288.8 L275.3 289.0 L270.7 289.3 L266.1 289.7 L261.4 290.0 L256.8 290.4 L252.2 290.8 L247.6 291.2 L243.0 291.5 L238.4 291.9 L233.8 292.3 L229.2 292.6 L224.7 293.0 L220.1 293.4 L215.5 293.7 L211.0 294.1 L206.5 294.5 L201.9 294.9 L197.4 295.3 L192.9 295.7 L188.4 296.1 L183.9 296.5 L179.5 297.0 L175.0 297.5 L170.6 298.1 L166.1 298.7 L161.7 299.2 L157.3 299.8 L153.0 300.5 L148.6 301.1 L144.3 301.7 L139.9 302.4 L135.6 303.1 L131.3 303.8 L127.1 304.6 L122.8 305.3 L118.6 306.1 L114.4 306.9 L110.2 307.8 L106.1 308.6 L101.9 309.5 L97.8 310.4 L93.8 311.4 L89.7 312.3 L85.7 313.3 L81.7 314.4 L77.8 315.5 L73.8 316.6 L70.0 318.0 Z"/><path class="g g5" fill="#146b62" d="M330.0 300.0 L332.9 299.7 L335.8 299.3 L338.7 298.9 L341.6 298.4 L344.5 298.0 L347.4 297.6 L350.4 297.2 L353.3 296.9 L356.3 296.5 L359.3 296.1 L362.3 295.7 L365.3 295.4 L368.3 295.0 L371.4 294.7 L374.4 294.4 L377.5 294.0 L380.6 293.7 L383.7 293.3 L386.8 293.0 L389.9 292.7 L393.0 292.3 L396.2 292.0 L399.3 291.7 L402.5 291.3 L405.6 290.9 L408.8 290.5 L412.0 290.1 L415.2 289.7 L418.4 289.3 L421.6 288.9 L424.8 288.4 L428.0 288.0 L431.2 287.5 L434.5 287.1 L437.7 286.6 L441.0 286.1 L444.2 285.6 L447.4 285.1 L450.7 284.6 L454.0 284.1 L457.2 283.6 L460.5 283.0 L463.7 282.4 L467.0 281.9 L470.2 281.2 L473.5 280.6 L476.8 279.9 L480.0 279.2 L480.0 279.1 L476.7 279.3 L473.4 279.6 L470.1 279.9 L466.8 280.2 L463.5 280.6 L460.2 280.9 L456.9 281.2 L453.6 281.5 L450.3 281.7 L447.1 282.0 L443.8 282.3 L440.5 282.6 L437.3 282.9 L434.0 283.2 L430.8 283.5 L427.5 283.8 L424.3 284.1 L421.1 284.4 L417.9 284.7 L414.6 285.0 L411.4 285.3 L408.3 285.7 L405.1 286.0 L401.9 286.3 L398.7 286.7 L395.6 287.1 L392.5 287.6 L389.3 288.0 L386.2 288.4 L383.1 288.9 L380.0 289.4 L376.9 289.8 L373.9 290.3 L370.8 290.8 L367.8 291.4 L364.8 291.9 L361.8 292.5 L358.8 293.0 L355.8 293.6 L352.9 294.2 L349.9 294.8 L347.0 295.5 L344.1 296.2 L341.2 296.8 L338.4 297.6 L335.6 298.3 L332.8 299.1 L330.0 300.0 Z"/><path class="g g6" fill="#0e544d" d="M430.0 190.0 L432.3 189.7 L434.6 189.3 L436.9 189.0 L439.2 188.6 L441.5 188.3 L443.9 187.9 L446.2 187.6 L448.6 187.3 L451.0 186.9 L453.4 186.6 L455.8 186.3 L458.2 186.0 L460.6 185.7 L463.1 185.4 L465.5 185.1 L468.0 184.8 L470.4 184.6 L472.9 184.3 L475.4 184.0 L477.9 183.7 L480.4 183.5 L482.9 183.2 L485.4 182.9 L487.9 182.6 L490.5 182.3 L493.0 182.0 L495.5 181.7 L498.1 181.4 L500.7 181.0 L503.2 180.7 L505.8 180.4 L508.4 180.0 L511.0 179.7 L513.5 179.3 L516.1 179.0 L518.7 178.6 L521.3 178.2 L523.9 177.8 L526.5 177.4 L529.1 177.0 L531.7 176.6 L534.4 176.2 L537.0 175.8 L539.6 175.3 L542.2 174.9 L544.8 174.4 L547.4 173.9 L550.0 173.3 L550.0 173.3 L547.3 173.5 L544.7 173.8 L542.1 174.1 L539.4 174.3 L536.8 174.6 L534.2 174.9 L531.5 175.1 L528.9 175.4 L526.3 175.7 L523.7 175.9 L521.1 176.2 L518.5 176.4 L515.9 176.7 L513.3 176.9 L510.7 177.2 L508.1 177.4 L505.5 177.7 L502.9 177.9 L500.3 178.2 L497.8 178.4 L495.2 178.7 L492.7 179.0 L490.1 179.2 L487.6 179.5 L485.0 179.8 L482.5 180.1 L480.0 180.5 L477.5 180.8 L475.0 181.1 L472.5 181.5 L470.1 181.9 L467.6 182.2 L465.2 182.6 L462.7 183.0 L460.3 183.4 L457.9 183.8 L455.5 184.3 L453.1 184.7 L450.7 185.1 L448.3 185.6 L446.0 186.1 L443.6 186.6 L441.3 187.1 L439.0 187.6 L436.7 188.2 L434.5 188.7 L432.2 189.3 L430.0 190.0 Z"/></svg></div>
-
-      <div class="w w--poster" data-sc-copy data-sc-window="0.125 0.219 0.22 0.2" data-leg="1">
-        <h2><span>You can be present,</span> <span class="alt">or you can be writing it down.</span></h2>
-        <p>Never both. A conversation moves at talking speed, the useful parts blow past in a sentence, and what nobody catches is gone by the next meeting.</p>
-      </div>
-
-      <div class="w w--catch" data-sc-copy data-sc-window="0.247 0.406 0.22 0.2" data-leg="2">
-        <h2>The whole call, written up.</h2>
-        <p>Amlin takes the call live, straight off your Mac&rsquo;s own audio. No bot joins, and nobody else installs a thing. The moment the call ends, you have a finished note.</p>
-      </div>
-      <div class="w w--contents" data-sc-copy data-sc-window="0.247 0.406 0.22 0.2" data-leg="2">
-        <ul class="contents">
-          <li><strong>Summary</strong><span>What was said</span></li>
-          <li><strong>Decisions</strong><span>What was agreed</span></li>
-          <li><strong>Action items</strong><span>Who owes what, by when</span></li>
-          <li><strong>Ask</strong><span>Answers with a citation to the exact line</span></li>
-        </ul>
-      </div>
-
-      <div class="w w--trail" data-sc-copy data-sc-window="0.432 0.526 0.22 0.2" data-leg="3">
-        <h2>It learns how you talk.</h2>
-        <p>Your names, your acronyms, and your way of putting things settle into one custom dictionary shared by everything Amlin writes. Transcripts and dictation both come out more accurate the longer you use it.</p>
-      </div>
-
-      <div class="w w--right" data-sc-copy data-sc-window="0.547 0.648 0.22 0.2" data-leg="4">
-        <h2>Dictation, anywhere on your Mac.</h2>
-        <p>Hold a key and talk. The ums disappear, punctuation lands, and finished text types itself where your cursor is. An email arrives shaped like an email, a spoken &ldquo;new line&rdquo; becomes a real line break, a bullet list appears when you ask for one, and a 🙂 lands where you meant it.</p>
-        <p>On-device, unmetered, and free on every plan.</p>
-      </div>
-
-      <div class="w w--top" data-sc-copy data-sc-window="0.670 0.771 0.22 0.2" data-leg="5">
-        <h2>To-dos that file themselves.</h2>
-        <p>Every commitment from every meeting lands in one list with owners and due dates, and each item links back to the line that created it.</p>
-        <p>Bought separately, a notetaker, a dictation app, and a to-do tool run about $35 a month. Amlin is all three for $10, on one dictionary and one bill.</p>
-      </div>
-
-      <div class="w w--center w--inv" data-sc-copy data-sc-window="0.792 0.886 0.22 0.2" data-leg="6">
-        <h2>Your audio is never stored.</h2>
-        <p>Meeting audio is transcribed live and discarded on the spot. Dictation audio never leaves your Mac at all. What remains is text: your notes and transcripts, synced to your account alone.</p>
-        <p><a href="privacy.html">Read the full privacy policy</a></p>
-      </div>
-
-      <div class="w w--finale" data-sc-copy data-sc-window="0.90 1 0.3 0" data-leg="7">
-        <h2>Take it to your next meeting.</h2>
-        <p>Free to start. Pro when you need more hours.</p>
-        <div class="cta-row" style="justify-content:center">
-          <span class="slot" id="markSlot"><img src="assets/icon.svg" alt="" width="20" height="20" style="border-radius:22%" /></span>
-          <a class="btn btn--primary" href="download.html">Download for Mac</a>
-        </div>
-        <p class="micro">Free to start · macOS 13+ · Apple silicon · Sign in with Google</p>
+  <nav class="nav" id="top">
+    <div class="wrap">
+      <a class="brand" href="#top" aria-label="Amlin"><svg class="pinwheel" viewBox="100 100 824 824" aria-hidden="true" focusable="false"><rect x="100" y="100" width="824" height="824" rx="180" fill="#146b62" stroke="#0e544d" stroke-width="3"/><g class="pw-blades"><g fill="#9fc1b8"><path d="M512 512 C372 442 407 260 547 260 C505 358 547 456 512 512 Z"/><path d="M512 512 C372 442 407 260 547 260 C505 358 547 456 512 512 Z" transform="rotate(90 512 512)"/><path d="M512 512 C372 442 407 260 547 260 C505 358 547 456 512 512 Z" transform="rotate(180 512 512)"/><path d="M512 512 C372 442 407 260 547 260 C505 358 547 456 512 512 Z" transform="rotate(270 512 512)"/></g><g fill="#fbf7ec"><path d="M512 512 C414 456 442 316 554 316 C519 386 554 456 512 512 Z" transform="rotate(45 512 512)"/><path d="M512 512 C414 456 442 316 554 316 C519 386 554 456 512 512 Z" transform="rotate(135 512 512)"/><path d="M512 512 C414 456 442 316 554 316 C519 386 554 456 512 512 Z" transform="rotate(225 512 512)"/><path d="M512 512 C414 456 442 316 554 316 C519 386 554 456 512 512 Z" transform="rotate(315 512 512)"/></g></g><circle cx="512" cy="512" r="42" fill="#146b62"/></svg></a>
+      <div class="nav-links">
+        <a href="#how">How it works</a>
+        <a href="#pricing">Pricing</a>
+        <a class="btn btn-primary" href="download.html">Download</a>
       </div>
     </div>
-
-    <div data-sc-spacer aria-hidden="true"></div>
-  </div>
-
-  <!-- The mark: the page's only chrome. Nav, progress, and wind gauge in one object. -->
-  <div class="mark" id="mark">
-    <button class="mark__btn" id="markBtn" type="button" aria-expanded="false" aria-controls="map" aria-label="Amlin. Open the page map."></button>
-  </div>
-  <div class="mark__meta" id="markMeta" aria-hidden="true"><span id="wpLabel">Overview</span></div>
-  <nav class="map" id="map" hidden aria-label="Page map">
-    <hr />
-    <a href="#pricing">Pricing</a>
-    <a href="#faq">FAQ</a>
   </nav>
 
-  <!-- The appendix: plain, printed, crawlable. The experience is above. -->
-  <main class="appendix">
-    <noscript>
-      <div class="nojs-hero">
-        <h1>Stay in the conversation. Amlin takes the notes.</h1>
-        <p>One Mac app that listens with you: meeting notes written the moment a call ends, dictation wherever you type, and a to-do list that fills itself. No bot joins your calls, and meeting audio is never stored. <a href="download.html">Download for Mac</a>.</p>
+  <main>
+    <header class="hero">
+      <div class="wrap grid">
+        <h1><span>Stay in the conversation.</span> <span>Amlin takes the notes.</span></h1>
+        <div class="hero__body">
+          <p class="lede">One Mac app that listens with you: meeting notes written the moment a call ends, dictation wherever you type, and a <span class="nw">to-do</span> list that fills itself.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="download.html">Download for Mac</a>
+          </div>
+          <p class="micro">Free to start · macOS 13+ · Apple silicon · Sign in with Google</p>
+        </div>
+        <div class="hero__wind"><svg class="gust" viewBox="11 68 622 248" aria-hidden="true" focusable="false"><defs><mask id="gm0" maskUnits="userSpaceOnUse" x="-9" y="48" width="662" height="288"><path d="M92.0 308.1 96.8 307.9 101.6 307.7 106.4 307.5 111.3 307.3 116.1 307.2 120.9 307.0 125.7 306.9 130.5 306.8 135.3 306.7 140.1 306.6 145.0 306.5 149.8 306.4 154.6 306.3 159.4 306.2 164.2 306.1 169.0 305.9 173.8 305.8 178.7 305.6 183.5 305.4 188.3 305.1 193.1 304.8 197.9 304.5 202.7 304.1 207.5 303.7 212.3 303.3 217.1 302.9 221.9 302.5 226.7 302.0 231.5 301.6 236.3 301.1 241.0 300.6 245.8 300.1 250.6 299.5 255.4 299.0 260.2 298.4 265.0 297.9 269.8 297.3 274.5 296.7 279.3 296.1 284.1 295.5 288.9 294.8 293.7 294.2 298.4 293.5 303.2 292.8 307.9 292.0 312.7 291.2 317.4 290.3 322.2 289.4 326.9 288.5 331.6 287.5 336.3 286.5 341.0 285.5 345.7 284.4 350.4 283.4 355.1 282.3 359.8 281.2 364.5 280.2 369.2 279.1 373.9 278.1 378.7 277.1 383.4 276.2 388.1 275.3 392.8 274.3 397.6 273.4 402.3 272.5 407.0 271.5 411.7 270.6 416.4 269.6 421.2 268.7 425.9 267.7 430.6 266.8 435.3 265.8 440.1 264.9 444.8 264.1 449.6 263.3 454.3 262.5 459.1 261.9 463.9 261.3 468.7 260.8 473.5 260.4 478.3 260.1 483.1 259.8 487.9 259.6 492.7 259.4 497.5 259.1 502.3 258.8 507.1 258.4 511.9 257.9 516.7 257.3 521.5 256.5 526.2 255.6 530.9 254.7 535.7 253.6 540.3 252.5 545.0 251.3 548.1 250.6" fill="none" stroke="#fff" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1"/></mask><mask id="gm1" maskUnits="userSpaceOnUse" x="-9" y="48" width="662" height="288"><path d="M18.0 261.8 22.8 261.6 27.6 261.5 32.4 261.4 37.2 261.4 42.0 261.3 46.8 261.2 51.6 261.2 56.4 261.2 61.2 261.1 66.0 261.1 70.8 261.1 75.6 261.1 80.4 261.1 85.2 261.1 90.0 261.1 94.8 261.1 99.6 261.0 104.4 261.0 109.2 260.9 114.0 260.9 118.8 260.7 123.6 260.6 128.4 260.4 133.2 260.2 138.0 260.0 142.8 259.8 147.6 259.5 152.3 259.3 157.1 259.0 161.9 258.7 166.7 258.3 171.5 257.9 176.3 257.6 181.1 257.1 185.9 256.7 190.6 256.3 195.4 255.8 200.2 255.3 205.0 254.8 209.7 254.3 214.5 253.7 219.3 253.2 224.0 252.6 228.8 252.0 233.6 251.4 238.3 250.7 243.1 250.1 247.8 249.4 252.6 248.7 257.3 248.0 262.1 247.2 266.8 246.5 271.6 245.7 276.3 244.9 281.0 244.0 285.7 243.2 290.5 242.3 295.2 241.4 299.9 240.4 304.6 239.5 309.3 238.4 314.0 237.4 318.7 236.3 323.3 235.2 328.0 234.1 332.7 233.0 337.3 231.8 342.0 230.5 346.6 229.3 351.2 228.0 355.8 226.7 360.5 225.3 365.1 224.0 369.7 222.6 374.3 221.2 378.8 219.8 383.4 218.3 388.0 216.9 392.6 215.4 397.1 213.9 401.7 212.4 406.2 210.9 410.8 209.4 415.3 207.9 419.9 206.3 424.4 204.8 428.9 203.2 433.4 201.6 437.9 199.9 442.4 198.2 446.9 196.5 451.4 194.7 455.8 192.9 460.2 191.0 464.6 189.1 468.9 187.1 473.3 185.0 477.6 182.9 481.8 180.7 486.0 178.4 490.2 176.0 494.3 173.6 498.4 171.1 502.4 168.4 506.4 165.7 510.2 162.9 514.0 159.9 517.7 156.9 521.2 153.6 524.6 150.2 527.8 146.7 530.8 142.9 533.6 139.0 536.1 134.9 538.3 130.6 540.1 126.2 541.5 121.6 542.3 116.8 542.3 112.0 541.6 107.2 540.3 102.5 538.4 98.1 536.1 93.8 533.3 89.9 529.9 86.4 526.0 83.5 521.8 81.1 517.3 79.2 512.7 77.7 508.0 76.7 503.1 76.5 498.2 77.1 493.5 78.5 489.1 80.4 484.9 82.9 481.1 86.0 478.3 90.1 476.4 94.6 475.3 99.3 474.8 104.2 475.3 109.1 477.3 113.6 480.5 117.2 484.4 120.2 488.7 122.4 493.5 123.4 498.2 121.9 502.4 119.6 506.4 116.9 509.1 115.2" fill="none" stroke="#fff" stroke-width="22" stroke-linecap="round" stroke-linejoin="round" pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1"/></mask><mask id="gm2" maskUnits="userSpaceOnUse" x="-9" y="48" width="662" height="288"><path d="M160.0 189.9 164.8 189.2 169.5 188.7 174.3 188.1 179.1 187.6 183.9 187.1 188.7 186.5 193.5 186.0 198.3 185.5 203.1 185.1 207.9 184.8 212.7 184.4 217.5 183.9 222.3 183.3 227.0 182.6 231.8 181.9 236.6 181.2 241.3 180.4 246.1 179.6 250.8 178.7 255.5 177.7 260.3 176.8 265.0 176.0 269.7 175.1 274.5 174.2 279.2 173.2 283.9 172.0 288.5 170.7 293.2 169.5 297.8 168.3 302.5 167.1 307.2 165.9 311.8 164.7 316.4 163.4 321.1 162.1 325.8 160.9 330.4 159.7 335.1 158.4 339.7 157.0 344.2 155.3 348.6 153.5 353.0 151.6 357.4 149.6 361.7 147.4 365.8 144.8 369.6 142.0 373.2 138.8 375.8 134.7 377.4 130.2 378.4 127.1" fill="none" stroke="#fff" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1"/></mask><mask id="gm3" maskUnits="userSpaceOnUse" x="-9" y="48" width="662" height="288"><path d="M570.0 210.2 574.7 208.8 579.3 207.4 584.0 206.2 588.7 205.0 593.3 203.6 597.9 202.2 602.4 200.3 606.8 198.2 611.3 196.7 615.7 194.7 620.1 192.7 624.6 190.8 626.0 190.1" fill="none" stroke="#fff" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1"/></mask></defs><path class="g" data-mask="gm0" data-delay="0.35" data-dur="0.95" fill="#9fc1b8" d="M180.8 301.9 132.8 303.3 119.7 303.5 116.7 303.7 107.9 304.6 98.1 306.0 92.8 307.1 91.6 307.5 91.3 307.7 91.3 308.0 91.5 308.3 92.2 308.8 98.2 309.3 112.7 310.0 126.7 310.4 141.1 310.0 176.7 309.4 195.7 308.3 226.4 306.1 243.8 304.2 261.2 302.1 283.8 299.6 301.3 297.2 324.9 293.2 340.9 290.1 348.7 288.3 363.8 284.4 379.2 280.7 398.0 276.9 431.7 269.3 452.0 265.3 461.3 263.8 473.8 262.3 481.6 261.6 503.7 260.2 510.0 259.6 514.7 259.0 524.1 257.3 533.3 255.2 548.7 251.3 548.9 251.2 549.0 250.8 548.0 249.9 547.6 249.9 534.9 252.7 526.9 254.3 517.2 255.9 509.1 256.8 501.0 257.5 476.6 258.5 465.1 259.1 455.3 260.1 445.5 261.4 386.1 272.0 339.6 281.2 322.5 285.0 306.9 288.1 297.3 289.6 256.0 295.1 246.4 296.2 198.5 300.8Z"/><path class="g" data-mask="gm1" data-delay="0.15" data-dur="1.15" fill="#146b62" d="M103.2 256.3 80.6 256.3 61.7 256.5 44.1 257.8 26.9 259.5 20.0 260.5 17.6 261.1 17.3 261.3 17.3 261.7 17.5 261.9 18.2 262.4 26.0 263.2 73.5 265.7 93.0 265.9 104.1 265.8 137.7 265.0 161.6 263.7 177.5 262.5 217.2 258.6 236.4 256.4 257.3 253.7 291.9 247.9 303.0 245.8 320.1 242.0 335.6 238.3 381.8 225.3 406.4 217.7 418.6 213.6 447.2 203.5 459.0 198.7 473.2 192.0 480.2 188.4 487.1 184.6 492.5 181.4 499.2 177.2 507.1 171.9 513.6 167.3 518.7 163.4 522.4 160.3 527.0 155.8 530.3 152.3 533.3 148.6 537.1 143.4 539.6 139.3 541.9 135.0 543.8 130.5 544.9 127.4 546.0 122.7 546.4 119.4 546.4 116.0 546.1 112.7 545.4 109.4 544.0 104.7 542.1 100.1 539.7 95.8 536.8 91.8 534.5 89.3 532.0 87.1 523.3 81.0 519.1 78.7 514.8 76.9 510.2 75.5 505.5 74.5 502.3 74.3 499.0 74.5 495.8 75.1 491.2 76.5 486.8 78.5 482.6 81.2 480.1 83.2 478.9 84.4 477.8 85.8 476.1 88.6 474.3 93.3 473.5 96.5 473.0 99.7 472.8 104.7 473.3 108.0 473.8 109.7 474.5 111.3 475.4 112.8 476.5 114.1 478.8 116.6 481.4 118.7 484.2 120.6 488.3 123.1 491.4 124.3 493.0 124.6 494.7 124.6 496.4 124.3 498.0 123.8 500.9 122.3 503.7 120.6 510.2 116.2 510.4 115.6 510.2 115.4 508.5 114.2 508.0 114.2 499.8 119.3 495.5 121.4 493.9 121.9 492.3 122.1 490.7 122.1 487.6 121.2 484.7 119.7 483.4 118.9 481.1 116.8 479.1 114.4 477.7 111.6 477.3 110.1 476.9 106.9 477.0 103.7 477.4 100.6 478.1 97.5 479.1 94.4 480.5 91.5 482.3 88.9 483.3 87.7 484.5 86.6 487.1 84.7 489.9 83.0 492.8 81.6 497.4 79.9 500.6 79.2 503.8 78.7 507.1 78.6 510.4 78.9 513.6 79.6 516.8 80.4 519.9 81.5 522.9 82.8 526.8 84.8 528.8 86.8 531.7 90.5 534.1 94.6 536.0 98.9 537.4 103.4 538.1 106.5 538.5 111.1 538.3 114.2 537.8 117.3 536.4 121.9 535.3 124.8 533.3 129.1 530.9 133.2 527.3 138.5 523.3 143.4 518.9 148.1 513.0 153.5 506.9 158.5 500.4 163.2 495.1 166.7 488.1 170.7 480.9 174.5 472.2 178.8 463.3 182.9 451.3 187.8 427.3 196.9 419.8 199.6 380.3 212.7 353.2 221.4 344.0 224.1 331.5 227.3 307.9 232.8 296.8 235.1 270.2 240.3 259.1 242.1 224.4 247.2 197.7 250.6 186.7 251.8 175.3 252.7 144.7 254.7 114.3 256.0Z"/><path class="g" data-mask="gm2" data-delay="0.55" data-dur="0.62" fill="#0e544d" d="M204.4 181.9 186.8 183.5 172.4 185.1 166.8 186.4 162.9 187.6 160.5 188.6 159.4 189.3 159.2 189.7 159.4 190.0 160.2 190.5 162.5 190.7 168.4 190.9 179.4 190.9 200.0 188.4 218.0 187.3 221.2 186.9 244.9 183.3 257.3 180.8 275.1 177.9 279.7 176.8 287.4 174.8 306.8 169.0 329.7 162.5 338.8 159.8 343.2 158.2 347.6 156.4 357.5 151.6 363.1 148.6 367.2 146.0 371.0 143.1 374.5 139.8 375.5 138.4 377.1 135.5 378.2 132.4 379.5 127.4 378.0 126.3 377.6 126.2 377.3 126.5 375.3 132.5 373.8 135.3 373.0 136.6 370.8 138.9 365.7 142.8 360.2 146.1 354.4 148.9 345.3 152.5 337.5 155.2 329.8 157.4 318.6 160.0 303.0 164.1 291.6 166.5 274.0 170.7 244.2 176.5 220.2 180.1Z"/><path class="g" data-mask="gm3" data-delay="1.05" data-dur="0.32" fill="#146b62" d="M589.3 201.9 586.4 203.1 581.5 204.1 578.6 205.0 572.2 206.8 570.9 207.7 569.4 209.7 569.3 210.0 569.5 210.3 570.3 210.8 572.8 211.1 575.1 211.2 577.1 210.9 578.6 210.3 583.1 208.9 588.0 207.9 592.5 206.4 597.2 205.2 598.7 204.7 601.4 203.3 604.4 202.0 608.4 199.7 611.4 198.7 614.3 197.3 617.0 195.8 619.9 194.5 626.8 190.8 627.0 190.3 625.7 189.3 625.3 189.2 609.8 195.3 605.1 196.8 595.9 200.4Z"/></svg></div>
       </div>
-    </noscript>
+    </header>
 
-    <section class="ap" id="pricing">
-      <div class="apw">
-        <h2>Simple pricing</h2>
-        <p class="sect-lede">Start free and upgrade when Amlin becomes part of how you work.</p>
+    <section class="problem">
+      <div class="wrap">
+        <div class="grid">
+          <h2><span>You can be present,</span> <span class="alt">or you can be writing it down.</span></h2>
+          <p>Never both. A conversation moves at talking speed, the useful parts blow past in a sentence, and what nobody catches is gone by the next meeting.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec notes" id="how">
+      <div class="wrap">
+        <div class="sec-head">
+          <h2>The whole call, written up.</h2>
+          <p>Amlin takes the call live, straight off your Mac&rsquo;s own audio. No bot joins, and nobody else installs a thing. The moment the call ends, you have a finished note.</p>
+        </div>
+        <figure class="annot">
+          <div class="shot">
+            <img src="assets/desktop-note.jpg" width="1760" height="1155" alt="An Amlin meeting note: a clean structured summary with decisions, key points, and action items." />
+            <span class="pin" style="--x:33.2%;--y:18%" aria-hidden="true"></span>
+            <span class="pin" style="--x:33%;--y:30.9%" aria-hidden="true"></span>
+            <span class="pin" style="--x:31.1%;--y:63.7%" aria-hidden="true"></span>
+            <span class="ring" style="--x:29.6%;--y:93.6%;--w:69.2%;--h:5.2%" aria-hidden="true"></span>
+            <span class="pin pin--bare" style="--x:98.8%;--y:96.2%" aria-hidden="true"></span>
+          </div>
+          <ul class="contents">
+            <li style="--y:18%"><strong>Summary</strong><span>What was said</span></li>
+            <li style="--y:30.9%"><strong>Decisions</strong><span>What was agreed</span></li>
+            <li style="--y:63.7%"><strong>Action items</strong><span>Who owes what, by when</span></li>
+            <li style="--y:96.2%"><strong>Ask</strong><span>Answers with a citation to the exact line</span></li>
+          </ul>
+          <figcaption class="shot-cap">The note, seconds after the call</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="sec dictionary">
+      <div class="wrap">
+        <div class="grid">
+          <h2>It learns how you talk.</h2>
+          <p>Your names, your acronyms, and your way of putting things settle into one custom dictionary shared by everything Amlin writes. Transcripts and dictation both come out more accurate the longer you use it.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec dictation">
+      <div class="wrap grid">
+        <div class="dictation__copy">
+          <h2>Dictation, anywhere on your Mac.</h2>
+          <p>Hold a key and talk. The ums disappear, punctuation lands, and finished text types itself where your cursor is. An email arrives shaped like an email, a spoken &ldquo;new line&rdquo; becomes a real line break, a bullet list appears when you ask for one, and a 🙂 lands where you meant it.</p>
+          <p class="aside">On-device, unmetered, and free on every plan.</p>
+        </div>
+        <figure>
+          <div class="shot shot--dict">
+            <img src="assets/dictation-gmail.png" width="1438" height="1312" alt="Dictating an email in Gmail with Amlin: a clean, punctuated paragraph typed by voice." loading="lazy" />
+          </div>
+          <figcaption class="shot-cap">Dictation, in Gmail</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="sec todos">
+      <div class="wrap">
+        <div class="grid sec-grid">
+          <div class="todos__lead">
+            <h2>To-dos that file themselves.</h2>
+            <p>Every commitment from every meeting lands in one list with owners and due dates, and each item links back to the line that created it.</p>
+          </div>
+          <p class="aside">Bought separately, a notetaker, a dictation app, and a <span class="nw">to-do</span> tool run about $35 a month. Amlin is all three for $10, on one dictionary and one bill.</p>
+        </div>
+        <figure>
+          <div class="shot shot--todo">
+            <img src="assets/desktop-actions.jpg" width="1760" height="1155" alt="Amlin's action items view: open loops grouped into overdue, today, and this week, with owners and due dates." loading="lazy" />
+          </div>
+          <figcaption class="shot-cap">Action items, across every meeting</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="privacy">
+      <div class="wrap grid">
+        <h2>Your audio is never stored.</h2>
+        <div class="privacy__body">
+          <p>Meeting audio is transcribed live and discarded on the spot. Dictation audio never leaves your Mac at all. What remains is text: your notes and transcripts, synced to your account alone.</p>
+          <p><a href="privacy.html">Read the full privacy policy</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec pricing" id="pricing">
+      <div class="wrap">
+        <div class="sec-head">
+          <h2>Simple pricing</h2>
+          <p>Start free and upgrade when Amlin becomes part of how you work.</p>
+        </div>
         <div class="plans">
           <div class="plan">
             <h3>Free</h3>
@@ -236,7 +229,7 @@
               <li>Notepad, live transcription, and summaries</li>
               <li>Unlimited system-wide dictation</li>
             </ul>
-            <a class="btn btn--ghost" href="download.html">Download for Mac</a>
+            <a class="btn btn-ghost" href="download.html">Download for Mac</a>
           </div>
           <div class="plan plan--pro">
             <h3>Pro</h3>
@@ -248,8 +241,8 @@
               <li>Everything in Free</li>
               <li>Priority support</li>
             </ul>
-            <a class="btn btn--primary" href="https://junola-proxy.fly.dev/v1/billing/web-checkout">Get Pro Monthly</a>
-            <a class="btn btn--ghost" href="https://junola-proxy.fly.dev/v1/billing/web-checkout?plan=annual">Get Pro Annual (save 10%)</a>
+            <a class="btn btn-primary" href="https://junola-proxy.fly.dev/v1/billing/web-checkout">Get Pro Monthly</a>
+            <a class="btn btn-ghost" href="https://junola-proxy.fly.dev/v1/billing/web-checkout?plan=annual">Get Pro Annual (save 10%)</a>
             <p class="plan-note">Pro activates when you sign in to the app with the same email you use at checkout.</p>
           </div>
         </div>
@@ -257,10 +250,10 @@
       </div>
     </section>
 
-    <section class="ap" id="faq">
-      <div class="apw" style="padding-top:0">
+    <section class="home-faq" id="faq">
+      <div class="wrap grid">
         <h2>Questions, answered</h2>
-        <div class="faq" style="margin-top:2rem">
+        <div class="faq">
           <details>
             <summary>What happens when I hit the Free plan&rsquo;s limits?</summary>
             <p>A meeting already in progress always finishes. Amlin checks your hours when you start a meeting, never mid-call. Past the cap, new meeting transcription and Ask questions wait until your month resets (or you upgrade). Your notepad, your existing notes, and dictation keep working: dictation runs on your Mac and is never metered.</p>
@@ -280,16 +273,28 @@
         </div>
       </div>
     </section>
+
+    <section class="finale">
+      <div class="wrap">
+        <img class="finale__icon" src="assets/icon.svg" alt="" width="76" height="76" />
+        <h2>Take it to your next meeting.</h2>
+        <p>Free to start. Pro when you need more hours.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="download.html">Download for Mac</a>
+        </div>
+        <p class="micro">Free to start · macOS 13+ · Apple silicon · Sign in with Google</p>
+      </div>
+    </section>
   </main>
 
-  <footer class="foot">
-    <div class="apw">
-      <div class="foot__top">
-        <div class="foot__brand">
-          <img src="assets/icon.svg" alt="Amlin" width="26" height="26" />
-          <p>Meeting notes, dictation &amp; to-dos in one Mac app.</p>
+  <footer class="footer">
+    <div class="wrap">
+      <div class="inner">
+        <div>
+          <img class="brand-mark" src="assets/icon.svg" alt="Amlin" width="26" height="26" />
+          <p class="tagline">Meeting notes, dictation &amp; to-dos in one Mac app.</p>
         </div>
-        <div class="fcols">
+        <div class="footer-cols">
           <nav class="fcol" aria-label="Product">
             <h4>Product</h4>
             <a href="index.html#how">How it works</a>
@@ -331,12 +336,11 @@
           </nav>
         </div>
       </div>
-      <div class="foot__legal">© 2026 Amlin. All rights reserved.</div>
+      <div class="copyright">© 2026 Amlin. All rights reserved.</div>
     </div>
   </footer>
 
-  <script src="scrollcraft.js?v=1"></script>
-  <script src="amlin-flight.js?v=7"></script>
+  <script src="home.js?v=1" defer></script>
 
   <!-- Intercom messenger -->
   <script>
