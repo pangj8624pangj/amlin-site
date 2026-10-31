@@ -1,36 +1,54 @@
 /* Home page motion. Two things move, both because of wind:
    the pinwheel in the bar turns with the speed of your scroll and coasts to a
-   stop, and the hero's ink strokes are drawn in once when the page opens.
-   Nothing else animates, and with reduced motion neither does this. */
+   stop, and the ink strokes after the first and last headlines are drawn in
+   once, in the order a hand would draw them: the top ones when the page
+   opens, the closing ones when you reach them. Nothing else animates, and
+   with reduced motion neither does this. */
 (function () {
   'use strict';
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-  // ---- the strokes ink themselves in, in the order a hand would draw them ----
-  var gust = document.querySelector('.gust');
-  if (gust) {
-    var strokes = Array.prototype.slice.call(gust.querySelectorAll('.g'));
-    var ease = function (t) { return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; };
-    var jobs = strokes.map(function (p) {
+  var ease = function (t) { return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; };
+
+  // mask every stroke of one drawing; return a function that inks it in
+  function prepare(svg) {
+    var jobs = Array.prototype.slice.call(svg.querySelectorAll('.g')).map(function (p) {
       var m = document.getElementById(p.getAttribute('data-mask'));
       var line = m && m.querySelector('path');
       if (!line) return null;
+      line.setAttribute('stroke-dashoffset', '1');
       p.setAttribute('mask', 'url(#' + m.id + ')');
       return { p: p, line: line, delay: +p.getAttribute('data-delay') * 1000, dur: +p.getAttribute('data-dur') * 1000 };
     }).filter(Boolean);
-    var t0 = performance.now();
-    var draw = function (now) {
-      var busy = false;
-      jobs.forEach(function (j) {
-        if (j.done) return;
-        var u = (now - t0 - j.delay) / j.dur;
-        if (u >= 1) { j.p.removeAttribute('mask'); j.done = true; return; }
-        busy = true;
-        j.line.setAttribute('stroke-dashoffset', (1 - ease(Math.max(0, u))).toFixed(4));
-      });
-      if (busy) requestAnimationFrame(draw);
+    return function () {
+      var t0 = performance.now();
+      var draw = function (now) {
+        var busy = false;
+        jobs.forEach(function (j) {
+          if (j.done) return;
+          var u = (now - t0 - j.delay) / j.dur;
+          if (u >= 1) { j.p.removeAttribute('mask'); j.done = true; return; }
+          busy = true;
+          j.line.setAttribute('stroke-dashoffset', (1 - ease(Math.max(0, u))).toFixed(4));
+        });
+        if (busy) requestAnimationFrame(draw);
+      };
+      requestAnimationFrame(draw);
     };
-    requestAnimationFrame(draw);
+  }
+
+  var gust = document.querySelector('.hero .gust');
+  if (gust) prepare(gust)();
+
+  var late = document.querySelector('.gust--late');
+  if (late && 'IntersectionObserver' in window) {
+    var inkIn = prepare(late);
+    var io = new IntersectionObserver(function (entries) {
+      if (!entries[0].isIntersecting) return;
+      io.disconnect();
+      inkIn();
+    }, { threshold: 0.6 });
+    io.observe(late);
   }
 
   // ---- the pinwheel catches the wind of the scroll ----
@@ -54,7 +72,7 @@
     }
     angle = (angle + spin * dt) % 360;
     if (blades) blades.setAttribute('transform', 'rotate(' + angle.toFixed(2) + ' 512 512)');
-    // the strokes lean a few pixels downwind while the hero is moving past
+    // the top strokes lean a few pixels downwind while the hero is moving past
     if (gust && hero) {
       var inHero = scrollY < hero.offsetHeight;
       drift += ((inHero ? Math.max(-10, Math.min(10, v * 14)) : 0) - drift) * 0.12;

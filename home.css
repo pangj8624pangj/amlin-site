@@ -1,40 +1,51 @@
 /* Home page layout, on top of styles.css.
 
    The page reads top to bottom like a printed brochure: no pinned stage, no
-   snapping. Each section has its own composition so the rhythm changes as you
-   go. The only motion is wind: the pinwheel in the bar turns with the speed of
-   your scroll, and the hero's ink strokes are drawn once on arrival. */
+   snapping. Each section has its own composition, and the spacing between
+   two sections follows how closely they are related. The only motion is
+   wind: the pinwheel in the bar turns with the speed of your scroll, and the
+   ink strokes that leave the end of the first and last headlines are drawn
+   once, when you reach them. */
 
-.home .nav .brand { gap: 0; }
 .pinwheel { width: 28px; height: 28px; display: block; overflow: visible; }
 
 /* a 12-column grid used by most sections */
 .grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; }
 
-/* section headings share one size; the hero and the two statements go larger */
 .home h2 { font-size: clamp(2rem, 1.15rem + 2.2vw, 3.05rem); line-height: 1.07; letter-spacing: -0.012em; }
 
 /* ── hero ─────────────────────────────────────────────── */
-.hero { padding: clamp(48px, 10vh, 120px) 0 clamp(56px, 9vh, 104px); }
+.hero { padding: clamp(48px, 10vh, 120px) 0 clamp(64px, 10vh, 112px); overflow-x: clip; }
+@supports not (overflow: clip) { .hero { overflow: hidden; } }
 .hero h1 {
   grid-column: 1 / -1;
   font-size: clamp(2.6rem, 1.1rem + 4.5vw, 5rem);
   font-weight: 440; line-height: 1.02; letter-spacing: -0.016em;
 }
-.hero h1 span { display: block; }
+.hero h1 { text-wrap: wrap; }
+.hero h1 > span { display: block; }
 .hero__body { grid-column: 1 / span 6; margin-top: clamp(26px, 3.2vw, 40px); }
 .hero .lede { font-size: clamp(18px, 1.45vw, 21px); line-height: 1.5; color: var(--ink-soft); max-width: 31em; }
 .hero .cta-row { margin-top: 30px; }
-.hero .btn { padding: 14px 22px; font-size: 16px; }
+.hero .btn, .finale .btn { padding: 14px 22px; font-size: 16px; }
 .hero .micro { margin-top: 16px; }
-.hero__wind { grid-column: 7 / -1; align-self: center; margin: clamp(0px, 1.5vw, 24px) 0 0 clamp(8px, 2vw, 32px); }
-.gust { display: block; width: 100%; height: auto; overflow: visible; will-change: transform; }
+
+/* the strokes leave from the full stop of a headline and run off the page */
+.hero__wind, .finale__wind { display: inline; position: relative; }
+.hero__wind .gust, .finale__wind .gust {
+  /* inline-level, so a balanced two-line heading keeps the anchor on its last line */
+  display: inline-block;
+  position: absolute; left: 0.3em; top: calc(0.62em - 12vw);
+  width: 40vw; max-width: none; height: auto;
+}
+.gust { overflow: visible; will-change: transform; pointer-events: none; }
 
 /* ── the problem ──────────────────────────────────────── */
 .problem .grid { border-top: 1px solid var(--line); padding: clamp(64px, 9vw, 120px) 0 clamp(56px, 8vw, 104px); }
-.problem h2 { grid-column: 1 / span 11; font-size: clamp(2.2rem, 1rem + 3.5vw, 4.1rem); line-height: 1.05; }
+.problem h2 { grid-column: 1 / -1; font-size: clamp(2.2rem, 1rem + 3.5vw, 4.1rem); line-height: 1.06; }
 .problem h2 span { display: block; }
-.problem h2 .alt { color: var(--accent); }
+/* the second half answers the first: indented, and set lighter */
+.problem h2 .alt { padding-left: 1.55em; font-weight: 330; color: var(--ink); }
 .problem p { grid-column: 7 / -1; margin-top: clamp(24px, 3vw, 40px); font-size: 19px; line-height: 1.6; color: var(--ink-soft); max-width: 30em; }
 
 /* ── shared section bits ──────────────────────────────── */
@@ -48,7 +59,7 @@
 .shot-cap { margin-top: 14px; font-size: 14px; line-height: 1.45; color: var(--muted); }
 
 /* ── meeting notes: the note, annotated ───────────────── */
-.notes { padding-top: clamp(24px, 3vw, 48px); }
+.notes { padding: clamp(24px, 3vw, 48px) 0 clamp(36px, 4vw, 56px); }
 .annot {
   margin: 0;
   display: grid;
@@ -68,7 +79,7 @@
   font-size: 21px; line-height: 26px; color: var(--ink);
 }
 .contents span { display: block; margin-top: 2px; font-size: 15px; line-height: 1.45; color: var(--muted); }
-/* leaders inside the screenshot: a dot at the heading, a line out to the edge */
+/* leaders inside the screenshot: a dot on the thing itself, a line out to the edge */
 .pin { position: absolute; left: var(--x); right: 0; top: var(--y); height: 0; pointer-events: none; }
 .pin::before {
   content: ""; position: absolute; left: -4px; top: -4px; width: 8px; height: 8px; border-radius: 50%;
@@ -82,11 +93,10 @@
   border: 1.5px solid var(--accent); border-radius: 999px; pointer-events: none;
 }
 
-/* ── your dictionary ──────────────────────────────────── */
-.dictionary .grid { border-top: 1px solid var(--line); padding-top: clamp(48px, 6vw, 80px); }
-.nw { white-space: nowrap; }
-.dictionary h2 { grid-column: 1 / span 5; }
-.dictionary p { grid-column: 7 / -1; font-size: 19px; line-height: 1.6; color: var(--ink-soft); padding-top: 0.35em; max-width: 31em; }
+/* ── your dictionary: a short bridge into dictation ───── */
+.dictionary { padding: clamp(40px, 5vw, 72px) 0 clamp(8px, 1.5vw, 24px); }
+.dictionary h2 { grid-column: 4 / span 6; font-size: clamp(1.55rem, 1.05rem + 1.1vw, 2.1rem); margin-bottom: 14px; }
+.dictionary p { grid-column: 4 / span 6; font-size: 19px; line-height: 1.6; color: var(--ink-soft); }
 
 /* ── dictation ────────────────────────────────────────── */
 .dictation .grid { align-items: center; }
@@ -97,9 +107,11 @@
 .dictation__copy .aside { color: var(--ink); font-weight: 500; }
 .dictation figure { grid-column: 7 / -1; margin: 0; }
 .shot--dict { background: #fff; }
-.shot--dict img { aspect-ratio: 1438 / 540; object-fit: cover; object-position: top; }
+/* trims the capture's own border without cropping the window */
+.shot--dict img { transform: scale(1.007); }
 
 /* ── to-dos ───────────────────────────────────────────── */
+.todos { padding-top: clamp(40px, 6vw, 88px); }
 .todos .sec-grid { align-items: end; margin-bottom: clamp(36px, 4.5vw, 56px); }
 .todos__lead { grid-column: 1 / span 6; }
 .todos__lead h2 { margin-bottom: 18px; }
@@ -120,49 +132,60 @@
 .privacy a { color: var(--cream); text-decoration-color: rgba(251, 247, 236, 0.5); }
 .privacy a:hover { color: #fff; }
 
-/* ── pricing ──────────────────────────────────────────── */
-.pricing { padding-bottom: clamp(40px, 5vw, 64px); }
-.pricing .plans { max-width: 940px; }
-
-/* ── FAQ ──────────────────────────────────────────────── */
-.home-faq { padding: clamp(48px, 7vw, 96px) 0 clamp(64px, 9vw, 120px); }
-.home-faq h2 { grid-column: 1 / span 4; margin-bottom: 24px; }
+/* ── pricing and FAQ: reference, set smaller than the story ── */
+.pricing { padding: clamp(80px, 10vw, 140px) 0 clamp(24px, 3vw, 40px); }
+.pricing .wrap, .home-faq .wrap { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: start; }
+.pricing .sec-head, .home-faq h2 { grid-column: 1 / span 4; margin-bottom: 24px; }
+.home .pricing h2, .home .home-faq h2 { font-size: clamp(1.6rem, 1.15rem + 1vw, 2.1rem); line-height: 1.12; }
+.pricing .sec-head h2 { margin-bottom: 12px; }
+.pricing .sec-head p { font-size: 17px; max-width: 22em; }
+.pricing .plans, .pricing .plans-micro { grid-column: 5 / -1; }
+.home .plan li { padding-left: 0; }
+.home .plan li::before { display: none; }
+.home-faq { padding: clamp(40px, 5vw, 72px) 0 clamp(72px, 9vw, 128px); }
 .home-faq .faq { grid-column: 5 / -1; max-width: none; }
 
-/* ── finale ───────────────────────────────────────────── */
-.finale { padding: clamp(80px, 11vw, 140px) 0; text-align: center; background: var(--paper-2); border-top: 1px solid var(--line); }
-.finale__icon { display: block; width: 76px; height: 76px; margin: 0 auto 26px; filter: drop-shadow(0 6px 10px rgba(14, 84, 77, 0.22)); }
-.finale h2 { font-size: clamp(2.4rem, 1.3rem + 3vw, 4.2rem); line-height: 1.04; }
-.finale p { font-size: 19px; color: var(--ink-soft); margin-top: 14px; }
-.finale .cta-row { justify-content: center; margin-top: 30px; }
-.finale .btn { padding: 14px 22px; font-size: 16px; }
+/* ── finale: the close mirrors the open ───────────────── */
+.finale { padding: clamp(72px, 10vw, 136px) 0 clamp(80px, 11vw, 144px); background: var(--paper-2); border-top: 1px solid var(--line); overflow-x: clip; }
+@supports not (overflow: clip) { .finale { overflow: hidden; } }
+.home .finale h2 {
+  font-size: clamp(2.6rem, 1.1rem + 4.5vw, 5rem);
+  font-weight: 440; line-height: 1.02; letter-spacing: -0.016em;
+  /* breaks after "your" by measure: balanced wrapping misplaces the stroke anchor */
+  max-width: 6.8em; text-wrap: wrap;
+}
+.finale p { font-size: 19px; color: var(--ink-soft); margin-top: 22px; }
+.finale .cta-row { margin-top: 28px; }
 .finale .micro { margin-top: 16px; font-size: 14px; color: var(--muted); }
 .home .footer { background: var(--paper); }
+.nw { white-space: nowrap; }
 
 /* ── narrower screens ─────────────────────────────────── */
 @media (max-width: 1099px) {
   .annot { display: flex; flex-direction: column; }
   .annot .shot-cap { order: 1; }
-  .annot .contents { order: 2; }
+  .annot .contents { order: 2; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; margin-top: 28px; }
   .pin, .ring { display: none; }
-  .annot .contents { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; margin-top: 28px; }
   .contents li { position: static; transform: none; border-top: 1px solid var(--line-strong); padding-top: 12px; }
   .contents li::before { display: none; }
 }
 @media (max-width: 860px) {
-  .grid { display: block; }
+  .grid, .pricing .wrap, .home-faq .wrap { display: block; }
   .hero { padding-top: 40px; }
   .hero__body { margin-top: 24px; }
-  .hero__wind { width: min(88%, 420px); margin: 36px 0 0 auto; }
-  .problem p, .dictionary p, .privacy__body { margin-top: 20px; padding-top: 0; }
+  .problem p, .privacy__body { margin-top: 20px; padding-top: 0; }
+  .dictionary h2, .dictionary p { max-width: 34rem; }
   .dictation figure { margin-top: 36px; }
   .todos .aside { margin-top: 24px; }
+  .pricing .sec-head { margin-bottom: 28px; }
   .home-faq h2 { margin-bottom: 20px; }
 }
 @media (max-width: 640px) {
+  .finale__wind { display: none; }
   .annot .contents { grid-template-columns: 1fr 1fr; gap: 18px 16px; }
   .contents strong { font-size: 18px; line-height: 23px; }
   .contents span { font-size: 14px; }
+  .problem h2 .alt { padding-left: 1.1em; }
   .problem p, .sec-head p, .dictionary p, .todos__lead p, .privacy p, .finale p { font-size: 17px; }
   .dictation__copy p { font-size: 17px; }
   .shot--todo img { aspect-ratio: 1760 / 760; }
