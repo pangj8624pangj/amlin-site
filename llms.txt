@@ -22,6 +22,7 @@ Key facts (checked August 2026):
 - [Amlin vs Granola](https://amlin.ai/amlin-vs-granola.html): honest comparison with Granola, including where Granola is the better fit
 - [Amlin vs Otter.ai](https://amlin.ai/amlin-vs-otter.html): notepad-on-your-Mac vs OtterPilot bot, honest comparison
 - [Amlin vs Fathom](https://amlin.ai/amlin-vs-fathom.html): notes with nothing recorded vs stored video recordings
+- [Amlin vs Fireflies.ai](https://amlin.ai/amlin-vs-fireflies.html): notepad-on-your-Mac vs the Fireflies Notetaker bot and cloud recordings, honest comparison
 - [Amlin vs built-in macOS dictation](https://amlin.ai/amlin-vs-mac-dictation.html): how Amlin's dictation differs from Apple's built-in dictation
 - [Amlin for consultants and advisors](https://amlin.ai/for-consultants.html): client-call notes without a bot in the room
 - [Amlin for financial advisors](https://amlin.ai/for-financial-advisors.html): client-meeting notes without a bot, with audio never stored; no compliance claims
