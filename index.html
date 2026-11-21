@@ -23,7 +23,7 @@
   <link rel="icon" href="assets/icon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
   <link rel="stylesheet" href="styles.css?v=11" />
-  <link rel="stylesheet" href="home.css?v=5" />
+  <link rel="stylesheet" href="home.css?v=7" />
   <script defer src="assets/ph.js"></script>
   <script type="application/ld+json">
   {
@@ -174,11 +174,17 @@
           <p>Hold a key and talk. The ums disappear, punctuation lands, and finished text types itself where your cursor is. An email arrives shaped like an email, a spoken &ldquo;new line&rdquo; becomes a real line break, a bullet list appears when you ask for one, and a 🙂 lands where you meant it.</p>
           <p class="aside">On-device, unmetered, and free on every plan.</p>
         </div>
-        <figure>
-          <div class="shot shot--dict">
-            <img src="assets/dictation-gmail.png" width="1438" height="1312" alt="Dictating an email in Gmail with Amlin: a clean, punctuated paragraph typed by voice." loading="lazy" />
+        <figure class="dd" id="dictDemo">
+          <div class="dd-said" aria-hidden="true">
+            <span class="dd-mic"><i></i><i></i><i></i><i></i></span>
+            <p class="dd-raw"><span class="f">um</span> hey frank <span class="f">so</span> quick update from the <span class="f">uh</span> meridian kickoff we confirmed the api scope and the <span class="f">uh</span> beta invite list goes out thursday <span class="c">new line</span> huge week for the team <span class="c">smiley face</span></p>
           </div>
-          <figcaption class="shot-cap">Dictation, in Gmail</figcaption>
+          <div class="shot dd-win">
+            <div class="dd-row"><span>To</span>Frank</div>
+            <div class="dd-row"><span>Subject</span>Meridian kickoff</div>
+            <div class="dd-body"><p class="dd-out">Hey Frank,<br /><br />Quick update from the Meridian kickoff. We confirmed the API scope, and the beta invite list goes out Thursday.<br /><br />Huge week for the team! 🙂</p></div>
+          </div>
+          <figcaption class="shot-cap">What you said, and what Amlin types for you</figcaption>
         </figure>
       </div>
     </section>
@@ -341,7 +347,7 @@
     </div>
   </footer>
 
-  <script src="home.js?v=2" defer></script>
+  <script src="home.js?v=3" defer></script>
 
   <!-- Intercom messenger -->
   <script>

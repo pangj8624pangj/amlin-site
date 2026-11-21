@@ -106,9 +106,31 @@
 .dictation__copy p + p { margin-top: 16px; }
 .dictation__copy .aside { color: var(--ink); font-weight: 500; }
 .dictation figure { grid-column: 7 / -1; margin: 0; }
-.shot--dict { background: #fff; }
-/* trims the capture's own border without cropping the window */
-.shot--dict img { transform: scale(1.007); }
+/* dictation demo: what you said, then what lands in the box */
+.dd-said {
+  display: flex; gap: 14px; align-items: flex-start;
+  background: var(--ink); color: rgba(251, 247, 236, 0.92); border-radius: 14px;
+  padding: 16px 18px; margin: 0 28px -14px; position: relative; z-index: 1;
+  box-shadow: 0 10px 24px -14px rgba(28, 27, 24, 0.5); min-height: 92px;
+}
+.dd-raw { font-size: 15px; line-height: 1.55; font-style: italic; }
+.dd-raw .f { color: #e7a38f; }
+.dd-raw .c { color: var(--sage); font-style: normal; }
+.dd-raw .w { opacity: 0; transition: opacity .12s; }
+.dd-raw .w.on { opacity: 1; }
+.dd-raw .f.gone { text-decoration: line-through; opacity: .45; transition: opacity .3s; }
+.dd-mic { flex: none; display: flex; gap: 3px; align-items: center; height: 22px; margin-top: 1px; }
+.dd-mic i { width: 3px; height: 6px; border-radius: 2px; background: var(--sage); }
+.dd.listening .dd-mic i { animation: dd-bar .7s ease-in-out infinite alternate; }
+.dd-mic i:nth-child(2) { animation-delay: .15s; } .dd-mic i:nth-child(3) { animation-delay: .3s; } .dd-mic i:nth-child(4) { animation-delay: .45s; }
+@keyframes dd-bar { to { height: 20px; } }
+.dd-win { background: #fff; padding-top: 22px; }
+.dd-row { padding: 10px 20px; border-bottom: 1px solid var(--line); font-size: 14px; color: var(--ink); }
+.dd-row span { color: var(--muted); margin-right: 10px; }
+.dd-body { padding: 18px 20px 24px; min-height: 196px; }
+.dd-out { font-size: 15.5px; line-height: 1.6; color: var(--ink); }
+.dd-caret { display: inline-block; width: 1.5px; height: 1.1em; background: var(--accent); vertical-align: -0.18em; margin-left: 1px; animation: dd-blink 1s steps(1) infinite; }
+@keyframes dd-blink { 50% { opacity: 0; } }
 
 /* ── to-dos ───────────────────────────────────────────── */
 .todos { padding-top: clamp(40px, 6vw, 88px); }
@@ -182,6 +204,8 @@
 }
 @media (max-width: 640px) {
   .finale__wind { display: none; }
+  .dd-body { min-height: 236px; }
+  .dd-said { margin: 0 12px -14px; }
   .annot .contents { grid-template-columns: 1fr 1fr; gap: 18px 16px; }
   .contents strong { font-size: 18px; line-height: 23px; }
   .contents span { font-size: 14px; }

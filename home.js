@@ -90,3 +90,61 @@
     requestAnimationFrame(frame);
   }, { passive: true });
 })();
+
+/* Dictation demo: the raw words arrive as they were spoken, the filler is
+   struck out, then the cleaned text types itself into the email. Loops while
+   on screen. Without JS or with reduced motion it shows the finished state. */
+(function () {
+  'use strict';
+  var fig = document.getElementById('dictDemo');
+  if (!fig || matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
+  var raw = fig.querySelector('.dd-raw'), out = fig.querySelector('.dd-out');
+  var finalHTML = out.innerHTML;
+  // split raw text into word spans, keeping filler / command classes
+  var words = [];
+  Array.prototype.slice.call(raw.childNodes).forEach(function (n) {
+    if (n.nodeType === 3) {
+      n.textContent.split(/(\s+)/).forEach(function (t) {
+        if (!t) return;
+        if (/^\s+$/.test(t)) { raw.insertBefore(document.createTextNode(t), n); return; }
+        var s = document.createElement('span'); s.className = 'w'; s.textContent = t;
+        raw.insertBefore(s, n); words.push(s);
+      });
+      raw.removeChild(n);
+    } else { n.classList.add('w'); words.push(n); }
+  });
+  // the cleaned text as a list of tokens: characters and line breaks
+  var tmp = document.createElement('div'); tmp.innerHTML = finalHTML;
+  var tokens = [];
+  Array.prototype.slice.call(tmp.childNodes).forEach(function (n) {
+    if (n.nodeType === 3) Array.from(n.textContent).forEach(function (ch) { tokens.push(ch); });
+    else tokens.push('\n');
+  });
+  var caret = document.createElement('span'); caret.className = 'dd-caret';
+  var timers = [], running = false;
+  var at = function (ms, fn) { timers.push(setTimeout(fn, ms)); };
+  function reset() {
+    timers.forEach(clearTimeout); timers = [];
+    words.forEach(function (w) { w.classList.remove('on', 'gone'); });
+    out.innerHTML = ''; out.appendChild(caret);
+  }
+  function play() {
+    reset(); fig.classList.add('listening');
+    var t = 300;
+    words.forEach(function (w) { at(t, function () { w.classList.add('on'); }); t += /^(um|uh|so)$/.test(w.textContent) ? 260 : 170; });
+    t += 350;
+    at(t, function () { fig.classList.remove('listening'); fig.querySelectorAll('.dd-raw .f').forEach(function (f) { f.classList.add('gone'); }); });
+    t += 650;
+    tokens.forEach(function (ch) {
+      at(t, function () {
+        out.insertBefore(ch === '\n' ? document.createElement('br') : document.createTextNode(ch), caret);
+      });
+      t += ch === '\n' ? 60 : 22;
+    });
+    at(t + 3800, function () { if (running) play(); });
+  }
+  new IntersectionObserver(function (e) {
+    if (e[0].isIntersecting && !running) { running = true; play(); }
+    else if (!e[0].isIntersecting && running) { running = false; timers.forEach(clearTimeout); timers = []; fig.classList.remove('listening'); words.forEach(function (w) { w.classList.add('on'); }); out.innerHTML = finalHTML; }
+  }, { threshold: 0.4 }).observe(fig);
+})();
