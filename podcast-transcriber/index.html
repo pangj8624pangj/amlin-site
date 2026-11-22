@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'">
+<title>Podcast Transcriber</title>
+<style>
+:root{color-scheme:light dark;--bg:#f6f5f1;--surface:#fff;--ink:#22211e;--soft:#5d5a53;--line:#dfdcd3;--accent:#146b62;--on-accent:#fff}
+@media (prefers-color-scheme:dark){:root{--bg:#171715;--surface:#22221f;--ink:#f0eee8;--soft:#b5b1a8;--line:#3a3934;--accent:#58c4b6;--on-accent:#10211f}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+main{max-width:760px;margin:0 auto;padding:56px 16px 72px}.hero{text-align:center;padding-bottom:36px;border-bottom:1px solid var(--line)}
+.mark{width:68px;height:68px;color:var(--ink)}h1{font:700 clamp(34px,7vw,50px)/1.1 ui-serif,Georgia,serif;margin:12px 0}
+.lede{color:var(--soft);font-size:19px;max-width:600px;margin:0 auto 24px}.button{display:inline-block;background:var(--accent);color:var(--on-accent);padding:13px 26px;border-radius:9px;font-weight:650;text-decoration:none}
+.button:focus-visible{outline:3px solid var(--ink);outline-offset:3px}.note,.aside{color:var(--soft);font-size:14px}.note{margin:14px 0 0}
+section{padding-top:34px}h2{font:650 26px/1.2 ui-serif,Georgia,serif;margin:0 0 12px}h3{font-size:16px;margin:0 0 3px}ul,ol{padding-left:22px;margin:0}li{margin:6px 0}p{margin:0 0 10px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.feature{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:15px}.feature p{color:var(--soft);font-size:15px;line-height:1.45;margin:0}
+dl{margin:0;background:var(--surface);border:1px solid var(--line);border-radius:10px}dl div{display:flex;gap:14px;align-items:center;padding:9px 14px;border-top:1px solid var(--line)}dl div:first-child{border-top:0}dt{width:76px;flex:none}dd{margin:0}kbd{font:13px ui-monospace,Menlo,monospace;border:1px solid var(--line);border-radius:5px;padding:2px 6px}
+.locked{min-height:70vh;display:flex;align-items:center;justify-content:center;color:var(--soft);text-align:center}
+@media (max-width:600px){main{padding-top:36px}.grid{grid-template-columns:1fr}}
+</style></head><body><main id="app">
+<header class="hero">
+  <svg class="mark" viewBox="0 0 64 64" aria-hidden="true"><rect x="19" y="7" width="20" height="34" rx="10" fill="currentColor"/><path d="M11 29c0 12 8 20 18 20v8M19 57h20" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M45 20c3-3 6 3 9 0M45 31c3-3 6 3 9 0M43 42c3-3 6 3 9 0" fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round"/></svg>
+  <h1>Podcast Transcriber</h1>
+  <p class="lede">Turn podcast episodes, YouTube videos, and your own recordings into searchable transcripts and summaries. It runs on your Mac, with no account or subscription.</p>
+  <a class="button" href="https://drive.google.com/file/d/1sqPXaxlCLgACb6OjdATyUSju0PHemW2c/view?usp=sharing" target="_blank" rel="noopener noreferrer">Download for Mac</a>
+  <p class="note">508 MB · Apple Silicon (M1 or later) · Signed and notarized by Apple</p>
+</header>
+<section><h2>What you need</h2><ul>
+  <li>A Mac with Apple Silicon (M1 or later). Intel Macs are not supported.</li>
+  <li>16 GB of memory recommended.</li>
+  <li>About 5 GB of free disk space, plus room for any audio you keep.</li>
+  <li>An internet connection to find episodes and download the AI models on first use.</li>
+</ul></section>
+<section><h2>Install</h2><ol>
+  <li>Download the file. Google Drive may say it can’t scan a file this large, so choose <b>Download anyway</b>.</li>
+  <li>Open the DMG and drag <b>Podcast Transcriber</b> to <b>Applications</b>.</li>
+  <li>Open the app from <b>Applications</b>. If macOS asks to confirm, click <b>Open</b>.</li>
+</ol></section>
+<section><h2>Transcribe your first episode</h2><ol>
+  <li>Click <b>New Transcription</b> or press ⌘N.</li>
+  <li>Paste one or more Apple Podcasts, Spotify, YouTube, or RSS links, one per line. You can also add an audio or video file.</li>
+  <li>Click <b>Transcribe</b>. If a link could match more than one episode, choose the right one.</li>
+  <li>When it finishes, open the episode from your <b>Library</b>.</li>
+</ol><p class="aside">The first run takes longer while the models download. After that, an hour of audio takes roughly 3 to 4 minutes on an M4 Mac. Older Macs take longer.</p></section>
+<section><h2>What it can do</h2><div class="grid"><div class="feature"><h3>Transcripts with timestamps</h3><p>Read along, search, and play the audio from the app.</p></div><div class="feature"><h3>Speaker labels</h3><p>See who is talking, then replace “Speaker 1” with a real name.</p></div><div class="feature"><h3>AI summaries</h3><p>Get key takeaways and verified quotes, generated on your Mac.</p></div><div class="feature"><h3>One-click copy</h3><p>Copy the transcript, a clean version, the summary, or everything.</p></div><div class="feature"><h3>Highlights and notes</h3><p>Save quotes with notes, then export to Notion, Google Docs, Slack, or Markdown.</p></div><div class="feature"><h3>Follow shows</h3><p>New episodes transcribe automatically while the app is open.</p></div><div class="feature"><h3>Organize your library</h3><p>Star episodes, add tags, and filter by podcast.</p></div><div class="feature"><h3>Re-transcribe</h3><p>Rebuild an episode with your current settings. The earlier version is saved.</p></div><div class="feature"><h3>Transcript limit</h3><p>Keep only your latest transcripts. Starred and highlighted episodes stay.</p></div><div class="feature"><h3>Connect AI apps</h3><p>Let Claude Desktop or Codex search your transcripts.</p></div></div></section>
+<section><h2>Helpful shortcuts</h2><dl><div><dt><kbd>⌘N</kbd></dt><dd>New transcription</dd></div><div><dt><kbd>⌘K</kbd></dt><dd>Search all transcripts</dd></div><div><dt><kbd>⌘F</kbd></dt><dd>Find in the open transcript</dd></div><div><dt><kbd>⌘⇧C</kbd></dt><dd>Copy transcript</dd></div><div><dt><kbd>Space</kbd></dt><dd>Play or pause</dd></div><div><dt><kbd>↑ / ↓</kbd></dt><dd>Previous or next episode</dd></div></dl></section>
+<section><h2>Privacy and cost</h2>
+  <p>Transcription, speaker labels, and the default summaries are free and run on your Mac. Your files are saved in <b>Documents &gt; Podcast Transcripts</b>.</p>
+  <p>Claude summaries are optional. If you turn them on, you add your own Anthropic API key, your transcript is sent to Anthropic, and usage is billed to your account. A one-hour episode costs about $0.20 to $0.25.</p>
+</section>
+<section><h2>Good to know</h2><ul>
+  <li>Transcripts and summaries are machine-generated, so check anything important against the audio.</li>
+  <li>Following only works while the app is open.</li>
+  <li>Only transcribe content you have the right to use.</li>
+</ul></section></main>
+</body></html>
