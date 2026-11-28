@@ -4,7 +4,7 @@
 
 Key facts (checked August 2026):
 
-- Platform: macOS 13 or later, Apple silicon. No Windows, iOS, or Android app.
+- Platform: macOS 13 or later, Apple silicon. No Windows or Android app. An iPhone keyboard for dictation is in beta.
 - Works with Zoom, Google Meet, Microsoft Teams, and anything else that plays sound on the Mac. No bot joins the call; other participants install nothing.
 - Meeting audio is streamed for live transcription and discarded immediately. It is never written to disk or stored by Amlin. Only notes and transcript text remain.
 - Dictation works in any app (hold a key, speak, get cleaned-up text) and runs entirely on-device. It is included in the free plan and never metered.
