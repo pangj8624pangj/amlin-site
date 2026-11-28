@@ -1,6 +1,6 @@
 # Amlin
 
-> Amlin is a macOS app that combines an AI meeting notepad, system-wide voice dictation, and a self-filling to-do list. No bot joins your calls: Amlin captures system audio at the operating-system level on your own Mac, transcribes it live, and turns your rough notes into a structured summary the moment the meeting ends. Meeting audio is never stored; dictation runs entirely on-device.
+> Amlin is a macOS app that combines an AI meeting notepad, live answers to customer questions during calls, system-wide voice dictation, and a self-filling to-do list. No bot joins your calls: Amlin captures system audio at the operating-system level on your own Mac, transcribes it live, and turns your rough notes into a structured summary the moment the meeting ends. Meeting audio is never stored; dictation runs entirely on-device.
 
 Key facts (checked August 2026):
 
