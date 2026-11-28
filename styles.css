@@ -428,3 +428,7 @@ body:has(.prose-wrap) { --wrap: 720px; --prose: 720px; }
   .frow.flip .ftext { order: 0; }
   .la-team { grid-template-columns: 1fr; }
 }
+.la-wide .la-shot { margin-top: 28px; }
+.la-wide p + p { margin-top: 12px; }
+.la-wide { max-width: none; }
+.la-wide h2, .la-wide p { max-width: 44rem; }

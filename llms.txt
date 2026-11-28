@@ -13,7 +13,7 @@ Key facts (checked August 2026):
 - Action items are extracted from meetings with owners and due dates into one list across all meetings.
 - Ask lets users chat over one meeting or their whole history, with citations to the source line.
 - Google Calendar integration is optional and read-only.
-- Pricing: Free plan with 4 meeting-hours per month, full note history, and unmetered dictation. Pro is $10/month or $108/year with 40 meeting-hours per month and unlimited Ask queries. Team is $69 per seat a month billed yearly or $79 monthly, adds Live Answers, a shared team knowledge base, and a review queue of unanswered questions, with 30 meeting-hours per seat; teams start a free trial by emailing support@amlin.ai. Prices in USD; cancel anytime.
+- Pricing: Free plan with 4 meeting-hours per month, full note history, and unmetered dictation. Pro is $10/month or $108/year with 40 meeting-hours per month and unlimited Ask queries. Team is $69 per seat a month billed yearly or $79 monthly, adds Live Answers, a shared team knowledge base, and a review queue of unanswered questions, with 40 meeting-hours per seat; teams start a free trial by emailing support@amlin.ai. Prices in USD; cancel anytime.
 - Sign in with Google. Made by Amlin Labs LLC.
 
 ## Pages
