@@ -13,13 +13,13 @@ Key facts (checked August 2026):
 - Action items are extracted from meetings with owners and due dates into one list across all meetings.
 - Ask lets users chat over one meeting or their whole history, with citations to the source line.
 - Google Calendar integration is optional and read-only.
-- Pricing: Free plan with 4 meeting-hours per month, full note history, and unmetered dictation. Pro is $10/month or $108/year with 40 meeting-hours per month and unlimited Ask queries. Team is $69 per seat a month billed yearly or $79 monthly (5-seat minimum), adds Live Answers, a shared team knowledge base, and a review queue of unanswered questions, with 30 meeting-hours per seat; teams start a free trial by emailing support@amlin.ai. Prices in USD; cancel anytime.
+- Pricing: Free plan with 4 meeting-hours per month, full note history, and unmetered dictation. Pro is $10/month or $108/year with 40 meeting-hours per month and unlimited Ask queries. Team is $69 per seat a month billed yearly or $79 monthly, adds Live Answers, a shared team knowledge base, and a review queue of unanswered questions, with 30 meeting-hours per seat; teams start a free trial by emailing support@amlin.ai. Prices in USD; cancel anytime.
 - Sign in with Google. Made by Amlin Labs LLC.
 
 ## Pages
 
 - [Home](https://amlin.ai/): product overview, how it works, pricing, FAQ
-- [Live Answers](https://amlin.ai/live-answers.html): answers to customers' product questions on your screen during a call, from your own help center and documents; part of the Amlin Team plan ($69 per seat a month billed yearly, $79 monthly, 5-seat minimum)
+- [Live Answers](https://amlin.ai/live-answers.html): answers to customers' product questions on your screen during a call, from your own help center and documents; part of the Amlin Team plan ($69 per seat a month billed yearly, $79 monthly)
 - [Amlin vs Granola](https://amlin.ai/amlin-vs-granola.html): honest comparison with Granola, including where Granola is the better fit
 - [Amlin vs Otter.ai](https://amlin.ai/amlin-vs-otter.html): notepad-on-your-Mac vs OtterPilot bot, honest comparison
 - [Amlin vs Fathom](https://amlin.ai/amlin-vs-fathom.html): notes with nothing recorded vs stored video recordings

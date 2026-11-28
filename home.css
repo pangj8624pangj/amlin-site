@@ -227,3 +227,9 @@
 .home .pricing .plan + .plan { padding-right: 40px; }
 .home .pricing .plan:last-child { padding-right: 0; }
 @media (max-width: 860px) { .home .pricing .plan + .plan { padding-right: 0; } }
+
+/* Live Answers section */
+.shot--video { background: #1c1b18; line-height: 0; }
+.shot--video video { display: block; width: 100%; height: auto; }
+.live .live__more { margin-top: 14px; font-size: 17px; }
+.live .live__more a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
