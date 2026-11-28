@@ -157,11 +157,16 @@
 /* ── pricing and FAQ: reference, set smaller than the story ── */
 .pricing { padding: clamp(80px, 10vw, 140px) 0 clamp(24px, 3vw, 40px); }
 .pricing .wrap, .home-faq .wrap { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: start; }
-.pricing .sec-head, .home-faq h2 { grid-column: 1 / span 4; margin-bottom: 24px; }
+.home-faq h2 { grid-column: 1 / span 4; margin-bottom: 24px; }
+.pricing .sec-head { grid-column: 1 / -1; margin-bottom: 32px; }
 .home .pricing h2, .home .home-faq h2 { font-size: clamp(1.6rem, 1.15rem + 1vw, 2.1rem); line-height: 1.12; }
 .pricing .sec-head h2 { margin-bottom: 12px; }
 .pricing .sec-head p { font-size: 17px; max-width: 22em; }
-.pricing .plans, .pricing .plans-micro { grid-column: 5 / -1; }
+.pricing .plans, .pricing .plans-micro { grid-column: 1 / -1; }
+.home .pricing .plans { grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: none; }
+.home .plan--team { position: relative; }
+.home .plan--team::before { content: ""; position: absolute; left: 0; right: 0; top: -1px; border-top: 2px solid var(--ink); }
+.home .plan--team li a { color: var(--accent); }
 .home .plan li { padding-left: 0; }
 .home .plan li::before { display: none; }
 .home-faq { padding: clamp(40px, 5vw, 72px) 0 clamp(72px, 9vw, 128px); }
@@ -200,6 +205,7 @@
   .dictation figure { margin-top: 36px; }
   .todos .aside { margin-top: 24px; }
   .pricing .sec-head { margin-bottom: 28px; }
+  .home .pricing .plans { grid-template-columns: 1fr; }
   .home-faq h2 { margin-bottom: 20px; }
 }
 @media (max-width: 640px) {
@@ -218,3 +224,6 @@
 @media (prefers-reduced-motion: reduce) {
   .gust { will-change: auto; }
 }
+.home .pricing .plan + .plan { padding-right: 40px; }
+.home .pricing .plan:last-child { padding-right: 0; }
+@media (max-width: 860px) { .home .pricing .plan + .plan { padding-right: 0; } }
